@@ -45,8 +45,8 @@ class FoodController extends Controller
         $data = $request->all();
         
         // creo slug univoco, nel caso in cui il nuovo è già presente nel database ne creo uno diverso, concatenandolo ad un counter
-        // Prova-nuovo-post 
-        // Prova-nuovo-post-1
+        // Prova-nuovo-food 
+        // Prova-nuovo-food-1
         $slug = Str::slug($data['name']);
 
         $counter = 1;
@@ -72,9 +72,9 @@ class FoodController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Food $food)
     {
-        //
+        return view("admin.foods.show", compact("food"));
     }
 
     /**
@@ -83,9 +83,10 @@ class FoodController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Food $food)
     {
-        //
+        $categories = Category::all();
+        return view("admin.foods.edit", compact("food", "categories"));
     }
 
     /**
@@ -95,9 +96,29 @@ class FoodController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ValidationFood $request, Food $food)
     {
-        //
+        $data = $request->all();
+
+        // creo slug univoco, nel caso in cui il nuovo è già presente nel database ne creo uno diverso, concatenandolo ad un couter
+        // Prova-nuovo-food 
+        // Prova-nuovo-food-1
+        $slug = Str::slug($data['name']);
+
+        //solo se il nuovo slug è diverso da quello che c'era prima ne crei uno nuovo diverso da quelli presenti sul database
+        if($food->slug != $slug){ 
+            $counter = 1;
+            while (Food::where('slug', $slug)->first()) {
+                $slug = Str::slug($data['name']) . '-' . $counter;
+                $counter++;
+            }    
+            $data['slug'] = $slug;
+        }
+
+        $food->update($data);
+        $food->save();
+
+        return redirect()->route("admin.foods.index");
     }
 
     /**

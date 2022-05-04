@@ -9,7 +9,16 @@
 
                     <div class="card-body">
 
-                        Ciao, {{$user->name}} #{{$user->id}}
+                        Ciao, {{$user->name}} #{{$user->id}} 
+
+                        <ul class="px-0 pt-4 list-unstyled">
+                            <li><strong>Nome Ristorante: </strong>{{$restaurant->name}}</li>
+                            <li><strong>Indirizzo: </strong>{{$restaurant->address}}</li>
+                            <li><strong>Numero di telefono: </strong>{{$restaurant->phone}}</li>
+                            <li><strong>Email ristorante: </strong>{{$restaurant->email}}</li>
+                            <li><strong>Partita IVA: </strong>{{$restaurant->vat}}</li>
+                            <li><strong>Descrizione: </strong>{{$restaurant->description}}</li>
+                        </ul>
 
                     </div>
                 </div>
