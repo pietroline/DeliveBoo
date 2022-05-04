@@ -6,7 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Restaurant extends Model
 {
-    protected $fillable = ["name", "address", "phone", "email_restaurant", "vat", "description", "user_id"];
+    protected $fillable = ["name", "address", "phone", "email", "vat", "description", "user_id"];
+
+    // specifico nome tabella 
+    protected $table = "restaurants";
 
     // per la relazione 1 a 1 tra restaurants e users
     public function users(){
@@ -25,7 +28,7 @@ class Restaurant extends Model
 
     // per la relazione molti a molti tra restaurants e typologies
     public function typologies(){
-        return $this->belongsToMany("App/Typology");
+        return $this->belongsToMany("App\Typology");
     }
 
 }

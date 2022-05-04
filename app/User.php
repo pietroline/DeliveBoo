@@ -37,6 +37,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    // specifico nome tabella 
+    protected $table = "users";
+
     // per la relazione 1 a 1 tra restaurants e users
     public function restaurants(){
         return $this->hasOne("App\Restaurant");

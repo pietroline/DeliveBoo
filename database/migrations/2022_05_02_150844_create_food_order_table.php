@@ -27,7 +27,7 @@ class CreateFoodOrderTable extends Migration
                     ->on("orders")
                     ->onDelete("cascade");
 
-            $table->integer("quantity");
+            $table->integer("quantity")->default(1);
 
             $table->index(["food_id", "order_id", "quantity"]);
 

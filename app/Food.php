@@ -8,6 +8,9 @@ class Food extends Model
 {
     protected $fillable = ["name", "category_id", "price", "description", "ingredients", "visible", "restaurants_id"];
 
+    // specifico nome tabella
+    protected $table = "foods";
+
     // per la relazione 1 a molti tra restaurants e foods
     public function restaurants(){
         return $this->belongsTo("App\Restaurant");
@@ -20,6 +23,6 @@ class Food extends Model
 
     // per la relazione molti a molti tra orders e foods
     public function orders(){
-        return $this->belongsToMany("App/Order");
+        return $this->belongsToMany("App\Order");
     }
 }
