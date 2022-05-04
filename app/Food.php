@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Food extends Model
 {
-    protected $fillable = ["name", "category_id", "price", "description", "ingredients", "visible", "restaurants_id"];
+    protected $fillable = ["name", "slug", "category_id", "price", "description", "ingredients", "visible", "restaurants_id"];
 
     // specifico nome tabella
     protected $table = "foods";

@@ -3,6 +3,7 @@
 use App\Restaurant;
 use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
+use Illuminate\Support\Str;
 
 class RestaurantsTableSeeder extends Seeder
 {
@@ -18,7 +19,8 @@ class RestaurantsTableSeeder extends Seeder
 
             $newRestaurant = new Restaurant();
 
-            $newRestaurant->name = $faker->word();
+            $newRestaurant->name = ucfirst($faker->word());
+            $newRestaurant->slug = Str::slug($newRestaurant->name); //è possibile che esistano più slug uguali quando $faker->word() ritorna porole uguali
             $newRestaurant->address = $faker->address();
             $newRestaurant->phone = $faker->phoneNumber();
             $newRestaurant->email = $faker->email();
