@@ -5,6 +5,7 @@ use App\Order;
 use App\Restaurant;
 use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
+use Illuminate\support\Str;
 
 class FoodsTableSeeder extends Seeder
 {
@@ -19,12 +20,13 @@ class FoodsTableSeeder extends Seeder
             
             $newFood = new Food();
 
-            $newFood->name = $faker->word();
+            $newFood->name = ucfirst($faker->word());
+            $newFood->slug = Str::slug($newFood->name); //è possibile che esistano più slug uguali quando $faker->word() ritorna porole uguali
             $newFood->category_id = $faker->numberBetween(1,10);
             $newFood->price = $faker->numberBetween(7, 25);
             $newFood->description = $faker->paragraph();
             $newFood->ingredients = $faker->words(3, true);
-            $newFood->visible = true;
+            $newFood->visible = rand(true, false);
             $newFood->restaurant_id = $faker->numberBetween(1,5);
 
             $newFood->save();

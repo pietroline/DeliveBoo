@@ -17,6 +17,7 @@ class CreateFoodsTable extends Migration
             $table->id();
 
             $table->string("name");
+            $table->string("slug");
             $table->unsignedDecimal("price", 5, 2);
             $table->text("description")->nullable();
             $table->string("ingredients");
