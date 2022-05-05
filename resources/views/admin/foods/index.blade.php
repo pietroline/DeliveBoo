@@ -9,29 +9,35 @@
 
                 <table class="table">
                     <thead>
-                      <tr>
+                      <tr class="text-center">
                         <th scope="col">#</th>
-                        <th scope="col">Nome</th>
-                        <th scope="col">Slug</th>
-                        <th scope="col">Price</th>
-                        <th scope="col">Ingredients</th>
-                        <th scope="col">Visible</th>
-                        <th scope="col">Category_id</th>
+                        <th scope="col">Nome portata</th>
+                        <th scope="col">Ingredienti</th>
+                        <th scope="col">Prezzo</th>
+                        <th scope="col">Categoria</th>
+                        <th scope="col">Visibilità</th>
                         <th scope="col">Azioni</th>
                       </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="text-center">
                         @foreach ($foods as $food)
                             <tr>
                                 <td>{{$food->id}}</td>
                                 <td>{{$food->name}}</td>
-                                <td>{{$food->slug}}</td>
+                                <td>{{strlen($food->ingredients) > 30 ? mb_substr($food->ingredients, 0, 30) . "..." : $food->ingredients}}</td>
                                 <td>{{$food->price}}</td>
-                                <td>{{$food->ingredients}}</td>
-                                <td>{{$food->visible}}</td>
+                            
                                 <td>{{$food->category_id}}</td>
 
-                                <td class="d-flex">
+                                <td>
+                                    @if ($food->visible)
+                                        <span>Cliente/Ristoratore</span>
+                                    @else
+                                        <span>Solo ristoratore</span>
+                                    @endif
+                                </td>
+                                
+                                <td class="d-flex justify-content-center">
                                     <a href="{{route('admin.foods.show', $food->id)}}" class="btn btn-primary">Vedi</a>
                                     <a href="{{route('admin.foods.edit', $food->id)}}" class="btn btn-warning mx-2">Modifica</a>
 

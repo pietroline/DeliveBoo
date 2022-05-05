@@ -42,13 +42,11 @@
                     <label for="visible">Disponibilità</label>
                     <select class="form-control" id="visible" name="visible">
 
-                        <option value="" selected>Seleziona disponibilità</option>
-                        <option value="1">Si</option>
-                        <option value="0">No</option>
+                      <option value="1" selected>Si</option>
+                      <option value="0">No</option>
                    
-                      </select>
+                    </select>
                 </div>
-                
                 
                 <button type="submit" class="btn btn-primary my-3">Salva</button>
             </form>

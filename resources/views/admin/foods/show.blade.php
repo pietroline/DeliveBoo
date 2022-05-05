@@ -18,19 +18,28 @@
                     <strong>Category_id: </strong> {{isset($food->category) ? $food->category->name : "NULL"}}
                 </li>
                 <li class="my-3">
-                    <strong>Price: </strong> {{$food->price}}
+                    <strong>Prezzo: </strong> {{$food->price}}
                 </li>
+
+                @if($food->description)
+                    <li class="my-3">
+                        <strong>Descrizione: </strong> {{$food->description}}
+                    </li>
+                @endif
+
+                @if($food->ingredients)
+                    <li class="my-3">
+                        <strong>Ingredienti: </strong> {{$food->ingredients}}
+                    </li>
+                @endif
+              
                 <li class="my-3">
-                    <strong>Description: </strong> {{$food->description}}
-                </li>
-                <li class="my-3">
-                    <strong>Ingredients: </strong> {{$food->ingredients}}
-                </li>
-                <li class="my-3">
-                    <strong>Visible: </strong> {{$food->visible}}
-                </li>
-                <li class="my-3">
-                    <strong>Resturants_id: </strong> {{$food->restaurant_id}}
+                    <strong>Visibilità: </strong>
+                    @if ($food->visible)
+                        <span>Cliente/Ristoratore</span>
+                    @else
+                        <span>Solo ristoratore</span>
+                    @endif
                 </li>
             
             </ul>

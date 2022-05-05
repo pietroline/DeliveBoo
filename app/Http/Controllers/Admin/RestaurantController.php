@@ -53,12 +53,17 @@ class RestaurantController extends Controller
         }
 
         $data['slug'] = $slug;
-
+        
         $restaurant = new Restaurant();
         $restaurant->fill($data);
         $restaurant->user_id = Auth::id();
      
         $restaurant->save();
+
+        // verifica le typologies inserite, e popolo tabella pivot
+        if($request->typologies){
+            $restaurant->typologies()->sync($data["typologies"]);
+        }
         
         return redirect()->route('admin.home');
     }
