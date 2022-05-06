@@ -48,7 +48,7 @@
         </div>
 
         <a href="{{route('admin.foods.index')}}" class="btn btn-primary">Indietro</a>
-        <a href="{{ route('admin.foods.edit', $food->id)}}" class="btn btn-warning">Modifica</a>
+        <a href="{{ route('admin.foods.edit', $food->slug)}}" class="btn btn-warning">Modifica</a>
 
         
     </div>
