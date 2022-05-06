@@ -15,7 +15,7 @@
                     <strong>Slug: </strong> {{$food->slug}}
                 </li>
                 <li class="my-3">
-                    <strong>Category_id: </strong> {{isset($food->category) ? $food->category->name : "NULL"}}
+                    <strong>Categoria: </strong> {{isset($category) ? $category->name : "NULL"}}
                 </li>
                 <li class="my-3">
                     <strong>Prezzo: </strong> {{$food->price}}
