@@ -29,7 +29,7 @@ class ValidationRestaurant extends FormRequest
             "address" => "required | min:5",
             "phone" => "required | string | min:6 | max:15",
             "email" => "required | email",
-            "vat" => "required | min:11 | max:11",
+            "vat" => "required | digits:11 | unique:restaurants,vat",
             "typologies" => "required"
         ];
     }

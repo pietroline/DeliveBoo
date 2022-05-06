@@ -16,7 +16,7 @@ class RestaurantsTableSeeder extends Seeder
     {
 
         for($i=0; $i<5; $i++){
-
+            
             $newRestaurant = new Restaurant();
 
             $newRestaurant->name = ucfirst($faker->word());
@@ -24,7 +24,7 @@ class RestaurantsTableSeeder extends Seeder
             $newRestaurant->address = $faker->address();
             $newRestaurant->phone = $faker->phoneNumber();
             $newRestaurant->email = $faker->email();
-            $newRestaurant->vat = $faker->numberBetween(00000000001,99999999999);
+            $newRestaurant->vat = $faker->numberBetween(10000000000,99999999999);
             $newRestaurant->description = $faker->paragraph(2);
             $newRestaurant->user_id = $i+1;
 
