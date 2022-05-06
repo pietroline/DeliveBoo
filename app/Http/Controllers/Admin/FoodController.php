@@ -18,8 +18,15 @@ class FoodController extends Controller
      */
     public function index()
     {
-        $foods = Food::where("restaurant_id", Auth::id())->get();              
-        return view("admin.foods.index", compact("foods"));
+        $foods = Food::where("restaurant_id", Auth::id())->get();    
+
+        // creo variabile(array) con le categorie dei cibi presenti sul DB
+        $categories = [];
+        foreach($foods as $food){
+            $categories[] = Category::where("id", $food->category_id )->first();
+        }
+        
+        return view("admin.foods.index", compact("foods", "categories"));
     }
 
     /**
@@ -73,7 +80,8 @@ class FoodController extends Controller
      */
     public function show(Food $food)
     {
-        return view("admin.foods.show", compact("food"));
+        $category = Category::where("id", $food->category_id )->first();
+        return view("admin.foods.show", compact("food", "category"));
     }
 
     /**

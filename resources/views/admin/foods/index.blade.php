@@ -20,14 +20,14 @@
                       </tr>
                     </thead>
                     <tbody class="text-center">
-                        @foreach ($foods as $food)
+                        @foreach ($foods as $count => $food)
                             <tr>
                                 <td>{{$food->id}}</td>
                                 <td>{{$food->name}}</td>
                                 <td>{{strlen($food->ingredients) > 30 ? mb_substr($food->ingredients, 0, 30) . "..." : $food->ingredients}}</td>
                                 <td>{{$food->price}}</td>
-                            
-                                <td>{{$food->category_id}}</td>
+                           
+                                 <td>{{$categories[$count]->name}}</td> 
 
                                 <td>
                                     @if ($food->visible)
