@@ -11,13 +11,13 @@
             @method("PUT")
 
             <div class="form-group">
-                <label for="name">Nome portata</label>
+                <label for="name">Nome portata *</label>
                 <input type="text" class="form-control" id="name" name="name" value="{{old("name", $food->name)}}">
             </div>
 
             <div class="form-group">
 
-                <label for="category_id">Categoria</label>
+                <label for="category_id">Categoria *</label>
                 <select class="form-control" id="category_id" name="category_id">
 
                 <option value="">Nessuna categoria</option>
@@ -30,7 +30,7 @@
             </div>
 
             <div class="form-group">
-                <label for="price">Prezzo</label>
+                <label for="price">Prezzo *</label>
                 <input type="number" class="form-control" id="price" name="price" value="{{old("price", $food->price)}}">
             </div>
 
@@ -40,12 +40,12 @@
             </div>
 
             <div class="form-group">
-                <label for="ingredients">Ingredienti</label>
+                <label for="ingredients">Ingredienti *</label>
                 <textarea class="form-control" name="ingredients" id="ingredients" rows="10">{{old("ingredients", $food->ingredients)}}</textarea>
             </div>
 
             <div class="form-group">
-                <label for="visible">Disponibilità</label>
+                <label for="visible">Disponibilità *</label>
                 <select class="form-control" id="visible" name="visible">
                     
                     <option value="1">Si</option>

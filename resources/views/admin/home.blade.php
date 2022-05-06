@@ -46,32 +46,32 @@
                                 @csrf
                 
                                 <div class="form-group">
-                                    <label for="name">Nome ristorante</label>
+                                    <label for="name">Nome ristorante *</label>
                                     <input type="text" class="form-control" id="name" name="name" value="{{old("name")}}" required>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="address">Indirizzo ristorante</label>
+                                    <label for="address">Indirizzo ristorante *</label>
                                     <input type="text" class="form-control" id="address" name="address" value="{{old("address")}}" required>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="phone">Numero telefono ristorante</label>
+                                    <label for="phone">Numero telefono ristorante *</label>
                                     <input type="number" class="form-control" id="phone" name="phone" value="{{old("phone")}}" required>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="email">Email ristorante</label>
+                                    <label for="email">Email ristorante *</label>
                                     <input type="email" class="form-control" id="email" name="email" value="{{old("email")}}" required>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="vat">Partita IVA</label>
+                                    <label for="vat">Partita IVA *</label>
                                     <input type="text" class="form-control" id="vat" name="vat" value="{{old("vat")}}" required>
                                 </div>
 
                                 <div class="my-4">
-                                    <label>Typologie ristorante</label>
+                                    <label>Typologie ristorante *</label>
 
                                     @foreach ($typologies as $typology)
 
