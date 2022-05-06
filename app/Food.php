@@ -3,9 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Food extends Model
 {
+
+    use SoftDeletes;
+
     protected $fillable = ["name", "slug", "category_id", "price", "description", "ingredients", "visible", "restaurants_id"];
 
     // specifico nome tabella
