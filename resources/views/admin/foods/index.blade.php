@@ -10,7 +10,7 @@
                 <table class="table">
                     <thead>
                       <tr class="text-center">
-                        <th scope="col">#</th>
+                        {{--<th scope="col">#</th>--}}
                         <th scope="col">Nome portata</th>
                         <th scope="col">Ingredienti</th>
                         <th scope="col">Prezzo</th>
@@ -22,7 +22,7 @@
                     <tbody class="text-center">
                         @foreach ($foods as $count => $food)
                             <tr>
-                                <td>{{$food->id}}</td>
+                               {{-- <td>{{$food->id}}</td>--}}
                                 <td>{{$food->name}}</td>
                                 <td>{{strlen($food->ingredients) > 30 ? mb_substr($food->ingredients, 0, 30) . "..." : $food->ingredients}}</td>
                                 <td>{{$food->price}}</td>
