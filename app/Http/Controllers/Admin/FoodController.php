@@ -130,6 +130,7 @@ class FoodController extends Controller
     public function destroy(Food $food)
     {
         $food->delete();
-        return redirect()->route("admin.foods.index");
+        return redirect()->route("admin.foods.index")
+        ->with('success','Portata cancellata con successo!');;
     }
 }
