@@ -16,6 +16,7 @@ use App\Restaurant;
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/functionsJS/confirmDelete.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -43,11 +44,11 @@ use App\Restaurant;
                         {{-- ----------------------------------------- --}}
                         <li class="mx-2"><a href="{{route('admin.home')}}">Dashbord</a></li>
 
-                        @if (Restaurant::where('id', $restaurant_id )->exists())
+                        {{-- @if (Restaurant::where('id', $restaurant_id )->exists()) --}}
 
                         <li class="mx-2"><a href="{{route('admin.foods.index')}}">Foods</a></li>
                             
-                        @endif
+                        {{-- @endif --}}
                         
 
                         {{-- ----------------------------------------- --}}

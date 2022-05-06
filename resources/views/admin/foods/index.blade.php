@@ -44,7 +44,8 @@
                                    <!-- Button trigger modal -->
                                    <button type="button" class="btn btn-danger mJS_deleteButton"  value="{{$food}}" data-toggle="modal" data-target="#staticBackdrop">
                                     Elimina
-                                </button>
+                                    </button>
+                                
                                 </td>
                             </tr>                            
                         @endforeach
@@ -63,9 +64,9 @@
                     <h5 class="modal-title" id="staticBackdropLabel">Conferma eliminazione</h5>
                     <button type="button" class="close" data-dismiss="modal"></button>
                 </div>
-                <div class="modal-body" id="mJS_modelTitle"></div>
+                <div class="modal-body" id="mJS_modelName"></div>
                 <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Annulla</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Annulla</button>
                     <form method="POST" id="mJS_form">
 
                         @csrf
@@ -77,4 +78,5 @@
             </div>
         </div>
     </div>
+
 @endsection

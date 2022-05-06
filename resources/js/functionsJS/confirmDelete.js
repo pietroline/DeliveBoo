@@ -1,25 +1,21 @@
 // inizio gestione della conferma di eliminazione
-// resources/views/admin/posts/index.blade.php
-// resources/views/admin/categories/index.blade.php
-// resources/views/admin/tags/index.blade.php
+// resources/views/admin/foods/index.blade.php
 
 const buttons = document.getElementsByClassName("mJS_deleteButton");
-const title = document.getElementById("mJS_modelTitle");
+const name = document.getElementById("mJS_modelName");
 const form = document.getElementById("mJS_form");
 
 
 for(let i=0; i<buttons.length; i++){
     const button = buttons[i];
+    // JSON.parse converte una stringa in un oggetto
     const array = JSON.parse(button.value);
 
     button.addEventListener("click", function(e){
 
-        if(array.type == "foods"){
-            title.innerHTML = `Confermi di eliminare <strong>${array.name}</strong>?`
-        }else if(array.type == "categories"){
-            title.innerHTML = `Confermi di eliminare <strong>${array.name}</strong>?`
-        }
-    
+        
+        name.innerHTML = `Confermi di eliminare <strong>${array.name}</strong>?`
+        
         form.action = window.location.href + `/${array.id}`;
     });
 }
