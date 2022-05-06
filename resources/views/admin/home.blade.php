@@ -20,6 +20,13 @@
                                     @foreach ($restaurant->typologies as $typology)
                                         <span>{{$typology->name}}</span>
                                     @endforeach
+
+                                    {{-- inserisco la virgola, tranne nell'ultima tipologia del ristorante --}}
+                                    {{-- $count inizia a contare da 0 --}}
+                                    {{-- count(count($restaurant->typologies)) ritorna il numero di tipologie di un ristorante --}}
+                                    @if($count != count($restaurant->typologies) -1)
+                                        <span>,</span>
+                                    @endif
                                     
                                 </li>
 
