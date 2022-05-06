@@ -1,3 +1,8 @@
+<?php 
+use App\Restaurant;
+?>
+
+
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -37,7 +42,13 @@
 
                         {{-- ----------------------------------------- --}}
                         <li class="mx-2"><a href="{{route('admin.home')}}">Dashbord</a></li>
+
+                        @if (Restaurant::where('id', $restaurant_id )->exists())
+
                         <li class="mx-2"><a href="{{route('admin.foods.index')}}">Foods</a></li>
+                            
+                        @endif
+                        
 
                         {{-- ----------------------------------------- --}}
 
