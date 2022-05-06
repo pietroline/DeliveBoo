@@ -6,8 +6,6 @@ use App\Category;
 use App\Food;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ValidationFood;
-use App\Restaurant;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
@@ -20,12 +18,7 @@ class FoodController extends Controller
      */
     public function index()
     {
-        $foods = Food::where("restaurant_id", Auth::id())->get();
-
-        // recupero ristorante dell'utente loggato e passo il suo valore alla vista admin.layouts.base  
-        $restaurant = Restaurant::where("user_id", Auth::id())->first();
-        view("admin.layouts.base", compact("restaurant"));
-        
+        $foods = Food::where("restaurant_id", Auth::id())->get();              
         return view("admin.foods.index", compact("foods"));
     }
 

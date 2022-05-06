@@ -1,3 +1,18 @@
+
+{{-- Questo codice php serve per creare la variabile $resturant necessaria al controllo if (vedi **controllo-if**)--}}
+@php
+    use App\Restaurant;
+    $restaurant = Restaurant::where("user_id", Auth::user()->id)->first();
+@endphp
+
+
+
+
+
+
+
+
+
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -39,15 +54,14 @@
                         {{-- ----------------------------------------- --}}
 
                         <li class="mx-2"><a href="{{route('admin.home')}}">Dashbord</a></li>
-
-                        {{-- $restaurant è il valore passato alla vista da FoodController  --}}
+                        
+                        {{-- **controllo-if** --}}
                         @if ($restaurant)
                             <li class="mx-2"><a href="{{route('admin.foods.index')}}">Foods</a></li>
                         @endif
                         
                         {{-- ----------------------------------------- --}}
 
-                         
                     </ul>
 
                     <!-- Right Side Of Navbar -->
