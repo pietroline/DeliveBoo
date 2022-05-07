@@ -71,12 +71,12 @@
                                 </div>
 
                                 <div class="my-4">
-                                    <label>Typologie ristorante *</label>
-
+                                    <label class="mb-0">Tipologie ristorante *</label>
+                                    <small id="mJS_displayRequired" class="ms_text-transparent font-italic d-block py-1">Seleziona almeno una tipologia ristorante</small>
                                     @foreach ($typologies as $typology)
 
                                         <div class="form-check">
-                                            <input name="typologies[]" class="form-check-input" type="checkbox" value="{{$typology->id}}" id="typology_{{$typology->id}}" {{in_array($typology->id, old("typologies", [])) ? "checked" : ""}}>
+                                            <input name="typologies[]" class="form-check-input mJS_checkbox" type="checkbox" value="{{$typology->id}}" id="typology_{{$typology->id}}" {{in_array($typology->id, old("typologies", [])) ? "checked" : ""}}>
                                             <label class="form-check-label" for="typology_{{$typology->id}}">{{$typology->name}}</label>
                                         </div>
                                     

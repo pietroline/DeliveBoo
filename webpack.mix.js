@@ -14,4 +14,5 @@ const mix = require('laravel-mix');
 mix.js('resources/js/app.js', 'public/js')
     .js('resources/js/front.js', 'public/js')
     .js('resources/js/functionsJS/confirmDelete.js', 'public/js/functionsJS')
+    .js('resources/js/functionsJS/validationRequiredGroupCheckbox.js', 'public/js/functionsJS')
     .sass('resources/sass/app.scss', 'public/css');
