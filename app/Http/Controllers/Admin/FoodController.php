@@ -78,10 +78,25 @@ class FoodController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Food $food)
+    public function show($slug)
     {
-        $category = Category::where("id", $food->category_id )->first();
-        return view("admin.foods.show", compact("food", "category"));
+        // determino utente loggato
+        $userLogged = Auth::user();
+
+        $food = Food::where('slug', $slug)->first();
+
+        if ($userLogged->can('show', $food)) {
+
+            // se il food di cui si vuole fare la show appartiene all'utente loggato
+                $category = Category::where("id", $food->category_id )->first();
+                return view("admin.foods.show", compact("food", "category"));
+
+        } else {
+
+            // se il food di cui si vuole fare la show NON appartiene all'utente loggato
+                abort(403, "Non sei autorizzato a questa azione");
+        }
+ 
     }
 
     /**
@@ -90,10 +105,25 @@ class FoodController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Food $food)
+    public function edit($slug)
     {
-        $categories = Category::all();
-        return view("admin.foods.edit", compact("food", "categories"));
+       
+        // determino utente loggato
+        $userLogged = Auth::user();
+
+        $food = Food::where('slug', $slug)->first();
+
+        if ($userLogged->can('edit', $food)) {
+
+            // se il food di cui si vuole fare l'edit appartiene all'utente loggato
+                $categories = Category::all();
+                return view("admin.foods.edit", compact("food", "categories"));
+
+        } else {
+
+            // se il food di cui si vuole fare l'edit' NON appartiene all'utente loggato
+                abort(403, "Non sei autorizzato a questa azione");
+        }
     }
 
     /**
@@ -105,27 +135,43 @@ class FoodController extends Controller
      */
     public function update(ValidationFood $request, Food $food)
     {
-        $data = $request->all();
+        // determino utente loggato
+        $userLogged = Auth::user();
 
-        // creo slug univoco, nel caso in cui il nuovo è già presente nel database ne creo uno diverso, concatenandolo ad un couter
-        // Prova-nuovo-food 
-        // Prova-nuovo-food-1
-        $slug = Str::slug($data['name']);
+        if ($userLogged->can('update', $food)) {
 
-        //solo se il nuovo slug è diverso da quello che c'era prima ne crei uno nuovo diverso da quelli presenti sul database
-        if($food->slug != $slug){ 
-            $counter = 1;
-            while (Food::where('slug', $slug)->first()) {
-                $slug = Str::slug($data['name']) . '-' . $counter;
-                $counter++;
-            }    
-            $data['slug'] = $slug;
-        }
+            // se il food di cui si vuole fare l'upgrate appartiene all'utente loggato
 
-        $food->update($data);
-        $food->save();
+                $data = $request->all();
 
-        return redirect()->route("admin.foods.index");
+                // creo slug univoco, nel caso in cui il nuovo è già presente nel database ne creo uno diverso, concatenandolo ad un couter
+                // Prova-nuovo-food 
+                // Prova-nuovo-food-1
+                $slug = Str::slug($data['name']);
+
+                //solo se il nuovo slug è diverso da quello che c'era prima ne crei uno nuovo diverso da quelli presenti sul database
+                if($food->slug != $slug){ 
+                    $counter = 1;
+                    while (Food::where('slug', $slug)->first()) {
+                        $slug = Str::slug($data['name']) . '-' . $counter;
+                        $counter++;
+                    }    
+                    $data['slug'] = $slug;
+                }
+
+                $food->update($data);
+                $food->save();
+
+                return redirect()->route("admin.foods.index");
+
+          } else {
+
+            // se il food di cui si vuole fare l'upgrade NON appartiene all'utente loggato
+                abort(403, "Non sei autorizzato a questa azione");
+          }
+
+
+        
     }
 
     /**

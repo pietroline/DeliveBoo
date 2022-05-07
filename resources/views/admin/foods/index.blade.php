@@ -38,8 +38,8 @@
                                 </td>
                                 
                                 <td class="d-flex justify-content-center">
-                                    <a href="{{route('admin.foods.show', $food->id)}}" class="btn btn-primary">Vedi</a>
-                                    <a href="{{route('admin.foods.edit', $food->id)}}" class="btn btn-warning mx-2">Modifica</a>
+                                    <a href="{{route('admin.foods.show', $food->slug)}}" class="btn btn-primary">Vedi</a>
+                                    <a href="{{route('admin.foods.edit', $food->slug)}}" class="btn btn-warning mx-2">Modifica</a>
 
                                    <!-- Button trigger modal -->
                                    <button type="button" class="btn btn-danger mJS_deleteButton"  value="{{$food}}" data-toggle="modal" data-target="#staticBackdrop">

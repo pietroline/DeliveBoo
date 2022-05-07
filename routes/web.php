@@ -21,8 +21,8 @@ Route::middleware("auth")
     ->prefix("admin")
     ->group(function(){
         Route::get('/', 'HomeController@index')->name('home');
-        Route::resource('foods', 'FoodController');
-        Route::resource('restaurants', 'RestaurantController');
+        Route::resource('/foods', 'FoodController');
+        Route::resource('/restaurants', 'RestaurantController');
     });
 
 Route::get("{any?}", function(){
