@@ -54,7 +54,10 @@ class FoodPolicy
      */
     public function update(User $user, Food $food)
     {
-        return $user->id == $food->user_id;
+        // Determino ristorante dell'utente loggato
+        $restaurant = Restaurant::where("user_id", $user->id)->first();
+
+        return $food->restaurant_id == $restaurant->id;
     }
 
     /**
