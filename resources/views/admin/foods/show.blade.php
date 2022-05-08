@@ -18,7 +18,7 @@
                     <strong>Categoria: </strong> {{isset($category) ? $category->name : "NULL"}}
                 </li>
                 <li class="my-3">
-                    <strong>Prezzo: </strong> {{$food->price}}
+                    <strong>Prezzo: </strong> {{$food->price}} &euro;
                 </li>
 
                 @if($food->description)

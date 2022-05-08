@@ -25,7 +25,7 @@
                                {{-- <td>{{$food->id}}</td>--}}
                                 <td>{{$food->name}}</td>
                                 <td>{{strlen($food->ingredients) > 30 ? mb_substr($food->ingredients, 0, 30) . "..." : $food->ingredients}}</td>
-                                <td>{{$food->price}}</td>
+                                <td>{{$food->price}} &euro;</td>
                            
                                  <td>{{$categories[$count]->name}}</td> 
 
