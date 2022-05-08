@@ -53,8 +53,10 @@
             
                 </select>
             </div>
+            
+            <a href="{{ url()->previous()}}" class="btn btn-primary">Indietro</a>
+            <button type="submit" class="btn btn-success my-3">Salva</button>
 
-          <button type="submit" class="btn btn-primary my-3">Salva</button>
         </form>
 
         </div>
