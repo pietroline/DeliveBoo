@@ -26,7 +26,7 @@ class ValidationFood extends FormRequest
     {
         return [
             "name" => "required | min:3",
-            "category_id" => "nullable | exists:categories,id",
+            "category_id" => "required | exists:categories,id | min:1",
             "price" => "required | numeric | min:0 | max:1000",
             "visible" => "required | boolean"
         ];
