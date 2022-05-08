@@ -25,7 +25,10 @@ class FoodsTableSeeder extends Seeder
             $newFood->category_id = $faker->numberBetween(1,10);
             $newFood->price = $faker->numberBetween(7, 25);
             $newFood->description = $faker->paragraph();
-            $newFood->ingredients = $faker->words(3, true);
+            
+            $newFood->ingredients = $faker->words(5, true);
+            $newFood->ingredients = str_replace(" ", ", ", $newFood->ingredients);
+
             $newFood->visible = rand(true, false);
             $newFood->restaurant_id = $faker->numberBetween(1,5);
 
