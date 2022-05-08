@@ -15,7 +15,7 @@
                         <th scope="col">Ingredienti</th>
                         <th scope="col">Prezzo</th>
                         <th scope="col">Categoria</th>
-                        <th scope="col">Visibilità</th>
+                        <th scope="col">Visibile</th>
                         <th scope="col">Azioni</th>
                       </tr>
                     </thead>
@@ -31,9 +31,9 @@
 
                                 <td>
                                     @if ($food->visible)
-                                        <span>Cliente/Ristoratore</span>
+                                        <span>Si</span>
                                     @else
-                                        <span>Solo ristoratore</span>
+                                        <span>No</span>
                                     @endif
                                 </td>
                                 
