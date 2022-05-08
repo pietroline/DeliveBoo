@@ -17,7 +17,7 @@
                 <div class="form-group">
 
                   <label for="category_id">Categoria *</label>
-                  <select class="form-control" id="category_id" name="category_id">
+                  <select class="form-control" id="category_id" name="category_id" required>
 
                     <option value="">Nessuna categoria</option>
                     @foreach ($categories as $category )    
@@ -31,6 +31,11 @@
                 <div class="form-group">
                     <label for="price">Prezzo *</label>
                     <input type="number" class="form-control" id="price" name="price" value="{{old("price")}}" required>
+                </div>
+
+                <div class="form-group">
+                  <label for="content">Descrizione</label>
+                  <textarea class="form-control" name="content" id="content" rows="10">{{old("content")}}</textarea>
                 </div>
                 
                 <div class="form-group">
