@@ -48,7 +48,9 @@
                     </select>
                 </div>
                 
-                <button type="submit" class="btn btn-primary my-3">Salva</button>
+                <a href="{{route('admin.foods.index')}}" class="btn btn-primary">Indietro</a>
+                <button type="submit" class="btn btn-success my-3">Salva</button>
+                      
             </form>
 
         </div>
