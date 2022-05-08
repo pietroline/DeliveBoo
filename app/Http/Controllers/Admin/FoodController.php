@@ -62,7 +62,7 @@ class FoodController extends Controller
         }
 
         $data['slug'] = $slug;
-
+       
         $food = new Food();
         $food->fill($data);
         $food->restaurant_id = Auth::id();
