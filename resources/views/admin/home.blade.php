@@ -37,7 +37,11 @@
                                 <li><strong>Numero di telefono: </strong>{{$restaurant->phone}}</li>
                                 <li><strong>Email ristorante: </strong>{{$restaurant->email}}</li>
                                 <li><strong>Partita IVA: </strong>{{$restaurant->vat}}</li>
-                                <li><strong>Descrizione: </strong>{{$restaurant->description}}</li>
+
+                                @if($restaurant->description)
+                                    <li><strong>Descrizione: </strong>{{$restaurant->description}}</li>
+                                @endif
+                                
                             </ul>
                         @else
 
@@ -85,8 +89,8 @@
                                 </div>
                               
                                 <div class="form-group">
-                                    <label for="content">Descrizione ristorante</label>
-                                    <textarea class="form-control" name="content" id="content" rows="10">{{old("content")}}</textarea>
+                                    <label for="description">Descrizione ristorante</label>
+                                    <textarea class="form-control" name="description" id="description" rows="10">{{old("description")}}</textarea>
                                 </div>
                 
                                 <button type="submit" class="btn btn-primary my-3">Salva</button>
