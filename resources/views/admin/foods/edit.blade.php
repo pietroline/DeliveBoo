@@ -48,9 +48,9 @@
                 <label for="visible">Disponibilità *</label>
                 <select class="form-control" id="visible" name="visible">
                     
-                    <option value="1">Si</option>
-                    <option value="0">No</option>
-            
+                    <option value="1" {{$food->visible ? "selected" : ""}}>Si</option>
+                    <option value="0" {{$food->visible ? "" : "selected"}}>No</option>
+                    
                 </select>
             </div>
 
