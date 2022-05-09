@@ -1,5 +1,33 @@
 <template>
   <div class="container mt-3">
+
+
+<!-- inizio filtro ristoranti -->
+
+    <div class="row ms_fs3 mt-5">Filtro ristoranti per tipologie</div>
+
+    <form class="row mb-5" @submit.prevent="getRestaurantsFiltered()" >
+
+        <div class="col" v-for="typology in allTypologies" :key="typology.id">
+
+            <div class="form-check">
+                <input  type="checkbox" class="form-check-input" v-model="typologySelected" :value="typology.id">
+                <label class="form-check-label" :for="'typology_' + typology.id">{{typology.name}}</label>
+            </div>
+
+        </div>
+            
+            <div class="col d-flex justify-content-center">
+            <button type="submit" class="btn btn-primary">Cerca</button>
+            </div>
+        
+    </form>
+
+<!-- fine filtro ristoranti -->
+
+
+
+
         <div class="row">
             <h1>Elenco ristoranti</h1>
         </div>
@@ -30,18 +58,29 @@
 
         data() {
             return {
-
+                allTypologies: [],
+                typologySelected: [8,3,5],
                 restaurants: [],
             };
         },
 
         mounted(){
-            this.getRestaurants();
+            this.getRestaurantsFiltered();
+            this.getAllTypologies();
+            
         },
 
         methods:{
 
-            getRestaurants(){
+            getAllTypologies(){
+                // prelevo tutte le tipologie
+                axios.get('api/typologies')
+                    .then(response =>{
+                        this.allTypologies = response.data.results;
+                    })
+            },
+
+            getAllRestaurants(){
                 axios.get('/api/restaurants')
                     .then(response => {
                         // handle success
@@ -53,6 +92,22 @@
                     })
 
             },
+
+            getRestaurantsFiltered(){
+                this.restaurants = [];
+
+                // solo se typologySelected contiene almeno una tipologia faccio richiesta dei ristoranti filtrati, 
+                // altrimenti torno tutti i ristoranti
+                if(this.typologySelected){
+                    axios.get('api/restaurant/' + this.typologySelected)
+                        .then(response =>{
+                            this.restaurants = response.data.results;
+                        })
+                }else{
+                    this.getAllRestaurants();
+                }
+                
+            }
         }
     }
 </script>

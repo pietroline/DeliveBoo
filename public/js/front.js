@@ -2098,6 +2098,34 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Restaurants",
@@ -2106,23 +2134,48 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
+      allTypologies: [],
+      typologySelected: [8, 3, 5],
       restaurants: []
     };
   },
   mounted: function mounted() {
-    this.getRestaurants();
+    this.getRestaurantsFiltered();
+    this.getAllTypologies();
   },
   methods: {
-    getRestaurants: function getRestaurants() {
+    getAllTypologies: function getAllTypologies() {
       var _this = this;
+
+      // prelevo tutte le tipologie
+      axios.get('api/typologies').then(function (response) {
+        _this.allTypologies = response.data.results;
+      });
+    },
+    getAllRestaurants: function getAllRestaurants() {
+      var _this2 = this;
 
       axios.get('/api/restaurants').then(function (response) {
         // handle success
-        _this.restaurants = response.data.results;
+        _this2.restaurants = response.data.results;
       })["catch"](function (error) {
         // handle error
         console.log(error);
       });
+    },
+    getRestaurantsFiltered: function getRestaurantsFiltered() {
+      var _this3 = this;
+
+      this.restaurants = []; // solo se typologySelected contiene almeno una tipologia faccio richiesta dei ristoranti filtrati, 
+      // altrimenti torno tutti i ristoranti
+
+      if (this.typologySelected) {
+        axios.get('api/restaurant/' + this.typologySelected).then(function (response) {
+          _this3.restaurants = response.data.results;
+        });
+      } else {
+        this.getAllRestaurants();
+      }
     }
   }
 });
@@ -3609,7 +3662,83 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container mt-3" }, [
-    _vm._m(0),
+    _c("div", { staticClass: "row ms_fs3 mt-5" }, [
+      _vm._v("Filtro ristoranti per tipologie"),
+    ]),
+    _vm._v(" "),
+    _c(
+      "form",
+      {
+        staticClass: "row mb-5",
+        on: {
+          submit: function ($event) {
+            $event.preventDefault()
+            return _vm.getRestaurantsFiltered()
+          },
+        },
+      },
+      [
+        _vm._l(_vm.allTypologies, function (typology) {
+          return _c("div", { key: typology.id, staticClass: "col" }, [
+            _c("div", { staticClass: "form-check" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.typologySelected,
+                    expression: "typologySelected",
+                  },
+                ],
+                staticClass: "form-check-input",
+                attrs: { type: "checkbox" },
+                domProps: {
+                  value: typology.id,
+                  checked: Array.isArray(_vm.typologySelected)
+                    ? _vm._i(_vm.typologySelected, typology.id) > -1
+                    : _vm.typologySelected,
+                },
+                on: {
+                  change: function ($event) {
+                    var $$a = _vm.typologySelected,
+                      $$el = $event.target,
+                      $$c = $$el.checked ? true : false
+                    if (Array.isArray($$a)) {
+                      var $$v = typology.id,
+                        $$i = _vm._i($$a, $$v)
+                      if ($$el.checked) {
+                        $$i < 0 && (_vm.typologySelected = $$a.concat([$$v]))
+                      } else {
+                        $$i > -1 &&
+                          (_vm.typologySelected = $$a
+                            .slice(0, $$i)
+                            .concat($$a.slice($$i + 1)))
+                      }
+                    } else {
+                      _vm.typologySelected = $$c
+                    }
+                  },
+                },
+              }),
+              _vm._v(" "),
+              _c(
+                "label",
+                {
+                  staticClass: "form-check-label",
+                  attrs: { for: "typology_" + typology.id },
+                },
+                [_vm._v(_vm._s(typology.name))]
+              ),
+            ]),
+          ])
+        }),
+        _vm._v(" "),
+        _vm._m(0),
+      ],
+      2
+    ),
+    _vm._v(" "),
+    _vm._m(1),
     _vm._v(" "),
     _c(
       "div",
@@ -3631,6 +3760,18 @@ var render = function () {
   ])
 }
 var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col d-flex justify-content-center" }, [
+      _c(
+        "button",
+        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+        [_vm._v("Cerca")]
+      ),
+    ])
+  },
   function () {
     var _vm = this
     var _h = _vm.$createElement
