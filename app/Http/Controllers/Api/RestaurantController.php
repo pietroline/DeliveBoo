@@ -52,9 +52,37 @@ class RestaurantController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        //
+        $restaurant = Restaurant::where("slug", $slug)->first();
+
+        $typologies = [];
+        foreach($restaurant->typologies as $typology){
+            $typologies[] = $typology->name;
+        }
+
+        if($restaurant){
+
+            $response = response()->json(
+                [
+                    "showRestaurant" => $restaurant,
+                    "typologiesRestaurant" => $typologies,
+                    "success" => true
+                ]
+            );
+
+        }else{
+
+            $response = response()->json(
+                [
+                    "results" => "Non ho trovato risultati",
+                    "success" => false
+                ]
+            );
+
+        }
+
+        return $response;
     }
 
     /**

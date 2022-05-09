@@ -4,7 +4,11 @@
         <!-- <img src="..." class="card-img-top" alt="..."> -->
         <div class="card-body">
             <h5 class="card-title">{{name}}</h5>
-            <a href="#" class="btn btn-primary">Vai al ristorante</a>
+            
+
+            <div class="d-flex justify-content-center my-4">
+                <router-link class="btn btn-primary ms_btn" :to="{name: 'single-restaurant', params: {slug: slug}}">Vai al Ristorante</router-link>
+            </div>
         </div>
     </div>
 
@@ -16,6 +20,7 @@
 
         props:{
             "name": String,
+            "slug": String
         }
     }
 </script>

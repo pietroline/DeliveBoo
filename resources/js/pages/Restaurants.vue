@@ -7,7 +7,10 @@
         <div class="row row-cols-4">
             <div class="col card-group" v-for="restaurant in restaurants" :key="'restaurant'+restaurant.id">
 
-                <Restaurant :name="restaurant.name"/>
+                <Restaurant 
+                    :name="restaurant.name"
+                    :slug="restaurant.slug"
+                />
 
             </div>
         </div>
@@ -27,7 +30,7 @@
 
         data() {
             return {
-                
+
                 restaurants: [],
             };
         },
