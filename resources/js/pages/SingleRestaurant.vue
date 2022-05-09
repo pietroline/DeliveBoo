@@ -1,10 +1,36 @@
 <template>
-     <div class="container">
-        <div class="row row-cols-2">
+  <section class="container">
+    <div class="px-4 py-5 my-5 text-center">
+
+      <img class="d-block mx-auto mb-4" src="/docs/5.1/assets/brand/bootstrap-logo.svg"/>
+      <h1 class="display-5 fw-bold">{{ restaurant.name }}</h1>
+      <div class="col-lg-6 mx-auto">
+        <p class="lead mb-4">{{ restaurant.description }}</p>
+        <!--<div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+          <button type="button" class="btn btn-primary btn-lg px-4 gap-3">
+            Primary button
+          </button>
+        </div>-->
+      </div>
+    </div>
+
+
+
+
+    <div class="container d-flex flex-column">
+
+        <div class="p-2" ></div>
+
+    </div>
+    <!--<div class="row row-cols-2">
 
             <div class="col">
 
                <div v-if="restaurant">
+
+
+
+
 
                     <h1>{{restaurant.name}}</h1>
                     <div> <strong>Phone:</strong> {{restaurant.phone}}</div>
@@ -29,50 +55,51 @@
 
             </div>
 
-        </div>
-
-    </div>
+        </div>-->
+  </section>
 </template>
 
 <script>
-
-    import Restaurant from "./../components/partials/Restaurant.vue";
-
-    export default {
-        name: "SingleRestaurant",
-
-         components:{
-            Restaurant
-        },
-
-        data(){
-            return{
-                restaurant: null,
-            }
-        },
-
-        mounted(){
-            const $slug = this.$route.params.slug;
-
-            axios.get(`/api/restaurants/${$slug}`)
-            .then(response => {
-                if(response.data.success == true){
-                    this.restaurant = response.data.showRestaurant;
-                }else{
-                    this.$route.push({name: "not-found"});
-                }
-            })
-            .catch(function (error) {
-                // handle error
-                console.log(error);
-            });
-             
-        },
+import Restaurant from "./../components/partials/Restaurant.vue";
 
 
-    }
+export default {
+  name: "SingleRestaurant",
+
+  components: {
+    Restaurant,
+    
+  },
+
+  data() {
+    return {
+      restaurant: null,
+    };
+  },
+
+  mounted() {
+    const $slug = this.$route.params.slug;
+
+    axios
+      .get(`/api/restaurants/${$slug}`)
+      .then((response) => {
+        if (response.data.success == true) {
+          this.restaurant = response.data.showRestaurant;
+        } else {
+          this.$route.push({ name: "not-found" });
+        }
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      });
+
+      
+  },
+};
 </script>
 
-<style>
+<style lang="scss" scoped>
+
 
 </style>
