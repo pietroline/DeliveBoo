@@ -30,11 +30,13 @@
                                  <td>{{$categories[$count]->name}}</td> 
 
                                 <td>
-                                    @if ($food->visible)
-                                        <span>Si</span>
-                                    @else
-                                        <span>No</span>
-                                    @endif
+                                    <div class="d-flex justify-content-center">
+                                        @if ($food->visible)
+                                            <div class="bg-success rounded-circle ms_w-1rem ms_h-1rem"></div>
+                                        @else
+                                            <div class="bg-danger rounded-circle ms_w-1rem ms_h-1rem"></div>
+                                        @endif
+                                    </div>
                                 </td>
                                 
                                 <td class="d-flex justify-content-center">
