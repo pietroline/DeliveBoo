@@ -1912,6 +1912,49 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Footer"
 });
@@ -2368,7 +2411,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".footer[data-v-61a7c374] {\n  height: 10rem;\n  background-color: #000;\n  color: #fff;\n}", ""]);
+exports.push([module.i, "#footer[data-v-61a7c374] {\n  height: 30rem;\n  color: #fff;\n  background-color: #ff8c28;\n  position: absolute;\n  bottom: 0;\n  right: 0;\n  left: 0;\n  margin: 0;\n}\n#footer .row[data-v-61a7c374] {\n  height: 20rem;\n}\n#footer ul[data-v-61a7c374] {\n  list-style-type: none;\n}\n#footer i[data-v-61a7c374] {\n  color: white;\n  font-size: 30px;\n}\n#footer a[data-v-61a7c374] {\n  color: white;\n  font-size: 15px;\n}", ""]);
 
 // exports
 
@@ -3533,9 +3576,92 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "footer" }, [_vm._v("Questo è il footer")])
+  return _vm._m(0)
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("section", { attrs: { id: "footer" } }, [
+      _c("div", { staticClass: "container py-5" }, [
+        _c("div", { staticClass: "row text-white fw-bold" }, [
+          _c("div", { staticClass: "col-12 col-lg-6" }, [
+            _c("a", { attrs: { href: "#" } }, [
+              _c("i", { staticClass: "bi bi-instagram mr-3" }),
+            ]),
+            _vm._v(" "),
+            _c("a", { attrs: { href: "#" } }, [
+              _c("i", { staticClass: "bi bi-facebook" }),
+            ]),
+            _vm._v(" "),
+            _c("a", { attrs: { href: "#" } }, [
+              _c("i", { staticClass: "bi bi-twitter" }),
+            ]),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-12 col-lg-2" }, [
+            _c("ul", [
+              _c("h3", [_vm._v("Aiuto")]),
+              _vm._v(" "),
+              _c("li", [
+                _c("a", { attrs: { href: "#" } }, [_vm._v("Contatti")]),
+              ]),
+              _vm._v(" "),
+              _c("li", [_c("a", { attrs: { href: "#" } }, [_vm._v("Faq")])]),
+              _vm._v(" "),
+              _c("li", [_c("a", { attrs: { href: "#" } }, [_vm._v("Altro")])]),
+            ]),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-12 col-lg-2" }, [
+            _c("ul", [
+              _c("h3", [_vm._v("Scopri Deliveboo")]),
+              _vm._v(" "),
+              _c("li", [
+                _c("a", { attrs: { href: "#" } }, [_vm._v("Acceddi")]),
+              ]),
+              _vm._v(" "),
+              _c("li", [
+                _c("a", { attrs: { href: "#" } }, [_vm._v("Chi Siamo")]),
+              ]),
+              _vm._v(" "),
+              _c("li", [
+                _c("a", { attrs: { href: "#" } }, [_vm._v("Lavora con noi")]),
+              ]),
+            ]),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-12 col-lg-2" }, [
+            _c("ul", [
+              _c("h3", [_vm._v("Note legali")]),
+              _vm._v(" "),
+              _c("li", [
+                _c("a", { attrs: { href: "#" } }, [
+                  _vm._v("Termini e condizioni"),
+                ]),
+              ]),
+              _vm._v(" "),
+              _c("li", [
+                _c("a", { attrs: { href: "#" } }, [
+                  _vm._v("Informatica sulla privacy"),
+                ]),
+              ]),
+              _vm._v(" "),
+              _c("li", [_c("a", { attrs: { href: "#" } }, [_vm._v("Cookie")])]),
+            ]),
+          ]),
+        ]),
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-12 col-lg-6 text-white fw-bold" }, [
+          _vm._v("carte di credito"),
+        ]),
+      ]),
+    ])
+  },
+]
 render._withStripped = true
 
 
@@ -20104,7 +20230,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/pietroline/Scrivania/Personale/boolean/GitHub/progettoFinale/DeliveBoo/resources/js/front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! C:\Users\emanuela\Desktop\boolean\Progetto Finale\DeliveBoo\DeliveBoo\DeliveBoo\resources\js\front.js */"./resources/js/front.js");
 
 
 /***/ })
