@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Food;
 use App\Http\Controllers\Controller;
 use App\Restaurant;
 use App\Typology;
@@ -91,6 +92,13 @@ class RestaurantController extends Controller
     {
         $restaurant = Restaurant::where("slug", $slug)->first();
 
+        $foods = Food::where("restaurant_id", $restaurant->id)->get();
+
+        // il tipo di dato del foods[iesimo]->price ritornato è string, quindi converto in double
+        foreach($foods as $food){
+            $food->price = floatval($food->value);
+        }
+
         $typologies = [];
         foreach($restaurant->typologies as $typology){
             $typologies[] = $typology->name;
@@ -101,6 +109,7 @@ class RestaurantController extends Controller
             $response = response()->json(
                 [
                     "showRestaurant" => $restaurant,
+                    "showMenuRestaurant" => $foods,
                     "typologiesRestaurant" => $typologies,
                     "success" => true
                 ]
