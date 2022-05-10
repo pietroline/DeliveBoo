@@ -16,8 +16,7 @@ class RestaurantController extends Controller
      */
     public function index()
     {
-        $restaurants = Restaurant::all();
-        $typologies = Typology::all();
+        $restaurants = Restaurant::paginate(3);
 
         return response()->json(
             [
