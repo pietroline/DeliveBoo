@@ -9,7 +9,7 @@
 
                     <div class="card-body">
 
-                        <div class="my-4">Ciao, {{$user->name}} #{{$user->id}} </div>
+                        <div class="my-4">Ciao, {{$user->name}}</div>
 
                         @if($restaurant)
                             <ul class="px-0 pt-4 list-unstyled">
