@@ -1,4 +1,5 @@
 <template>
+
   <section class="container-fluid">
     <div class="row justify-content-center ">
       <div class="col-9">
@@ -17,6 +18,10 @@
       </div>
     </div>
   </section>
+
+ 
+    
+
 </template>
 
 <script>
@@ -28,8 +33,10 @@ export default {
 <style lang="scss" scoped>
 @import "./../../sass/_variables.scss";
 
+
 section {
   background-color: $darkOrange;
+
 
   .ms_jumbo {
     background-color: $lightOrange;

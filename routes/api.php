@@ -14,6 +14,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// rotta per tutti i ristoranti
 Route::get("/restaurants", "Api\RestaurantController@index");
 
+// rotta per ristorante singolo, dettagli del ristorante
 Route::get("/restaurants/{slug}", "Api\RestaurantController@show");
+
+// rotta per tutte le tipologie di ristorante
+Route::get("/typologies", "Api\TypologyController@index");
+
+// rotta per ristoranti filtrati
+Route::get("/restaurant/{filter}", "Api\RestaurantController@filter");
