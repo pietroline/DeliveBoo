@@ -12,7 +12,8 @@
           <hr class="my-4" />
           <p>Clicca sul bottone per tornare alla HomePage</p>
           <p class="lead">
-            <a class="btn btn-primary btn-lg" href="#" role="button">Home</a>
+              <router-link class="navbar-brand" :to="{name: 'home'}"><a class="btn btn-primary btn-lg" href="#" role="button">Home</a></router-link>
+           
           </p>
         </div>
       </div>
@@ -44,7 +45,8 @@ section {
 
     a {
       background-color: $darkOrange;
-      border-color: $darkOrange;
+      border-radius: 5px;
+      border: 1px solid $darkOrange;
     }
   }
 }
