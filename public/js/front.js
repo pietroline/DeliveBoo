@@ -2411,7 +2411,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#footer[data-v-61a7c374] {\n  height: 30rem;\n  color: #fff;\n  background-color: #ff8c28;\n  position: absolute;\n  bottom: 0;\n  right: 0;\n  left: 0;\n  margin: 0;\n}\n#footer .row[data-v-61a7c374] {\n  height: 20rem;\n}\n#footer ul[data-v-61a7c374] {\n  list-style-type: none;\n}\n#footer i[data-v-61a7c374] {\n  color: white;\n  font-size: 30px;\n}\n#footer a[data-v-61a7c374] {\n  color: white;\n  font-size: 15px;\n}", ""]);
+exports.push([module.i, "#footer[data-v-61a7c374] {\n  color: #fff;\n  background-color: #ff8c28;\n  position: absolute;\n  bottom: 0;\n  right: 0;\n  left: 0;\n  margin: 0;\n}\n.img[data-v-61a7c374] {\n  width: 10rem;\n}\n#footer ul[data-v-61a7c374] {\n  list-style-type: none;\n}\n#footer i[data-v-61a7c374] {\n  color: white;\n  font-size: 30px;\n}\n#footer a[data-v-61a7c374] {\n  color: white;\n  font-size: 15px;\n}", ""]);
 
 // exports
 
@@ -3652,11 +3652,19 @@ var staticRenderFns = [
             ]),
           ]),
         ]),
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-12 col-lg-6 text-white fw-bold" }, [
-          _vm._v("carte di credito"),
+        _vm._v(" "),
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-12 col-lg-6 text-white fw-bold" }, [
+            _vm._v("carte di credito"),
+          ]),
+          _vm._v(" "),
+          _c("img", {
+            staticClass: "img",
+            attrs: {
+              src: __webpack_require__(/*! ./../../../public/img/logo-white.png */ "./public/img/logo-white.png"),
+              alt: "",
+            },
+          }),
         ]),
       ]),
     ])
@@ -19490,6 +19498,17 @@ module.exports = g;
 
 /***/ }),
 
+/***/ "./public/img/logo-white.png":
+/*!***********************************!*\
+  !*** ./public/img/logo-white.png ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/logo-white.png?59d91be70792637c0b41e8d94138685f";
+
+/***/ }),
+
 /***/ "./resources/js/components/Footer.vue":
 /*!********************************************!*\
   !*** ./resources/js/components/Footer.vue ***!
@@ -20230,7 +20249,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\emanuela\Desktop\boolean\Progetto Finale\DeliveBoo\DeliveBoo\DeliveBoo\resources\js\front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! /home/pietroline/Scrivania/Personale/boolean/GitHub/progettoFinale/DeliveBoo/resources/js/front.js */"./resources/js/front.js");
 
 
 /***/ })

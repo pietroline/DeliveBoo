@@ -35,13 +35,13 @@
         </div>
       </div>
 
+       <div class="row">
+        <div class="col-12 col-lg-6 text-white fw-bold">carte di credito</div>
+          <img src="./../../../public/img/logo-white.png"  class="img" alt="">
+      </div>
+
     </div>
 
-    
-      <div class="row">
-        <div class="col-12 col-lg-6 text-white fw-bold">carte di credito</div>
-      
-      </div>
   </section>
 </template>
 
@@ -53,7 +53,6 @@ export default {
 
 <style lang="scss" scoped>
 #footer {
-  height: 30rem;
   color: #fff;
   background-color: #ff8c28;
   position: absolute;
@@ -64,8 +63,8 @@ export default {
 
 }
 
-#footer .row {
-  height: 20rem;
+.img{
+  width: 10rem;
 }
 
 #footer ul {
