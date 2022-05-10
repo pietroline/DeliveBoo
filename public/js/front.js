@@ -2077,6 +2077,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "NotFound"
 });
@@ -2381,8 +2387,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-
-exports.push([module.i, "section[data-v-a26bf910] {\n  background-color: #ff8c28;\n}\nsection .ms_jumbo[data-v-a26bf910] {\n  background-color: #f5dcb0;\n  margin-top: 2rem;\n}\nsection .ms_jumbo a[data-v-a26bf910] {\n  background-color: #ff8c28;\n  border-color: #ff8c28;\n}", ""]);
+exports.push([module.i, "section[data-v-a26bf910] {\n  background-color: #ff8c28;\n}\nsection .ms_jumbo[data-v-a26bf910] {\n  background-color: #f5dcb0;\n  margin-top: 2rem;\n}\nsection .ms_jumbo a[data-v-a26bf910] {\n  background-color: #ff8c28;\n  border-radius: 5px;\n  border: 1px solid #ff8c28;\n}", ""]);
 
 // exports
 
@@ -3732,48 +3737,54 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-
-    return _c("section", { staticClass: "container-fluid" }, [
-      _c("div", { staticClass: "row justify-content-center " }, [
-        _c("div", { staticClass: "col-9" }, [
-          _c("div", { staticClass: "jumbotron ms_jumbo mx-auto" }, [
-            _c("h1", { staticClass: "display-4 text-white" }, [
-              _vm._v("Errore 404!"),
-            ]),
-            _vm._v(" "),
-            _c("p", { staticClass: "lead" }, [
-              _vm._v(
-                "\n          Potrebbe essere un problema di connessione, oppure prova a\n          controllare che l'url inserito sia corretto.\n        "
-              ),
-            ]),
-            _vm._v(" "),
-            _c("hr", { staticClass: "my-4" }),
-            _vm._v(" "),
-            _c("p", [_vm._v("Clicca sul bottone per tornare alla HomePage")]),
-            _vm._v(" "),
-            _c("p", { staticClass: "lead" }, [
-              _c(
-                "a",
-                {
-                  staticClass: "btn btn-primary btn-lg",
-                  attrs: { href: "#", role: "button" },
-                },
-                [_vm._v("Home")]
-              ),
-            ]),
+  return _c("section", { staticClass: "container-fluid" }, [
+    _c("div", { staticClass: "row justify-content-center " }, [
+      _c("div", { staticClass: "col-9" }, [
+        _c("div", { staticClass: "jumbotron ms_jumbo mx-auto" }, [
+          _c("h1", { staticClass: "display-4 text-white" }, [
+            _vm._v("Errore 404!"),
           ]),
+          _vm._v(" "),
+          _c("p", { staticClass: "lead" }, [
+            _vm._v(
+              "\n          Potrebbe essere un problema di connessione, oppure prova a\n          controllare che l'url inserito sia corretto.\n        "
+            ),
+          ]),
+          _vm._v(" "),
+          _c("hr", { staticClass: "my-4" }),
+          _vm._v(" "),
+          _c("p", [_vm._v("Clicca sul bottone per tornare alla HomePage")]),
+          _vm._v(" "),
+          _c(
+            "p",
+            { staticClass: "lead" },
+            [
+              _c(
+                "router-link",
+                {
+                  staticClass: "navbar-brand",
+                  attrs: { to: { name: "home" } },
+                },
+                [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "btn btn-primary btn-lg",
+                      attrs: { href: "#", role: "button" },
+                    },
+                    [_vm._v("Home")]
+                  ),
+                ]
+              ),
+            ],
+            1
+          ),
         ]),
       ]),
-    ])
-  },
-]
+    ]),
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -20083,17 +20094,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_App_vue_vue_type_template_id_91ac6b5c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
-
-/***/ }),
-
-/***/ "./storage/app/public/Deliveboo-logo-white.svg":
-/*!*****************************************************!*\
-  !*** ./storage/app/public/Deliveboo-logo-white.svg ***!
-  \*****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/Deliveboo-logo-white.svg?05df655d802d36acb6650b8681d81c73";
 
 /***/ }),
 
