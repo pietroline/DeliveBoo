@@ -28,7 +28,7 @@
 
 <!-- inizio risultati ricerca -->
 
-        <section v-if="restaurants.length > 0">
+        <section v-if="restaurants">
 
 
 
@@ -66,7 +66,7 @@
 
                         <!-- precedente -->
                         <li class="page-item" :class="(currentPage == 1) ? 'disabled' : '' ">
-                            <span class="page-link ms_cursor_pointer" @click="getAllRestaurants(currentPage -1)">Precedente</span>
+                            <span class="page-link ms_cursor_pointer" @click="getRestaurantsFiltered(currentPage -1)">Precedente</span>
                         </li>
 
                         <!-- visualizzo numero di pagina -->
@@ -76,7 +76,7 @@
 
                         <!-- successivo -->
                         <li class="page-item" :class="(currentPage == lastPage) ? 'disabled' : '' ">
-                            <span class="page-link ms_cursor_pointer" @click="getAllRestaurants(currentPage +1)">Successivo</span>
+                            <span class="page-link ms_cursor_pointer" @click="getRestaurantsFiltered(currentPage +1)">Successivo</span>
                         </li>
                     </ul>
                 </nav>
@@ -159,10 +159,8 @@
                     })
                         .then(response =>{
                              // handle success
-                           
                             this.currentPage = response.data.results.current_page;
-                            this.restaurants = response.data.results;
-                              console.log(response.data.results);
+                            this.restaurants = response.data.results.data;
                             this.lastPage = response.data.results.last_page;
                         })
                          .catch(error => {
@@ -170,14 +168,14 @@
                             console.log(error);
                         })
                 }else{
-                    this.getAllRestaurants(1);
+                    this.getAllRestaurants(RequestPage);
                 }
                 
             },
 
             mJS_selectedPage(selectedPage){
                 this.currentPage = selectedPage;
-                this.getAllRestaurants(this.currentPage);
+                this.getRestaurantsFiltered(this.currentPage);
             }
         }
     }

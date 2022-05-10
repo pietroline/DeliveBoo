@@ -2298,20 +2298,19 @@ __webpack_require__.r(__webpack_exports__);
         }).then(function (response) {
           // handle success
           _this3.currentPage = response.data.results.current_page;
-          _this3.restaurants = response.data.results;
-          console.log(response.data.results);
+          _this3.restaurants = response.data.results.data;
           _this3.lastPage = response.data.results.last_page;
         })["catch"](function (error) {
           // handle error
           console.log(error);
         });
       } else {
-        this.getAllRestaurants(1);
+        this.getAllRestaurants(RequestPage);
       }
     },
     mJS_selectedPage: function mJS_selectedPage(selectedPage) {
       this.currentPage = selectedPage;
-      this.getAllRestaurants(this.currentPage);
+      this.getRestaurantsFiltered(this.currentPage);
     }
   }
 });
@@ -4143,7 +4142,7 @@ var render = function () {
       2
     ),
     _vm._v(" "),
-    _vm.restaurants.length > 0
+    _vm.restaurants
       ? _c("section", [
           _vm._m(1),
           _vm._v(" "),
@@ -4191,7 +4190,7 @@ var render = function () {
                     staticClass: "page-link ms_cursor_pointer",
                     on: {
                       click: function ($event) {
-                        return _vm.getAllRestaurants(_vm.currentPage - 1)
+                        return _vm.getRestaurantsFiltered(_vm.currentPage - 1)
                       },
                     },
                   },
@@ -4234,7 +4233,7 @@ var render = function () {
                     staticClass: "page-link ms_cursor_pointer",
                     on: {
                       click: function ($event) {
-                        return _vm.getAllRestaurants(_vm.currentPage + 1)
+                        return _vm.getRestaurantsFiltered(_vm.currentPage + 1)
                       },
                     },
                   },

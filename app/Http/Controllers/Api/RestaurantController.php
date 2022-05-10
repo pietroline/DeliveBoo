@@ -5,10 +5,26 @@ namespace App\Http\Controllers\Api;
 use App\Food;
 use App\Http\Controllers\Controller;
 use App\Restaurant;
-use App\Typology;
+use Illuminate\Http\Request;
+use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class RestaurantController extends Controller
 {
+    /**
+     * Funzione utilizzata per create a partire da un array un istanza di impaginazione manuale
+     * vedi https://laravel.com/docs/9.x/pagination#manually-creating-a-paginator
+     *
+     * @return \Illuminate\Http\Response
+     */
+    private function paginate($items, $perPage = 4, $page = null, $options = [])
+    {
+        $page = $page ?: (Paginator::resolveCurrentPage() ?: 1);
+        $items = $items instanceof Collection ? $items : Collection::make($items);
+        return new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, $options);
+    } 
+
     /**
      * Display a listing of the resource.
      *
@@ -16,11 +32,11 @@ class RestaurantController extends Controller
      */
     public function index()
     {
-        $restaurants = Restaurant::paginate(3);
+        $restaurants = Restaurant::all();
 
         return response()->json(
             [
-                "results" => $restaurants,
+                "results" => $this->paginate($restaurants),
                 "success" => true
             ]
         );
@@ -72,10 +88,11 @@ class RestaurantController extends Controller
 
 
         }
+        
     
         return response()->json(
             [
-                'results' => $restaurantFiltered,
+                'results' => $this->paginate($restaurantFiltered),
                 'success'=> true,
             ]
         );
