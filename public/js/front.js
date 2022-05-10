@@ -2388,6 +2388,59 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "SingleRestaurant",
@@ -2397,26 +2450,42 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       restaurant: null,
-      menuRestaurant: null
+      menuRestaurant: null,
+      currentPage: 1,
+      lastPage: null
     };
   },
   mounted: function mounted() {
-    var _this = this;
+    this.getMenu(1);
+  },
+  methods: {
+    getMenu: function getMenu(RequestPage) {
+      var _this = this;
 
-    var $slug = this.$route.params.slug;
-    axios.get("/api/restaurants/".concat($slug)).then(function (response) {
-      if (response.data.success == true) {
-        _this.restaurant = response.data.showRestaurant;
-        _this.menuRestaurant = response.data.showMenuRestaurant;
-      } else {
-        _this.$route.push({
-          name: "not-found"
-        });
-      }
-    })["catch"](function (error) {
-      // handle error
-      console.log(error);
-    });
+      var $slug = this.$route.params.slug;
+      axios.get("/api/restaurants/".concat($slug), {
+        "params": {
+          "page": RequestPage
+        }
+      }).then(function (response) {
+        // handle success
+        console.log(response);
+
+        if (response.data.success == true) {
+          _this.currentPage = response.data.showMenuRestaurant.current_page;
+          _this.restaurant = response.data.showRestaurant;
+          _this.menuRestaurant = response.data.showMenuRestaurant.data;
+          _this.lastPage = response.data.showMenuRestaurant.last_page;
+        } else {
+          _this.$route.push({
+            name: "not-found"
+          });
+        }
+      })["catch"](function (error) {
+        // handle error
+        console.log(error);
+      });
+    }
   }
 });
 
@@ -4165,7 +4234,7 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _vm.restaurant
-    ? _c("section", { staticClass: "container" }, [
+    ? _c("div", { staticClass: "container" }, [
         _c("div", { staticClass: "row" }, [
           _c("div", { staticClass: "col" }, [
             _c("div", { staticClass: "px-4 py-5 my-5 text-center" }, [
@@ -4187,34 +4256,121 @@ var render = function () {
           ]),
         ]),
         _vm._v(" "),
-        _vm._m(0),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "row row-cols-4" },
-          _vm._l(_vm.menuRestaurant, function (food) {
-            return _c(
-              "div",
-              {
-                key: "menuRestaurant_" + food.id,
-                staticClass: "col card-group",
-              },
-              [
-                _c("Food", {
-                  attrs: {
-                    name: food.name,
-                    id: food.id,
-                    price: food.price,
-                    description: food.description ? food.description : "",
-                    ingredients: food.ingredients,
-                  },
+        _vm.menuRestaurant
+          ? _c("section", [
+              _vm._m(0),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "row row-cols-3" },
+                _vm._l(_vm.menuRestaurant, function (food) {
+                  return _c(
+                    "div",
+                    {
+                      key: "menuRestaurant_" + food.id,
+                      staticClass: "col card-group",
+                    },
+                    [
+                      _c("Food", {
+                        attrs: {
+                          name: food.name,
+                          id: food.id,
+                          price: food.price,
+                          description: food.description ? food.description : "",
+                          ingredients: food.ingredients,
+                        },
+                      }),
+                    ],
+                    1
+                  )
                 }),
-              ],
-              1
-            )
-          }),
-          0
-        ),
+                0
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "row justify-content-center my-5" }, [
+                _c("nav", { attrs: { "aria-label": "Page navigation" } }, [
+                  _c(
+                    "ul",
+                    { staticClass: "pagination justify-content-center" },
+                    [
+                      _c(
+                        "li",
+                        {
+                          staticClass: "page-item",
+                          class: _vm.currentPage == 1 ? "disabled" : "",
+                        },
+                        [
+                          _c(
+                            "span",
+                            {
+                              staticClass: "page-link ms_cursor_pointer",
+                              on: {
+                                click: function ($event) {
+                                  return _vm.getMenu(_vm.currentPage - 1)
+                                },
+                              },
+                            },
+                            [_vm._v("Precedente")]
+                          ),
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _vm._l(_vm.lastPage, function (page) {
+                        return _c(
+                          "li",
+                          {
+                            key: page,
+                            staticClass: "page-item",
+                            class: page == _vm.currentPage ? "active" : "",
+                            on: {
+                              click: function ($event) {
+                                return _vm.mJS_selectedPage(page)
+                              },
+                            },
+                          },
+                          [
+                            _c(
+                              "span",
+                              { staticClass: "page-link ms_cursor_pointer" },
+                              [_vm._v(_vm._s(page))]
+                            ),
+                          ]
+                        )
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "li",
+                        {
+                          staticClass: "page-item",
+                          class:
+                            _vm.currentPage == _vm.lastPage ? "disabled" : "",
+                        },
+                        [
+                          _c(
+                            "span",
+                            {
+                              staticClass: "page-link ms_cursor_pointer",
+                              on: {
+                                click: function ($event) {
+                                  return _vm.getMenu(_vm.currentPage + 1)
+                                },
+                              },
+                            },
+                            [_vm._v("Successivo")]
+                          ),
+                        ]
+                      ),
+                    ],
+                    2
+                  ),
+                ]),
+              ]),
+            ])
+          : _c("section", [
+              _c("h1", [
+                _vm._v("Non esiste nessun menu per questo ristorante"),
+              ]),
+            ]),
       ])
     : _vm._e()
 }
