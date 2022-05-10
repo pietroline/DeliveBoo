@@ -18,7 +18,7 @@ class RestaurantController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    private function paginate($items, $perPage = 4, $page = null, $options = [])
+    private function paginate($items, $perPage = 9, $page = null, $options = [])
     {
         $page = $page ?: (Paginator::resolveCurrentPage() ?: 1);
         $items = $items instanceof Collection ? $items : Collection::make($items);

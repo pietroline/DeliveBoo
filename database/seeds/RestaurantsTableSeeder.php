@@ -15,7 +15,7 @@ class RestaurantsTableSeeder extends Seeder
     public function run(Faker $faker)
     {
 
-        for($i=0; $i<5; $i++){
+        for($i=0; $i<20; $i++){
             
             $newRestaurant = new Restaurant();
 
@@ -34,7 +34,7 @@ class RestaurantsTableSeeder extends Seeder
         // per tabella pivot con le typologies
         $records = Restaurant::all();
 
-        for($i=0; $i<5; $i++){
+        for($i=0; $i<20; $i++){
 
             $n_typologies = rand(1,3);
             $typologies = [];

@@ -4148,7 +4148,7 @@ var render = function () {
           _vm._v(" "),
           _c(
             "div",
-            { staticClass: "row row-cols-4" },
+            { staticClass: "row row-cols-3" },
             _vm._l(_vm.restaurants, function (restaurant) {
               return _c(
                 "div",

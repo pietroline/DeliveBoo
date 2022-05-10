@@ -36,7 +36,7 @@
                 <h1>Elenco ristoranti</h1>
             </div>
 
-            <div class="row row-cols-4">
+            <div class="row row-cols-3">
                 <div class="col card-group" v-for="restaurant in restaurants" :key="'restaurant_'+restaurant.id">
 
                     <Restaurant 
