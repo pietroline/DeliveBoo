@@ -96,7 +96,7 @@ class RestaurantController extends Controller
 
         // il tipo di dato del foods[iesimo]->price ritornato è string, quindi converto in double
         foreach($foods as $food){
-            $food->price = floatval($food->value);
+            $food->price = floatval($food->price);
         }
 
         $typologies = [];
