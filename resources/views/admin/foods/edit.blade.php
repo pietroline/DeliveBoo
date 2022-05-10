@@ -5,20 +5,23 @@
 
         <h1>Modifica Food</h1>
 
-        <form method="POST" action="{{route('admin.foods.update', $food->id)}}">
+        <form class="needs-validation" novalidate method="POST" action="{{route('admin.foods.update', $food->id)}}">
 
             @csrf
             @method("PUT")
 
             <div class="form-group">
                 <label for="name">Nome portata *</label>
-                <input type="text" class="form-control" id="name" name="name" value="{{old("name", $food->name)}}">
+                <input type="text" class="form-control" id="name" name="name" minlength="3" value="{{old("name", $food->name)}}" required>
+                <div class="invalid-feedback">
+                    Nome portata non valido
+                </div>
             </div>
 
             <div class="form-group">
 
                 <label for="category_id">Categoria *</label>
-                <select class="form-control" id="category_id" name="category_id">
+                <select class="form-control" id="category_id" name="category_id" required>
 
                 <option value="">Nessuna categoria</option>
                 @foreach ($categories as $category )    
@@ -26,12 +29,17 @@
                 @endforeach
             
                 </select>
-
+                <div class="invalid-feedback">
+                    Categoria non valida
+                </div>
             </div>
 
             <div class="form-group">
                 <label for="price">Prezzo *</label>
-                <input type="number" class="form-control" id="price" name="price" value="{{old("price", $food->price)}}">
+                <input type="number" class="form-control" id="price" name="price" min="0" max="1000" value="{{old("price", $food->price)}}" required>
+                <div class="invalid-feedback">
+                    Prezzo non valido
+                </div>
             </div>
 
             <div class="form-group">
@@ -41,12 +49,15 @@
 
             <div class="form-group">
                 <label for="ingredients">Ingredienti *</label>
-                <textarea class="form-control" name="ingredients" id="ingredients" rows="10">{{old("ingredients", $food->ingredients)}}</textarea>
+                <textarea class="form-control" name="ingredients" minlength="5" id="ingredients" rows="10" required>{{old("ingredients", $food->ingredients)}}</textarea>
+                <div class="invalid-feedback">
+                    Ingredienti non validi
+                </div>
             </div>
 
             <div class="form-group">
                 <label for="visible">Disponibilità *</label>
-                <select class="form-control" id="visible" name="visible">
+                <select class="form-control" id="visible" name="visible" required>
                     
                     <option value="1" {{$food->visible ? "selected" : ""}}>Si</option>
                     <option value="0" {{$food->visible ? "" : "selected"}}>No</option>

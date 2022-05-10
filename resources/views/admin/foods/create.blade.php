@@ -5,13 +5,16 @@
 
             <h1>Crea nuova portata</h1>
 
-            <form method="POST" action="{{route('admin.foods.store')}}">
+            <form class="needs-validation" novalidate method="POST" action="{{route('admin.foods.store')}}">
 
                 @csrf
 
                 <div class="form-group">
                     <label for="name">Nome portata *</label>
-                    <input type="text" class="form-control" id="name" name="name" value="{{old("name")}}" required>
+                    <input type="text" class="form-control" id="name" name="name" minlength="3" value="{{old("name")}}" required>
+                    <div class="invalid-feedback">
+                      Nome portata non valido
+                    </div>
                 </div>
 
                 <div class="form-group">
@@ -23,14 +26,18 @@
                     @foreach ($categories as $category )    
                       <option {{old("category_id") == $category->id ? "selected" : ""}} value="{{$category->id}}">{{$category->name}}</option>
                     @endforeach
-               
                   </select>
-
+                  <div class="invalid-feedback">
+                    Categoria non valida
+                </div>
                 </div>
 
                 <div class="form-group">
                     <label for="price">Prezzo *</label>
-                    <input type="number" class="form-control" id="price" name="price" value="{{old("price")}}" required>
+                    <input type="number" class="form-control" id="price" name="price" min="0" max="1000" value="{{old("price")}}" required>
+                    <div class="invalid-feedback">
+                      Prezzo non valido
+                    </div>
                 </div>
 
                 <div class="form-group">
@@ -40,12 +47,15 @@
                 
                 <div class="form-group">
                   <label for="ingredients">Ingredienti *</label>
-                  <textarea class="form-control" name="ingredients" id="ingredients" rows="10" required>{{old("ingredients")}}</textarea>
+                  <textarea class="form-control" name="ingredients" minlength="5" id="ingredients" rows="10" required>{{old("ingredients")}}</textarea>
+                  <div class="invalid-feedback">
+                    Ingredienti non validi
+                  </div>
                 </div>
 
                 <div class="form-group">
                     <label for="visible">Disponibilità</label>
-                    <select class="form-control" id="visible" name="visible">
+                    <select class="form-control" id="visible" name="visible" required>
 
                       <option value="1" selected>Si</option>
                       <option value="0">No</option>

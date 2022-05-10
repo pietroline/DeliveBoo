@@ -22,12 +22,12 @@
       
         // verifico se la variabile che tiene il conto dei check sulle input > 0 e imposto le classi adeguate
         if(checkboxTrue==0){ 
-          displayRequired.classList.remove("ms_text-transparent");
-          displayRequired.classList.add("text-danger");
+          displayRequired.classList.remove("ms_dysplay-none");
+          displayRequired.classList.add("text-danger", "ms_dysplay-block");
         
         }else{
-          displayRequired.classList.remove("text-danger");
-          displayRequired.classList.add("ms_text-transparent");
+          displayRequired.classList.remove("text-danger", "ms_dysplay-block");
+          displayRequired.classList.add("ms_dysplay-none");
         }
         
       });
