@@ -3753,7 +3753,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("ul", { staticClass: "navbar-nav" }, [
       _c("li", { staticClass: "nav-item" }, [
-        _c("a", { staticClass: "nav-link", attrs: { href: "/admin/home" } }, [
+        _c("a", { staticClass: "nav-link", attrs: { href: "/admin" } }, [
           _vm._v("Area Admin"),
         ]),
       ]),

@@ -14,7 +14,7 @@
 
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="/admin/home">Area Admin</a>
+                        <a class="nav-link" href="/admin">Area Admin</a>
                     </li>
                 </ul>
 
