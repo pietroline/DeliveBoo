@@ -2126,6 +2126,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Restaurants",
@@ -2134,14 +2151,14 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      allTypologies: [],
-      typologySelected: [8, 3, 5],
+      allTypologies: null,
+      typologySelected: [],
       restaurants: []
     };
   },
   mounted: function mounted() {
-    this.getRestaurantsFiltered();
     this.getAllTypologies();
+    this.getAllRestaurants();
   },
   methods: {
     getAllTypologies: function getAllTypologies() {
@@ -2169,7 +2186,7 @@ __webpack_require__.r(__webpack_exports__);
       this.restaurants = []; // solo se typologySelected contiene almeno una tipologia faccio richiesta dei ristoranti filtrati, 
       // altrimenti torno tutti i ristoranti
 
-      if (this.typologySelected) {
+      if (this.typologySelected.length > 0) {
         axios.get('api/restaurant/' + this.typologySelected).then(function (response) {
           _this3.restaurants = response.data.results;
         });
@@ -3691,7 +3708,7 @@ var render = function () {
                   },
                 ],
                 staticClass: "form-check-input",
-                attrs: { type: "checkbox" },
+                attrs: { type: "checkbox", id: "typology_" + typology.id },
                 domProps: {
                   value: typology.id,
                   checked: Array.isArray(_vm.typologySelected)
@@ -3738,25 +3755,34 @@ var render = function () {
       2
     ),
     _vm._v(" "),
-    _vm._m(1),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "row row-cols-4" },
-      _vm._l(_vm.restaurants, function (restaurant) {
-        return _c(
-          "div",
-          { key: "restaurant" + restaurant.id, staticClass: "col card-group" },
-          [
-            _c("Restaurant", {
-              attrs: { name: restaurant.name, slug: restaurant.slug },
+    _vm.restaurants.length > 0
+      ? _c("section", [
+          _vm._m(1),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "row row-cols-4" },
+            _vm._l(_vm.restaurants, function (restaurant) {
+              return _c(
+                "div",
+                {
+                  key: "restaurant" + restaurant.id,
+                  staticClass: "col card-group",
+                },
+                [
+                  _c("Restaurant", {
+                    attrs: { name: restaurant.name, slug: restaurant.slug },
+                  }),
+                ],
+                1
+              )
             }),
-          ],
-          1
-        )
-      }),
-      0
-    ),
+            0
+          ),
+        ])
+      : _c("section", [
+          _c("h1", [_vm._v("Non ci sono ristoranti da visualizzare")]),
+        ]),
   ])
 }
 var staticRenderFns = [

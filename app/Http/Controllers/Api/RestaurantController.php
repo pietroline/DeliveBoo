@@ -45,6 +45,7 @@ class RestaurantController extends Controller
         for($k=0; $k<count($filter); $k++){
 
 
+            
 
             // ciclo tutti i ristoranti
             foreach($allRestaurants as $restaurant){
@@ -66,6 +67,9 @@ class RestaurantController extends Controller
                     }
                 } 
             }
+
+
+
 
         }
     
