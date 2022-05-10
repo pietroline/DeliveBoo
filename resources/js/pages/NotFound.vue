@@ -1,46 +1,51 @@
 <template>
-  <section class="d-flex justify-content-center align-items-center">
-      
-              
-          
 
-      <div class="d-flex justify-content-center align-items-center rounded mc_box">
-
-         <img  class="text-end" src="./../../../public/storage/Deliveboo-logo-white.svg"  width="150" height="100" alt="logo DeliveBoo"> <!--logo deliveboo-->
-       
-       <div class="mx-auto w-75">
-           
-            <h1>404</h1>
-            <h2 class="py-2">Pagina non trovata</h2>
-            <h3>Potrebbe essere un problema di connessione, oppure prova a controllare che l'URL inserito sia corretto...</h3>
-        </div> 
+  <section class="container-fluid">
+    <div class="row justify-content-center ">
+      <div class="col-9">
+        <div class="jumbotron ms_jumbo mx-auto">
+          <h1 class="display-4 text-white">Errore 404!</h1>
+          <p class="lead">
+            Potrebbe essere un problema di connessione, oppure prova a
+            controllare che l'url inserito sia corretto.
+          </p>
+          <hr class="my-4" />
+          <p>Clicca sul bottone per tornare alla HomePage</p>
+          <p class="lead">
+            <a class="btn btn-primary btn-lg" href="#" role="button">Home</a>
+          </p>
+        </div>
+      </div>
     </div>
   </section>
+
+ 
     
+
 </template>
 
 <script>
-    export default {
-        name: "NotFound"
-    }
+export default {
+  name: "NotFound",
+};
 </script>
 
 <style lang="scss" scoped>
 @import "./../../sass/_variables.scss";
 
-section{
+
+section {
+  background-color: $darkOrange;
+
+
+  .ms_jumbo {
     background-color: $lightOrange;
-    height: 70vh;
+    margin-top: 2rem;
 
-    .mc_box{
-        background-color: white;
-        width: 50%;
-        height: 40vh;
-        border: 5px solid $darkOrange;
+    a {
+      background-color: $darkOrange;
+      border-color: $darkOrange;
     }
-    
+  }
 }
-
-
-
 </style>

@@ -2381,7 +2381,8 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "section[data-v-a26bf910] {\n  background-color: #f5dcb0;\n  height: 70vh;\n}\nsection .mc_box[data-v-a26bf910] {\n  background-color: white;\n  width: 50%;\n  height: 40vh;\n  border: 5px solid #ff8c28;\n}", ""]);
+
+exports.push([module.i, "section[data-v-a26bf910] {\n  background-color: #ff8c28;\n}\nsection .ms_jumbo[data-v-a26bf910] {\n  background-color: #f5dcb0;\n  margin-top: 2rem;\n}\nsection .ms_jumbo a[data-v-a26bf910] {\n  background-color: #ff8c28;\n  border-color: #ff8c28;\n}", ""]);
 
 // exports
 
@@ -3738,42 +3739,39 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "section",
-      { staticClass: "d-flex justify-content-center align-items-center" },
-      [
-        _c(
-          "div",
-          {
-            staticClass:
-              "d-flex justify-content-center align-items-center rounded mc_box",
-          },
-          [
-            _c("img", {
-              staticClass: "text-end",
-              attrs: {
-                src: __webpack_require__(/*! ./../../../public/storage/Deliveboo-logo-white.svg */ "./storage/app/public/Deliveboo-logo-white.svg"),
-                width: "150",
-                height: "100",
-                alt: "logo DeliveBoo",
-              },
-            }),
-            _vm._v(" "),
-            _c("div", { staticClass: "mx-auto w-75" }, [
-              _c("h1", [_vm._v("404")]),
-              _vm._v(" "),
-              _c("h2", { staticClass: "py-2" }, [_vm._v("Pagina non trovata")]),
-              _vm._v(" "),
-              _c("h3", [
-                _vm._v(
-                  "Potrebbe essere un problema di connessione, oppure prova a controllare che l'URL inserito sia corretto..."
-                ),
-              ]),
+
+    return _c("section", { staticClass: "container-fluid" }, [
+      _c("div", { staticClass: "row justify-content-center " }, [
+        _c("div", { staticClass: "col-9" }, [
+          _c("div", { staticClass: "jumbotron ms_jumbo mx-auto" }, [
+            _c("h1", { staticClass: "display-4 text-white" }, [
+              _vm._v("Errore 404!"),
             ]),
-          ]
-        ),
-      ]
-    )
+            _vm._v(" "),
+            _c("p", { staticClass: "lead" }, [
+              _vm._v(
+                "\n          Potrebbe essere un problema di connessione, oppure prova a\n          controllare che l'url inserito sia corretto.\n        "
+              ),
+            ]),
+            _vm._v(" "),
+            _c("hr", { staticClass: "my-4" }),
+            _vm._v(" "),
+            _c("p", [_vm._v("Clicca sul bottone per tornare alla HomePage")]),
+            _vm._v(" "),
+            _c("p", { staticClass: "lead" }, [
+              _c(
+                "a",
+                {
+                  staticClass: "btn btn-primary btn-lg",
+                  attrs: { href: "#", role: "button" },
+                },
+                [_vm._v("Home")]
+              ),
+            ]),
+          ]),
+        ]),
+      ]),
+    ])
   },
 ]
 render._withStripped = true
