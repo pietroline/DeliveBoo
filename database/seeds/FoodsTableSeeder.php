@@ -16,7 +16,7 @@ class FoodsTableSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        for($i=0; $i<30; $i++){
+        for($i=0; $i<60; $i++){
             
             $newFood = new Food();
 

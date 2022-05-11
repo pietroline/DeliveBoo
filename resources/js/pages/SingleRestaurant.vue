@@ -1,5 +1,5 @@
 <template>
-  <section class="container" v-if="restaurant">
+  <div class="container" v-if="restaurant">
 
 
 
@@ -37,37 +37,90 @@
 
 
 
-
-
-    <!-- inizio menu ristorante -->
-
-      <div class="row">
-          <h1>Menu</h1>
-      </div>
-
-      <div class="row row-cols-4">
-          <div class="col card-group" v-for="food in menuRestaurant" :key="'menuRestaurant_'+food.id">
-
-              <!-- food.description assume valore di NULL quando non è presente una descrizione del food, per questo popolo la prop :description in maniera tale da essere sempre string -->
-              <Food 
-                  :name="food.name"
-                  :id="food.id"
-                  :price="food.price"
-                  :description="food.description ? food.description : ''" 
-                  :ingredients="food.ingredients"
-              />
-
-          </div>
-      </div>
-
-    <!-- fine menu ristorante -->
+    <section v-if="menuRestaurant">
 
 
 
 
+      <!-- inizio menu ristorante -->
 
 
-  </section>
+
+
+        <div class="row">
+            <h1>Menu</h1>
+        </div>
+
+        <div class="row row-cols-3">
+            <div class="col card-group" v-for="food in menuRestaurant" :key="'menuRestaurant_'+food.id">
+
+                <!-- food.description assume valore di NULL quando non è presente una descrizione del food, per questo popolo la prop :description in maniera tale da essere sempre string -->
+                <Food 
+                    :name="food.name"
+                    :id="food.id"
+                    :price="food.price"
+                    :description="food.description ? food.description : ''" 
+                    :ingredients="food.ingredients"
+                />
+
+            </div>
+        </div>
+
+
+
+
+      <!-- fine menu ristorante -->
+
+      <!-- inizio page navigator -->
+
+
+
+
+
+        <div class="row justify-content-center my-5">
+
+          <nav aria-label="Page navigation">
+              <ul class="pagination justify-content-center">
+
+                  <!-- precedente -->
+                  <li class="page-item" :class="(currentPage == 1) ? 'disabled' : '' ">
+                      <span class="page-link ms_cursor_pointer" @click="getMenu(currentPage -1)">Precedente</span>
+                  </li>
+
+                  <!-- visualizzo numero di pagina -->
+                  <li class="page-item" @click="mJS_selectedPage(page)" :class="(page == currentPage) ? 'active' : ''" v-for="page in lastPage" :key="page">
+                      <span class="page-link ms_cursor_pointer">{{page}}</span>
+                  </li>
+
+                  <!-- successivo -->
+                  <li class="page-item" :class="(currentPage == lastPage) ? 'disabled' : '' ">
+                      <span class="page-link ms_cursor_pointer" @click="getMenu(currentPage +1)">Successivo</span>
+                  </li>
+              </ul>
+          </nav>
+
+        </div>
+
+      <!-- fine page navigator -->
+
+
+
+
+
+    </section>
+
+    <section v-else>
+      <h1>Non esiste nessun menu per questo ristorante</h1>
+    </section>
+
+
+
+
+
+
+
+
+  </div>
 
   <!--<div class="container d-flex flex-column">
 
@@ -124,27 +177,44 @@
       return {
         restaurant: null,
         menuRestaurant: null,
+        currentPage: 1,
+        lastPage: null
       };
     },
 
     mounted() {
-      const $slug = this.$route.params.slug;
-
-      axios
-        .get(`/api/restaurants/${$slug}`)
-        .then((response) => {
-          if (response.data.success == true) {
-            this.restaurant = response.data.showRestaurant;
-            this.menuRestaurant = response.data.showMenuRestaurant;
-          } else {
-            this.$route.push({ name: "not-found" });
-          }
-        })
-        .catch(function (error) {
-          // handle error
-          console.log(error);
-        });
+      this.getMenu(1);
     },
+
+    methods:{
+
+      getMenu(RequestPage){
+        const $slug = this.$route.params.slug;
+
+        axios
+          .get(`/api/restaurants/${$slug}`,{
+              "params":{
+                "page": RequestPage
+              }
+          })
+          .then((response) => {
+            // handle success
+            console.log(response)
+            if (response.data.success == true) {
+              this.currentPage = response.data.showMenuRestaurant.current_page;
+              this.restaurant = response.data.showRestaurant;
+              this.menuRestaurant = response.data.showMenuRestaurant.data;
+              this.lastPage = response.data.showMenuRestaurant.last_page;
+            } else {
+              this.$route.push({ name: "not-found" });
+            }
+          })
+          .catch(function (error) {
+            // handle error
+            console.log(error);
+          });
+        }
+    }
   };
 </script>
 

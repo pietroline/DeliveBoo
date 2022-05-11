@@ -12,6 +12,20 @@ use Illuminate\Pagination\LengthAwarePaginator;
 
 class RestaurantController extends Controller
 {
+
+    /**
+     * Funzione utilizzata per create a partire da un array un istanza di impaginazione manuale
+     * vedi https://laravel.com/docs/9.x/pagination#manually-creating-a-paginator
+     *
+     * @return \Illuminate\Http\Response
+     */
+    private function paginate($items, $perPage = 9, $page = null, $options = [])
+    {
+        $page = $page ?: (Paginator::resolveCurrentPage() ?: 1);
+        $items = $items instanceof Collection ? $items : Collection::make($items);
+        return new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, $options);
+    } 
+
     /**
      * Funzione utilizzata per create a partire da un array un istanza di impaginazione manuale
      * vedi https://laravel.com/docs/9.x/pagination#manually-creating-a-paginator
@@ -112,7 +126,7 @@ class RestaurantController extends Controller
 
         // il tipo di dato del foods[iesimo]->price ritornato è string, quindi converto in double
         foreach($foods as $food){
-            $food->price = floatval($food->value);
+            $food->price = floatval($food->price);
         }
 
         $typologies = [];
@@ -125,7 +139,7 @@ class RestaurantController extends Controller
             $response = response()->json(
                 [
                     "showRestaurant" => $restaurant,
-                    "showMenuRestaurant" => $foods,
+                    "showMenuRestaurant" => $this->paginate($foods),
                     "typologiesRestaurant" => $typologies,
                     "success" => true
                 ]
