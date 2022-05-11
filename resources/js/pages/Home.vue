@@ -1,19 +1,31 @@
 <template>
-    <div class="container mt-3">
-        <div class="row">
-            <h1>Benvenuto nella nostra delivery app (front-end)</h1>
+    <div class="container-fluid mt-3">
+        <div class="row ms_carousel">
+           
+
+            <Carousel/>
         </div>
     </div>
 </template>
 
 <script>
 
+import Carousel from '../components/partials/Carousel.vue'
+
     export default {
         name: "Home",
+
+        components:{
+            Carousel,
+        }
     }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+
+.ms_carousel{
+    height: 400px;
+}
 
 
-</style>
+</style> 
