@@ -136,7 +136,7 @@ for (var i = 0; i < checkboxes.length; i++) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\Matteo\Documents\Progetto finale Boolean\DeliveBoo\resources\js\functionsJS\validationRequiredGroupCheckbox.js */"./resources/js/functionsJS/validationRequiredGroupCheckbox.js");
+module.exports = __webpack_require__(/*! C:\Users\terra\OneDrive\Desktop\progetto finale\DeliveBoo\resources\js\functionsJS\validationRequiredGroupCheckbox.js */"./resources/js/functionsJS/validationRequiredGroupCheckbox.js");
 
 
 /***/ })

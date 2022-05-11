@@ -9,6 +9,10 @@
   display: none;
 }
 
+.ms_text-transparent {
+  color: transparent;
+}
+
 .ms_fs1 {
   font-size: 2.5rem;
 }

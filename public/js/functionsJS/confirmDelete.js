@@ -124,7 +124,7 @@ for (var i = 0; i < buttons.length; i++) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\Matteo\Documents\Progetto finale Boolean\DeliveBoo\resources\js\functionsJS\confirmDelete.js */"./resources/js/functionsJS/confirmDelete.js");
+module.exports = __webpack_require__(/*! C:\Users\terra\OneDrive\Desktop\progetto finale\DeliveBoo\resources\js\functionsJS\confirmDelete.js */"./resources/js/functionsJS/confirmDelete.js");
 
 
 /***/ })
