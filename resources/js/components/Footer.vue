@@ -29,7 +29,7 @@
             <li><a href="#" class="text-white">Chi Siamo</a></li>
             <li><a href="#" class="text-white">Lavora con noi</a></li>
           </ul>
-
+ 
         </div>
 
          <div class="col d-flex flex-column align-items-center justify-content-center my-3">
