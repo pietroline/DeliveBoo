@@ -49,10 +49,11 @@
                 const item = {
                     "name": this.name,
                     "id": this.id,
-                    "price": this.price,
                     "description": this.description,
                     "ingredients": this.ingredients,
+                    "price": this.price,
                     "quantity": this.quantity,
+                    "total": this.price * this.quantity
                 }
 
                 this.$emit("addFood", item);

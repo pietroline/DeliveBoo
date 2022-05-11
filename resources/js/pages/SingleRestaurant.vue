@@ -47,28 +47,36 @@
       <tr>
         <th scope="col">Nome</th>
         <th scope="col">id</th>
-        <th scope="col">prezzo</th>
         <th scope="col">descrizione</th>
         <th scope="col">ingredienti</th>
+        <th scope="col">prezzo</th>
         <th scope="col">quantità</th>
+        <th scope="col">totale</th>
       </tr>
     </thead>
     <tbody>
       <tr v-for="item in cart" :key="'food_'+item.id">
         <td>{{item.name}}</td>
         <td>{{item.id}}</td>
-        <td>{{item.price}}</td>
         <td>{{item.description}}</td>
         <td>{{item.ingredients}}</td>
+        <td>{{item.price}} €</td>
         <td class="d-flex">
           <input type="number" class="ms_w-3rem mr-2" min:1 v-model="item.quantity">
-          <button class="btn btn-primary" @click="updateCart(item.id, item.quantity)">aggiorna</button>
-          <button class="btn btn-danger" @click="deleteToCart(item.id)">Rimuovi</button>
+          <button class="btn btn-primary" @click="updateCart(item.id, item.price, item.quantity)">aggiorna</button>
         </td>
+        <td>{{item.total}} €</td>
+        <td><button class="btn btn-danger" @click="deleteToCart(item.id)">Rimuovi</button></td>
       </tr>
 
     </tbody>
-</table>
+  </table>
+
+  <div class="d-flex justify-content-end align-items-center">
+    <div class="mr-3 ms_fs3" v-if="getTotal() > 0">Totale carrello {{getTotal()}} €</div>
+    <button class="btn btn-danger" @click="deleteCart()">Elimina carrello</button>
+  </div>
+
 
   <!-- fine carrello -->
 
@@ -232,19 +240,10 @@
 
     mounted() {
       this.getMenu(1);
-      this.fullName;
+      this.getCart();
     },
 
-    computed: {
-    fullName: function () {
-       this.cart.push(localStorage.getItem('cart'));
-       console.log(this.cart)
-    }
-  },
   
-      
-
-
     methods:{
 
 
@@ -253,15 +252,13 @@
           this.cart.splice(0, this.cart.length);
         },
 
-        addToCart(e){
+        addToCart(item){
           // aggiunge il food nel carrello
-          this.cart.push(e);
-
-          this.storeCart();
-          this.fullName;
+          this.cart.push(item);
+          localStorage.setItem( "cart", JSON.stringify(this.cart) );
         },
 
-        updateCart(idFood, newQuantity){
+        updateCart(idFood, price, newQuantity){
           // aggiorna la quantità del food passato ad argomento
 
           if(parseInt(newQuantity) && newQuantity > 0 && parseInt(idFood) && idFood > 0){
@@ -270,11 +267,11 @@
             this.cart.filter(item =>{
               if(item["id"] == idFood){
                 item["quantity"] = newQuantity;
+                item["total"] = price * newQuantity; 
               }
             })
           }
-
-          this.storeCart();
+          localStorage.setItem( "cart", JSON.stringify(this.cart) );
         },
 
         deleteToCart(idFood){
@@ -290,13 +287,26 @@
             });
             
           }
-
-          this.storeCart();
+          localStorage.setItem( "cart", JSON.stringify(this.cart) );
         },
 
-        storeCart(){
-          localStorage.setItem("cart", JSON.stringify(this.cart));
+        getTotal(){
+          let total = 0;
+          this.cart.forEach(item => {
+            total += item.total;
+          });
+          return total
         },
+
+
+        getCart(){
+
+           this.cart = JSON.parse( localStorage.getItem('cart') );
+
+           console.log(this.cart);
+        },
+
+    
 
       // fine metodi per carrello
 
