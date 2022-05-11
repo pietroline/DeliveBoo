@@ -2002,6 +2002,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Footer"
 });
@@ -2458,7 +2460,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#footer[data-v-61a7c374] {\n  color: #fff;\n  background-color: #ff8c28;\n}\n.img[data-v-61a7c374] {\n  width: 8rem;\n  padding: 5px;\n}\n#footer ul[data-v-61a7c374] {\n  list-style-type: none;\n  padding: 5px;\n}\n#footer i[data-v-61a7c374] {\n  color: white;\n  font-size: 30px;\n}\n#footer a[data-v-61a7c374] {\n  color: white;\n  font-size: 15px;\n}", ""]);
+exports.push([module.i, ".ms_text-transparent[data-v-61a7c374] {\n  color: transparent;\n}\n.ms_fs1[data-v-61a7c374] {\n  font-size: 2.5rem;\n}\n.ms_fs2[data-v-61a7c374] {\n  font-size: 2rem;\n}\n.ms_fs3[data-v-61a7c374] {\n  font-size: 1.75rem;\n}\n.ms_fs4[data-v-61a7c374] {\n  font-size: 1.5rem;\n}\n.ms_fs5[data-v-61a7c374] {\n  font-size: 1.25rem;\n}\n.ms_fs6[data-v-61a7c374] {\n  font-size: 1rem;\n}\n#footer[data-v-61a7c374] {\n  color: #fff;\n  background-color: #ff8c28;\n}\n.imgLogo[data-v-61a7c374] {\n  width: 15rem;\n}\n.imgApp[data-v-61a7c374] {\n  width: 10rem;\n}\n.imgCard[data-v-61a7c374] {\n  width: 5rem;\n  margin: 0 1.5rem;\n}", ""]);
 
 // exports
 
@@ -3632,124 +3634,270 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("section", { attrs: { id: "footer" } }, [
       _c("div", { staticClass: "container py-5" }, [
-        _c("div", { staticClass: "row text-white " }, [
-          _c("div", { staticClass: "col-12 col-md-6 col-xl-6" }, [
-            _c("h3", [_vm._v("Scarica App")]),
+        _c(
+          "div",
+          {
+            staticClass:
+              "row row-cols-1 row-cols-md-3 row-cols-xl-4 text-white ",
+          },
+          [
+            _c(
+              "div",
+              {
+                staticClass:
+                  "col col-md-12 d-flex flex-column align-items-center",
+              },
+              [
+                _c("div", { staticClass: "imgLogo" }, [
+                  _c("a", { attrs: { href: "#" } }, [
+                    _c("img", {
+                      staticClass: "w-100",
+                      attrs: {
+                        src: __webpack_require__(/*! ./../../../public/img/logo-white.png */ "./public/img/logo-white.png"),
+                        alt: "",
+                      },
+                    }),
+                  ]),
+                ]),
+              ]
+            ),
             _vm._v(" "),
-            _c("div", { staticClass: "col" }, [
-              _c("img", {
-                staticClass: "img",
-                attrs: {
-                  src: __webpack_require__(/*! ./../../../public/img/app-store.png */ "./public/img/app-store.png"),
-                  alt: "",
-                },
-              }),
-            ]),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "col d-flex flex-column align-items-center justify-content-center my-3",
+              },
+              [
+                _c("ul", { staticClass: "list-unstyled text-center" }, [
+                  _c("li", { staticClass: "ms_fs3 font-weight-bold" }, [
+                    _vm._v("Aiuto"),
+                  ]),
+                  _vm._v(" "),
+                  _c("li", [
+                    _c(
+                      "a",
+                      { staticClass: "text-white", attrs: { href: "#" } },
+                      [_vm._v("Contatti")]
+                    ),
+                  ]),
+                  _vm._v(" "),
+                  _c("li", [
+                    _c(
+                      "a",
+                      { staticClass: "text-white ", attrs: { href: "#" } },
+                      [_vm._v("Faq")]
+                    ),
+                  ]),
+                  _vm._v(" "),
+                  _c("li", [
+                    _c(
+                      "a",
+                      { staticClass: "text-white ", attrs: { href: "#" } },
+                      [_vm._v("Altro")]
+                    ),
+                  ]),
+                ]),
+              ]
+            ),
             _vm._v(" "),
-            _c("div", { staticClass: "col" }, [
-              _c("img", {
-                staticClass: "img",
-                attrs: {
-                  src: __webpack_require__(/*! ./../../../public/img/play-store.png */ "./public/img/play-store.png"),
-                  alt: "",
-                },
-              }),
-            ]),
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: " col-12 col-md-6 col-xl-2" }, [
-            _c("ul", [
-              _c("h3", [_vm._v("Aiuto")]),
-              _vm._v(" "),
-              _c("li", [
-                _c("a", { attrs: { href: "#" } }, [_vm._v("Contatti")]),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "col d-flex flex-column align-items-center justify-content-center my-3",
+              },
+              [
+                _c("ul", { staticClass: "list-unstyled text-center" }, [
+                  _c("li", { staticClass: "ms_fs3 font-weight-bold" }, [
+                    _vm._v("Scopri Deliveboo"),
+                  ]),
+                  _vm._v(" "),
+                  _c("li", [
+                    _c(
+                      "a",
+                      { staticClass: "text-white", attrs: { href: "#" } },
+                      [_vm._v("Accedi")]
+                    ),
+                  ]),
+                  _vm._v(" "),
+                  _c("li", [
+                    _c(
+                      "a",
+                      { staticClass: "text-white", attrs: { href: "#" } },
+                      [_vm._v("Chi Siamo")]
+                    ),
+                  ]),
+                  _vm._v(" "),
+                  _c("li", [
+                    _c(
+                      "a",
+                      { staticClass: "text-white", attrs: { href: "#" } },
+                      [_vm._v("Lavora con noi")]
+                    ),
+                  ]),
+                ]),
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "col d-flex flex-column align-items-center justify-content-center my-3",
+              },
+              [
+                _c("ul", { staticClass: "list-unstyled text-center" }, [
+                  _c("li", { staticClass: "ms_fs3 font-weight-bold" }, [
+                    _vm._v("Note legali"),
+                  ]),
+                  _vm._v(" "),
+                  _c("li", [
+                    _c(
+                      "a",
+                      { staticClass: "text-white", attrs: { href: "#" } },
+                      [_vm._v("Termini e condizioni")]
+                    ),
+                  ]),
+                  _vm._v(" "),
+                  _c("li", [
+                    _c(
+                      "a",
+                      { staticClass: "text-white", attrs: { href: "#" } },
+                      [_vm._v("Privacy")]
+                    ),
+                  ]),
+                  _vm._v(" "),
+                  _c("li", [
+                    _c(
+                      "a",
+                      { staticClass: "text-white", attrs: { href: "#" } },
+                      [_vm._v("Cookie")]
+                    ),
+                  ]),
+                ]),
+              ]
+            ),
+          ]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "row row-cols-1 row-cols-md-2" }, [
+          _c(
+            "div",
+            {
+              staticClass:
+                "col d-flex justify-content-center align-items-center my-3",
+            },
+            [
+              _c("a", { attrs: { href: "#" } }, [
+                _c("i", {
+                  staticClass: "bi bi-instagram mx-5 text-white ms_fs2",
+                }),
               ]),
               _vm._v(" "),
-              _c("li", [_c("a", { attrs: { href: "#" } }, [_vm._v("Faq")])]),
-              _vm._v(" "),
-              _c("li", [_c("a", { attrs: { href: "#" } }, [_vm._v("Altro")])]),
-            ]),
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-12 col-md-6 col-xl-2" }, [
-            _c("ul", [
-              _c("h4", [_vm._v("Scopri Deliveboo")]),
-              _vm._v(" "),
-              _c("li", [_c("a", { attrs: { href: "#" } }, [_vm._v("Accedi")])]),
-              _vm._v(" "),
-              _c("li", [
-                _c("a", { attrs: { href: "#" } }, [_vm._v("Chi Siamo")]),
+              _c("a", { attrs: { href: "#" } }, [
+                _c("i", {
+                  staticClass: "bi bi-facebook mx-5 text-white ms_fs2",
+                }),
               ]),
               _vm._v(" "),
-              _c("li", [
-                _c("a", { attrs: { href: "#" } }, [_vm._v("Lavora con noi")]),
+              _c("a", { attrs: { href: "#" } }, [
+                _c("i", {
+                  staticClass: "bi bi-twitter mx-5 text-white ms_fs2",
+                }),
               ]),
-            ]),
-          ]),
+            ]
+          ),
           _vm._v(" "),
-          _c("div", { staticClass: "col-12 col-md-6 col-xl-2" }, [
-            _c("ul", [
-              _c("h3", [_vm._v("Note legali")]),
+          _c(
+            "div",
+            {
+              staticClass:
+                "col d-flex flex-column flex-xl-row justify-content-around align-items-center my-3",
+            },
+            [
+              _c("div", { staticClass: "font-weight-bold ms_fs2 d-xl-none " }, [
+                _vm._v("Scarica App"),
+              ]),
               _vm._v(" "),
-              _c("li", [
+              _c("div", { staticClass: "imgApp my-2" }, [
                 _c("a", { attrs: { href: "#" } }, [
-                  _vm._v("Termini e condizioni"),
+                  _c("img", {
+                    staticClass: "w-100",
+                    attrs: {
+                      src: __webpack_require__(/*! ./../../../public/img/app-store.png */ "./public/img/app-store.png"),
+                      alt: "",
+                    },
+                  }),
                 ]),
               ]),
               _vm._v(" "),
-              _c("li", [
-                _c("a", { attrs: { href: "#" } }, [_vm._v("Privacy")]),
+              _c("div", { staticClass: "imgApp my-2" }, [
+                _c("a", { attrs: { href: "#" } }, [
+                  _c("img", {
+                    staticClass: "w-100",
+                    attrs: {
+                      src: __webpack_require__(/*! ./../../../public/img/play-store.png */ "./public/img/play-store.png"),
+                      alt: "",
+                    },
+                  }),
+                ]),
               ]),
-              _vm._v(" "),
-              _c("li", [_c("a", { attrs: { href: "#" } }, [_vm._v("Cookie")])]),
-            ]),
-          ]),
+            ]
+          ),
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "row mt-5" }, [
-          _c("div", { staticClass: "col-12 col-md-6 col-xl-6 text-white" }, [
-            _c("a", { attrs: { href: "#" } }, [
-              _c("i", { staticClass: "bi bi-instagram mr-3" }),
+        _c("div", { staticClass: "row row-cols-1 row-cols-md-2" }, [
+          _c("div", { staticClass: "col d-flex justify-content-center my-3" }, [
+            _c("div", { staticClass: "imgCard" }, [
+              _c("a", { attrs: { href: "#" } }, [
+                _c("img", {
+                  staticClass: "w-100",
+                  attrs: {
+                    src: __webpack_require__(/*! ./../../../public/img/logo-visa.png */ "./public/img/logo-visa.png"),
+                    alt: "",
+                  },
+                }),
+              ]),
             ]),
             _vm._v(" "),
-            _c("a", { attrs: { href: "#" } }, [
-              _c("i", { staticClass: "bi bi-facebook mr-3" }),
+            _c("div", { staticClass: "imgCard" }, [
+              _c("a", { attrs: { href: "#" } }, [
+                _c("img", {
+                  staticClass: "w-100",
+                  attrs: {
+                    src: __webpack_require__(/*! ./../../../public/img/logo-mastercard.png */ "./public/img/logo-mastercard.png"),
+                    alt: "",
+                  },
+                }),
+              ]),
             ]),
             _vm._v(" "),
-            _c("a", { attrs: { href: "#" } }, [
-              _c("i", { staticClass: "bi bi-twitter mr-3" }),
+            _c("div", { staticClass: "imgCard" }, [
+              _c("a", { attrs: { href: "#" } }, [
+                _c("img", {
+                  staticClass: "w-100",
+                  attrs: {
+                    src: __webpack_require__(/*! ./../../../public/img/logo-paypal.png */ "./public/img/logo-paypal.png"),
+                    alt: "",
+                  },
+                }),
+              ]),
             ]),
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "col-12 col-md-6 col-xl-2" }, [
-            _c("img", {
-              staticClass: "img",
-              attrs: {
-                src: __webpack_require__(/*! ./../../../public/img/visaver.png */ "./public/img/visaver.png"),
-                alt: "",
-              },
-            }),
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-12 col-md-6 col-xl-2" }, [
-            _c("img", {
-              staticClass: "img",
-              attrs: {
-                src: __webpack_require__(/*! ./../../../public/img/mastecardsc.png */ "./public/img/mastecardsc.png"),
-                alt: "",
-              },
-            }),
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-12 col-md-6 col-xl-2" }, [
-            _c("img", {
-              staticClass: "img",
-              attrs: {
-                src: __webpack_require__(/*! ./../../../public/img/PayPal.png */ "./public/img/PayPal.png"),
-                alt: "",
-              },
-            }),
-          ]),
+          _c(
+            "div",
+            {
+              staticClass:
+                "col d-flex justify-content-center align-items-center my-3",
+            },
+            [
+              _c("div", { staticClass: "ms_fs5" }, [
+                _vm._v("DeliveBoo Italy S.r.l. - P.IVA 05141940750"),
+              ]),
+            ]
+          ),
         ]),
       ]),
     ])
@@ -19583,17 +19731,6 @@ module.exports = g;
 
 /***/ }),
 
-/***/ "./public/img/PayPal.png":
-/*!*******************************!*\
-  !*** ./public/img/PayPal.png ***!
-  \*******************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/PayPal.png?882361dfde6914ceeaee52198f30f06c";
-
-/***/ }),
-
 /***/ "./public/img/app-store.png":
 /*!**********************************!*\
   !*** ./public/img/app-store.png ***!
@@ -19605,14 +19742,47 @@ module.exports = "/images/app-store.png?111c6806e394288f0b6b3e68116f6bb3";
 
 /***/ }),
 
-/***/ "./public/img/mastecardsc.png":
+/***/ "./public/img/logo-mastercard.png":
+/*!****************************************!*\
+  !*** ./public/img/logo-mastercard.png ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/logo-mastercard.png?e1d1e3c927d04dd67d8dfde9059850ec";
+
+/***/ }),
+
+/***/ "./public/img/logo-paypal.png":
 /*!************************************!*\
-  !*** ./public/img/mastecardsc.png ***!
+  !*** ./public/img/logo-paypal.png ***!
   \************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/mastecardsc.png?81f225e758c8c69323bce22e9464bab2";
+module.exports = "/images/logo-paypal.png?3f599c893ce56ffe7fbb0083a0a53c8d";
+
+/***/ }),
+
+/***/ "./public/img/logo-visa.png":
+/*!**********************************!*\
+  !*** ./public/img/logo-visa.png ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/logo-visa.png?5c99751171c2c79da9945b8c2c68ac01";
+
+/***/ }),
+
+/***/ "./public/img/logo-white.png":
+/*!***********************************!*\
+  !*** ./public/img/logo-white.png ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/logo-white.png?59d91be70792637c0b41e8d94138685f";
 
 /***/ }),
 
@@ -19624,17 +19794,6 @@ module.exports = "/images/mastecardsc.png?81f225e758c8c69323bce22e9464bab2";
 /***/ (function(module, exports) {
 
 module.exports = "/images/play-store.png?2ba0bf1b9d2f45c3d8c5416e11486393";
-
-/***/ }),
-
-/***/ "./public/img/visaver.png":
-/*!********************************!*\
-  !*** ./public/img/visaver.png ***!
-  \********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/visaver.png?c480625ab45660b1b302905618eca730";
 
 /***/ }),
 
@@ -20378,7 +20537,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\emanuela\Desktop\boolean\Progetto Finale\DeliveBoo\DeliveBoo\DeliveBoo\resources\js\front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! /home/pietroline/Scrivania/Personale/boolean/GitHub/progettoFinale/DeliveBoo/resources/js/front.js */"./resources/js/front.js");
 
 
 /***/ })

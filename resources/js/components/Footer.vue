@@ -1,134 +1,125 @@
 <template>
   <section id="footer">
     <div class="container py-5">
-      <div class="row text-white ">
-        <div class="col-12 col-md-6 col-xl-6">
-          <h3>Scarica App</h3>
-             <div class="col">
-          <img src="./../../../public/img/app-store.png" class="img" alt="" />
+
+      <div class="row row-cols-1 row-cols-md-3 row-cols-xl-4 text-white ">
+
+        <div class="col col-md-12 d-flex flex-column align-items-center">
+          <div class="imgLogo">
+              <a href="#"><img src="./../../../public/img/logo-white.png" class="w-100" alt="" /></a>
+          </div>
         </div>
-             <div class="col">
-        <img src="./../../../public/img/play-store.png" class="img" alt="" />
+
+        <div class="col d-flex flex-column align-items-center justify-content-center my-3">
+           
+          <ul class="list-unstyled text-center">
+            <li class="ms_fs3 font-weight-bold">Aiuto</li>
+            <li><a href="#" class="text-white">Contatti</a></li>
+            <li><a href="#" class="text-white ">Faq</a></li>
+            <li><a href="#" class="text-white ">Altro</a></li>
+          </ul>
+
         </div>
+
+         <div class="col d-flex flex-column align-items-center justify-content-center my-3">
+           
+          <ul class="list-unstyled text-center">
+            <li class="ms_fs3 font-weight-bold">Scopri Deliveboo</li>
+            <li><a href="#" class="text-white">Accedi</a></li>
+            <li><a href="#" class="text-white">Chi Siamo</a></li>
+            <li><a href="#" class="text-white">Lavora con noi</a></li>
+          </ul>
+
+        </div>
+
+         <div class="col d-flex flex-column align-items-center justify-content-center my-3">
+           
+          <ul class="list-unstyled text-center">
+            <li class="ms_fs3 font-weight-bold">Note legali</li>
+            <li><a href="#" class="text-white">Termini e condizioni</a></li>
+            <li><a href="#" class="text-white">Privacy</a></li>
+            <li><a href="#" class="text-white">Cookie</a></li>
+          </ul>
+
+        </div>
+      
+      </div>
+
+      <div class="row row-cols-1 row-cols-md-2">
+         <div class="col d-flex justify-content-center align-items-center my-3">
+            <a href="#"><i class="bi bi-instagram mx-5 text-white ms_fs2"></i></a>
+            <a href="#"><i class="bi bi-facebook mx-5 text-white ms_fs2"></i></a>
+            <a href="#"><i class="bi bi-twitter mx-5 text-white ms_fs2"></i></a>
+        </div>
+
+        <div class="col d-flex flex-column flex-xl-row justify-content-around align-items-center my-3">
+          <div class="font-weight-bold ms_fs2 d-xl-none ">Scarica App</div>
+         
+              <div class="imgApp my-2">
+                <a href="#"><img src="./../../../public/img/app-store.png" class="w-100" alt=""/></a>
+              </div>
+              <div class="imgApp my-2">
+                  <a href="#"><img src="./../../../public/img/play-store.png" class="w-100" alt=""/></a>
+              </div>
+         
+        </div>
+        
+      </div>
+
+      <div class="row row-cols-1 row-cols-md-2">
+        <div class="col d-flex justify-content-center my-3">
+
+          <div class="imgCard">
+            <a href="#"><img src="./../../../public/img/logo-visa.png" class="w-100" alt=""></a>
+          </div>
+
+          <div class="imgCard">
+             <a href="#"> <img src="./../../../public/img/logo-mastercard.png" class="w-100" alt=""></a>
+          </div>
+
+          <div class="imgCard">
+            <a href="#"><img src="./../../../public/img/logo-paypal.png" class="w-100" alt=""></a>
+          </div> 
+
+        </div>
+
+        <div class="col d-flex justify-content-center align-items-center my-3">
+          <div class="ms_fs5">DeliveBoo Italy S.r.l. - P.IVA 05141940750</div>
+        </div>
+      </div>
           
         
         
-        </div>
-        <!--
-        <div class="col-2">
-          <img src="./../../../public/img/visa.png" class="img-fluid" alt="" />
-        </div>
-        <div class="col-2">
-          <img
-            src="./../../../public/img/mastecard.png"
-            class="img-fluid"
-            alt=""
-          />
-        </div>
-        <div class="col-2">
-          <img src="./../../../public/img/PayPal.png" class="img-fluid" alt="" />
-        </div>
-        -->
-
-        <div class=" col-12 col-md-6 col-xl-2">
-           
-          <ul>
-           <h3>Aiuto</h3>
-            <li><a href="#">Contatti</a></li>
-            <li><a href="#">Faq</a></li>
-            <li><a href="#">Altro</a></li>
-          </ul>
-        </div>
-
-        <div class="col-12 col-md-6 col-xl-2">
-          <ul>
-            <h4>Scopri Deliveboo</h4>
-            <li><a href="#">Accedi</a></li>
-            <li><a href="#">Chi Siamo</a></li>
-            <li><a href="#">Lavora con noi</a></li>
-          </ul>
-        </div>
-
-        <div class="col-12 col-md-6 col-xl-2">
-          <ul>
-            <h3>Note legali</h3>
-            <li><a href="#">Termini e condizioni</a></li>
-            <li><a href="#">Privacy</a></li>
-            <li><a href="#">Cookie</a></li>
-          </ul>
-        </div>
-      </div>
-  
-
-      <div class="row mt-5">
-        <div class="col-12 col-md-6 col-xl-6 text-white">
-          <a href="#"><i class="bi bi-instagram mr-3"></i></a>
-          <a href="#"><i class="bi bi-facebook mr-3"></i></a>
-          <a href="#"><i class="bi bi-twitter mr-3"></i></a>
-        </div>
-
-        <div class="col-12 col-md-6 col-xl-2">
-           <img src="./../../../public/img/visaver.png" class="img" alt="">
-        
-        </div>
-        <div class="col-12 col-md-6 col-xl-2">
-           <img
-            src="./../../../public/img/mastecardsc.png"
-            class="img"
-            alt=""
-          />
-        </div>
-          <div class="col-12 col-md-6 col-xl-2">
-           <img
-            src="./../../../public/img/PayPal.png"
-            class="img"
-            alt=""
-          />
-        </div>
-      </div>
-
-      
     </div>
   </section>
 </template>
 
 <script>
-export default {
-  name: "Footer",
-};
+  export default {
+    name: "Footer",
+  };
 </script>
 
 <style lang="scss" scoped>
-#footer {
-  color: #fff;
-  background-color: #ff8c28;
-  // position: absolute;
-  // bottom: 0;
-  // right: 0;
-  // left: 0;
-  // margin: 0;
-}
 
-.img {
-  width: 8rem;
-  padding: 5px;
-}
+  @import "./../../sass/common.scss";
+  #footer {
+    color: #fff;
+    background-color: #ff8c28;
+  }
 
-#footer ul {
-  list-style-type: none;
-  padding: 5px;
-  
-}
+  .imgLogo {
+    width: 15rem;
+  }
 
-#footer i {
-  color: #ffff;
-  font-size: 30px;
-}
+  .imgApp {
+    width: 10rem;
+  }
 
-#footer a {
-  color: #ffff;
-  font-size: 15px;
-  
-}
+  .imgCard{
+    width: 5rem;
+    margin: 0 1.5rem;
+  }
+
 </style>
 
