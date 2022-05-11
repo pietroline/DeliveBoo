@@ -1,5 +1,11 @@
 @extends('admin.layouts.base')
 
+@section('scriptJS')
+    @if (!$restaurant)
+        <script src="{{ asset('js/functionsJS/validatorCheckbox.js') }}" defer></script>
+    @endif
+@endsection
+
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
@@ -45,46 +51,65 @@
                             </ul>
                         @else
 
-                            <form method="POST" action="{{route('admin.restaurants.store')}}">
+                            <form id="sectionForm" class="needs-validation" novalidate method="POST" action="{{route('admin.restaurants.store')}}">
 
                                 @csrf
                 
                                 <div class="form-group">
                                     <label for="name">Nome ristorante *</label>
-                                    <input type="text" class="form-control" id="name" name="name" value="{{old("name")}}" required>
+                                    <input type="text" class="form-control" id="name" name="name" minlength="3" value="{{old("name")}}" required>
+                                    <div class="invalid-feedback">
+                                        Nome non valido
+                                    </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="address">Indirizzo ristorante *</label>
-                                    <input type="text" class="form-control" id="address" name="address" value="{{old("address")}}" required>
+                                    <input type="text" class="form-control" id="address" name="address" minlength="5" value="{{old("address")}}" required>
+                                    <div class="invalid-feedback">
+                                        Indirizzo non valido
+                                    </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="phone">Numero telefono ristorante *</label>
-                                    <input type="number" class="form-control" id="phone" name="phone" value="{{old("phone")}}" required>
+                                    <input type="tel" pattern="[0-9]{6,15}" class="form-control" id="phone" name="phone" value="{{old("phone")}}" required>
+                                    <div class="invalid-feedback">
+                                        Numero non valido
+                                    </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="email">Email ristorante *</label>
                                     <input type="email" class="form-control" id="email" name="email" value="{{old("email")}}" required>
+                                    <div class="invalid-feedback">
+                                        Email non valida
+                                    </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="vat">Partita IVA *</label>
-                                    <input type="text" class="form-control" id="vat" name="vat" value="{{old("vat")}}" required>
+                                    <input type="text" class="form-control" id="vat" name="vat" minlength="11" maxlength="11" value="{{old("vat")}}" required>
+                                    <div class="invalid-feedback">
+                                        Partita IVA non valida
+                                    </div>
                                 </div>
 
                                 <div class="my-4">
-                                    <label class="mb-0">Tipologie ristorante *</label>
-                                    <small id="mJS_displayRequired" class="ms_text-transparent font-italic d-block py-1">Seleziona almeno una tipologia ristorante</small>
+                                    <label class="mb-1">Tipologie ristorante *</label>
+                                    <small id="mJS_displayRequired" class="ms_dysplay-none font-italic py-1">Seleziona almeno una tipologia ristorante</small>
                                     @foreach ($typologies as $typology)
 
                                         <div class="form-check">
                                             <input name="typologies[]" class="form-check-input mJS_checkbox" type="checkbox" value="{{$typology->id}}" id="typology_{{$typology->id}}" {{in_array($typology->id, old("typologies", [])) ? "checked" : ""}}>
                                             <label class="form-check-label" for="typology_{{$typology->id}}">{{$typology->name}}</label>
+                                            
                                         </div>
                                     
                                     @endforeach
+                                    {{-- <div class="invalid-feedback">
+                                        You must agree before submitting.
+                                    </div> --}}
 
                                 </div>
                               

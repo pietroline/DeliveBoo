@@ -3,5 +3,10 @@
     "/js/front.js": "/js/front.js",
     "/js/functionsJS/confirmDelete.js": "/js/functionsJS/confirmDelete.js",
     "/js/functionsJS/validationRequiredGroupCheckbox.js": "/js/functionsJS/validationRequiredGroupCheckbox.js",
+
+    "/js/functionsJS/validationformclientBootstrap.js": "/js/functionsJS/validationformclientBootstrap.js",
+    "/js/functionsJS/validatorCheckbox.js": "/js/functionsJS/validatorCheckbox.js"
+
     "/css/app.css": "/css/app.css"
+
 }

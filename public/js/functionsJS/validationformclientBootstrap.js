@@ -81,62 +81,48 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./resources/js/functionsJS/validationRequiredGroupCheckbox.js":
-/*!*********************************************************************!*\
-  !*** ./resources/js/functionsJS/validationRequiredGroupCheckbox.js ***!
-  \*********************************************************************/
+/***/ "./resources/js/functionsJS/validationformclientBootstrap.js":
+/*!*******************************************************************!*\
+  !*** ./resources/js/functionsJS/validationformclientBootstrap.js ***!
+  \*******************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-// inizio validazione group input checkbox
-// resources/views/admin/foods/index.blade.php
-var checkboxes = document.getElementsByClassName("mJS_checkbox");
-var displayRequired = document.getElementById("mJS_displayRequired");
-var checkboxTrue = 0;
+(function () {
+  'use strict';
 
-var _loop = function _loop(i) {
-  var checkbox = checkboxes[i];
-  checkbox.addEventListener("click", function (e) {
-    if (checkbox.checked) {
-      // quando viene impostato un check nelle input in esame incremento una variabile interna dello script
-      checkboxTrue++;
-    } else if (!checkbox.checked && checkboxTrue > 0) {
-      // quando viene tolto un check nelle input in esame decremento una variabile interna dello script
-      checkboxTrue--;
-    } // verifico se la variabile che tiene il conto dei check sulle input > 0 e imposto le classi adeguate
+  window.addEventListener('load', function () {
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.getElementsByClassName('needs-validation'); // Loop over them and prevent submission
 
+    var validation = Array.prototype.filter.call(forms, function (form) {
+      form.addEventListener('submit', function (event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
 
-    if (checkboxTrue == 0) {
-      displayRequired.classList.remove("ms_dysplay-none");
-      displayRequired.classList.add("text-danger", "ms_dysplay-block");
-    } else {
-      displayRequired.classList.remove("text-danger", "ms_dysplay-block");
-      displayRequired.classList.add("ms_dysplay-none");
-    }
-  });
-};
-
-for (var i = 0; i < checkboxes.length; i++) {
-  _loop(i);
-} // fine validazione group input checkbox
-// ----------------------------------------------------------------------------------------------------------
-// ----------------------------------------------------------------------------------------------------------
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
 
 /***/ }),
 
-/***/ 3:
-/*!***************************************************************************!*\
-  !*** multi ./resources/js/functionsJS/validationRequiredGroupCheckbox.js ***!
-  \***************************************************************************/
+/***/ 5:
+/*!*************************************************************************!*\
+  !*** multi ./resources/js/functionsJS/validationformclientBootstrap.js ***!
+  \*************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\Matteo\Documents\Progetto finale Boolean\DeliveBoo\resources\js\functionsJS\validationRequiredGroupCheckbox.js */"./resources/js/functionsJS/validationRequiredGroupCheckbox.js");
+module.exports = __webpack_require__(/*! C:\Users\Matteo\Documents\Progetto finale Boolean\DeliveBoo\resources\js\functionsJS\validationformclientBootstrap.js */"./resources/js/functionsJS/validationformclientBootstrap.js");
 
 
 /***/ })
