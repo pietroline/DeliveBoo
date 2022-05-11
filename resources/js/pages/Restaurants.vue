@@ -139,7 +139,7 @@
                         this.restaurants = response.data.results.data;
                         this.lastPage = response.data.results.last_page;
                     })
-                    .catch(error => {
+                    .catch(error => { 
                         // handle error
                         console.log(error);
                     })
