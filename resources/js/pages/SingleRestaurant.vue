@@ -2,11 +2,7 @@
   <div class="container" v-if="restaurant">
 
 
-
-
-
-
-   <!-- inizio dati ristorante -->
+  <!-- inizio dati ristorante -->
 
     <div class="row">
       <div class="col">
@@ -30,7 +26,57 @@
       </div>
     </div>
 
-   <!-- fine dati ristorante -->
+  <!-- fine dati ristorante -->
+
+
+
+
+
+
+
+
+
+
+
+  <!-- inizio carrello -->
+
+  <h1>Carrello</h1>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Nome</th>
+        <th scope="col">id</th>
+        <th scope="col">prezzo</th>
+        <th scope="col">descrizione</th>
+        <th scope="col">ingredienti</th>
+        <th scope="col">quantità</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="item in cart" :key="'food_'+item.id">
+        <td>{{item.name}}</td>
+        <td>{{item.id}}</td>
+        <td>{{item.price}}</td>
+        <td>{{item.description}}</td>
+        <td>{{item.ingredients}}</td>
+        <td class="d-flex">
+          <input type="number" class="ms_w-3rem mr-2" min:1 v-model="item.quantity">
+          <button class="btn btn-primary" @click="updateCart(item.id, item.quantity)">aggiorna</button>
+          <button class="btn btn-danger" @click="deleteToCart(item.id)">Rimuovi</button>
+        </td>
+      </tr>
+
+    </tbody>
+</table>
+
+  <!-- fine carrello -->
+
+
+
+
+
+
 
 
 
@@ -61,6 +107,7 @@
                     :price="food.price"
                     :description="food.description ? food.description : ''" 
                     :ingredients="food.ingredients"
+                    @addFood="addToCart"
                 />
 
             </div>
@@ -178,15 +225,82 @@
         restaurant: null,
         menuRestaurant: null,
         currentPage: 1,
-        lastPage: null
+        lastPage: null,
+        cart: [],
       };
     },
 
     mounted() {
       this.getMenu(1);
+      this.fullName;
     },
 
+    computed: {
+    fullName: function () {
+       this.cart.push(localStorage.getItem('cart'));
+       console.log(this.cart)
+    }
+  },
+  
+      
+
+
     methods:{
+
+
+      //inizio metodi per carrello
+        deleteCart(){
+          this.cart.splice(0, this.cart.length);
+        },
+
+        addToCart(e){
+          // aggiunge il food nel carrello
+          this.cart.push(e);
+
+          this.storeCart();
+          this.fullName;
+        },
+
+        updateCart(idFood, newQuantity){
+          // aggiorna la quantità del food passato ad argomento
+
+          if(parseInt(newQuantity) && newQuantity > 0 && parseInt(idFood) && idFood > 0){
+
+            // solo se newQuantity è un intero e newQuantity > 0 e idFood è un numero intero e idFood > 0
+            this.cart.filter(item =>{
+              if(item["id"] == idFood){
+                item["quantity"] = newQuantity;
+              }
+            })
+          }
+
+          this.storeCart();
+        },
+
+        deleteToCart(idFood){
+          // elimina il food passato ad argomento
+
+          if(parseInt(idFood) && idFood > 0){
+
+            // solo se idFood è un intero e idFood > 0
+            this.cart.forEach((item, count) => {
+              if(item["id"] == idFood){
+                this.cart.splice(count, 1);
+              }
+            });
+            
+          }
+
+          this.storeCart();
+        },
+
+        storeCart(){
+          localStorage.setItem("cart", JSON.stringify(this.cart));
+        },
+
+      // fine metodi per carrello
+
+
 
       getMenu(RequestPage){
         const $slug = this.$route.params.slug;
@@ -199,7 +313,6 @@
           })
           .then((response) => {
             // handle success
-            console.log(response)
             if (response.data.success == true) {
               this.currentPage = response.data.showMenuRestaurant.current_page;
               this.restaurant = response.data.showRestaurant;
@@ -214,9 +327,12 @@
             console.log(error);
           });
         }
-    }
+      },
   };
 </script>
 
 <style lang="scss" scoped>
+
+  @import "./../../sass/common.scss"
+
 </style>

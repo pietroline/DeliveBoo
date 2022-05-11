@@ -12,10 +12,10 @@
 
             <div class="d-flex align-items-center">
                 <label :for="'quantity_' + id" class="my-0 mx-2">Quantità</label>
-                <input type="number" :id="'quantity_' + id" value="1" class="ms_w50px">
+                <input type="number" :id="'quantity_' + id" value="1" v-model="quantity" class="ms_w50px">
             </div>
 
-            <button class="btn btn-primary my-3">Aggiungi al carrello</button>
+            <button class="btn btn-primary my-3" @click="pushItemInCart()">Aggiungi al carrello</button>
             
         </div>
     </div>
@@ -32,6 +32,34 @@
             "price": Number,
             "description":String,
             "ingredients":String
+        },
+
+        data(){
+            return{
+                quantity: 1,
+            }
+        },
+
+       
+
+        methods:{
+
+            pushItemInCart(){
+
+                const item = {
+                    "name": this.name,
+                    "id": this.id,
+                    "price": this.price,
+                    "description": this.description,
+                    "ingredients": this.ingredients,
+                    "quantity": this.quantity,
+                }
+
+                this.$emit("addFood", item);
+                
+                // localStorage.setItem("carrello", JSON.stringify(item));
+                // console.log(JSON.parse(localStorage.getItem("carrello")))
+            }
         }
     }
 </script>
