@@ -2210,6 +2210,35 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Restaurants",
@@ -2220,12 +2249,14 @@ __webpack_require__.r(__webpack_exports__);
     return {
       allTypologies: null,
       typologySelected: [],
-      restaurants: []
+      restaurants: [],
+      currentPage: 1,
+      lastPage: null
     };
   },
   mounted: function mounted() {
     this.getAllTypologies();
-    this.getAllRestaurants();
+    this.getAllRestaurants(1);
   },
   methods: {
     getAllTypologies: function getAllTypologies() {
@@ -2236,30 +2267,50 @@ __webpack_require__.r(__webpack_exports__);
         _this.allTypologies = response.data.results;
       });
     },
-    getAllRestaurants: function getAllRestaurants() {
+    getAllRestaurants: function getAllRestaurants(RequestPage) {
       var _this2 = this;
 
-      axios.get('/api/restaurants').then(function (response) {
+      axios.get('/api/restaurants', {
+        "params": {
+          "page": RequestPage
+        }
+      }).then(function (response) {
         // handle success
-        _this2.restaurants = response.data.results;
+        _this2.currentPage = response.data.results.current_page;
+        _this2.restaurants = response.data.results.data;
+        _this2.lastPage = response.data.results.last_page;
       })["catch"](function (error) {
         // handle error
         console.log(error);
       });
     },
-    getRestaurantsFiltered: function getRestaurantsFiltered() {
+    getRestaurantsFiltered: function getRestaurantsFiltered(RequestPage) {
       var _this3 = this;
 
       this.restaurants = []; // solo se typologySelected contiene almeno una tipologia faccio richiesta dei ristoranti filtrati, 
       // altrimenti torno tutti i ristoranti
 
       if (this.typologySelected.length > 0) {
-        axios.get('api/restaurant/' + this.typologySelected).then(function (response) {
-          _this3.restaurants = response.data.results;
+        axios.get('api/restaurant/' + this.typologySelected, {
+          "params": {
+            "page": RequestPage
+          }
+        }).then(function (response) {
+          // handle success
+          _this3.currentPage = response.data.results.current_page;
+          _this3.restaurants = response.data.results.data;
+          _this3.lastPage = response.data.results.last_page;
+        })["catch"](function (error) {
+          // handle error
+          console.log(error);
         });
       } else {
-        this.getAllRestaurants();
+        this.getAllRestaurants(RequestPage);
       }
+    },
+    mJS_selectedPage: function mJS_selectedPage(selectedPage) {
+      this.currentPage = selectedPage;
+      this.getRestaurantsFiltered(this.currentPage);
     }
   }
 });
@@ -4026,7 +4077,7 @@ var render = function () {
         on: {
           submit: function ($event) {
             $event.preventDefault()
-            return _vm.getRestaurantsFiltered()
+            return _vm.getRestaurantsFiltered(1)
           },
         },
       },
@@ -4091,13 +4142,13 @@ var render = function () {
       2
     ),
     _vm._v(" "),
-    _vm.restaurants.length > 0
+    _vm.restaurants
       ? _c("section", [
           _vm._m(1),
           _vm._v(" "),
           _c(
             "div",
-            { staticClass: "row row-cols-4" },
+            { staticClass: "row row-cols-3" },
             _vm._l(_vm.restaurants, function (restaurant) {
               return _c(
                 "div",
@@ -4119,6 +4170,82 @@ var render = function () {
       : _c("section", [
           _c("h1", [_vm._v("Non ci sono ristoranti da visualizzare")]),
         ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row justify-content-center my-5" }, [
+      _c("nav", { attrs: { "aria-label": "Page navigation" } }, [
+        _c(
+          "ul",
+          { staticClass: "pagination justify-content-center" },
+          [
+            _c(
+              "li",
+              {
+                staticClass: "page-item",
+                class: _vm.currentPage == 1 ? "disabled" : "",
+              },
+              [
+                _c(
+                  "span",
+                  {
+                    staticClass: "page-link ms_cursor_pointer",
+                    on: {
+                      click: function ($event) {
+                        return _vm.getRestaurantsFiltered(_vm.currentPage - 1)
+                      },
+                    },
+                  },
+                  [_vm._v("Precedente")]
+                ),
+              ]
+            ),
+            _vm._v(" "),
+            _vm._l(_vm.lastPage, function (page) {
+              return _c(
+                "li",
+                {
+                  key: page,
+                  staticClass: "page-item",
+                  class: page == _vm.currentPage ? "active" : "",
+                  on: {
+                    click: function ($event) {
+                      return _vm.mJS_selectedPage(page)
+                    },
+                  },
+                },
+                [
+                  _c("span", { staticClass: "page-link ms_cursor_pointer" }, [
+                    _vm._v(_vm._s(page)),
+                  ]),
+                ]
+              )
+            }),
+            _vm._v(" "),
+            _c(
+              "li",
+              {
+                staticClass: "page-item",
+                class: _vm.currentPage == _vm.lastPage ? "disabled" : "",
+              },
+              [
+                _c(
+                  "span",
+                  {
+                    staticClass: "page-link ms_cursor_pointer",
+                    on: {
+                      click: function ($event) {
+                        return _vm.getRestaurantsFiltered(_vm.currentPage + 1)
+                      },
+                    },
+                  },
+                  [_vm._v("Successivo")]
+                ),
+              ]
+            ),
+          ],
+          2
+        ),
+      ]),
+    ]),
   ])
 }
 var staticRenderFns = [
