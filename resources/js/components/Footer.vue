@@ -56,10 +56,10 @@
           <div class="font-weight-bold ms_fs2 d-xl-none ">Scarica App</div>
          
               <div class="imgApp my-2">
-                <a href="#"><img src="./../../../public/img/app-store.png" class="w-100" alt=""/></a>
+                <a href="#"><img src="./../../../public/img/play-store.png" class="w-100" alt=""/></a>
               </div>
               <div class="imgApp my-2">
-                  <a href="#"><img src="./../../../public/img/play-store.png" class="w-100" alt=""/></a>
+                <a href="#"><img src="./../../../public/img/play-store.png" class="w-100" alt=""/></a>
               </div>
          
         </div>
