@@ -1955,6 +1955,53 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Footer"
 });
@@ -2411,7 +2458,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#footer[data-v-61a7c374] {\n  color: #fff;\n  background-color: #ff8c28;\n  position: absolute;\n  bottom: 0;\n  right: 0;\n  left: 0;\n  margin: 0;\n}\n.img[data-v-61a7c374] {\n  width: 10rem;\n}\n#footer ul[data-v-61a7c374] {\n  list-style-type: none;\n}\n#footer i[data-v-61a7c374] {\n  color: white;\n  font-size: 30px;\n}\n#footer a[data-v-61a7c374] {\n  color: white;\n  font-size: 15px;\n}", ""]);
+exports.push([module.i, "#footer[data-v-61a7c374] {\n  color: #fff;\n  background-color: #ff8c28;\n}\n.img[data-v-61a7c374] {\n  width: 8rem;\n  padding: 5px;\n}\n#footer ul[data-v-61a7c374] {\n  list-style-type: none;\n  padding: 5px;\n}\n#footer i[data-v-61a7c374] {\n  color: white;\n  font-size: 30px;\n}\n#footer a[data-v-61a7c374] {\n  color: white;\n  font-size: 15px;\n}", ""]);
 
 // exports
 
@@ -3585,22 +3632,32 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("section", { attrs: { id: "footer" } }, [
       _c("div", { staticClass: "container py-5" }, [
-        _c("div", { staticClass: "row text-white fw-bold" }, [
-          _c("div", { staticClass: "col-12 col-lg-6" }, [
-            _c("a", { attrs: { href: "#" } }, [
-              _c("i", { staticClass: "bi bi-instagram mr-3" }),
+        _c("div", { staticClass: "row text-white " }, [
+          _c("div", { staticClass: "col-12 col-md-6 col-xl-6" }, [
+            _c("h3", [_vm._v("Scarica App")]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col" }, [
+              _c("img", {
+                staticClass: "img",
+                attrs: {
+                  src: __webpack_require__(/*! ./../../../public/img/app-store.png */ "./public/img/app-store.png"),
+                  alt: "",
+                },
+              }),
             ]),
             _vm._v(" "),
-            _c("a", { attrs: { href: "#" } }, [
-              _c("i", { staticClass: "bi bi-facebook" }),
-            ]),
-            _vm._v(" "),
-            _c("a", { attrs: { href: "#" } }, [
-              _c("i", { staticClass: "bi bi-twitter" }),
+            _c("div", { staticClass: "col" }, [
+              _c("img", {
+                staticClass: "img",
+                attrs: {
+                  src: __webpack_require__(/*! ./../../../public/img/play-store.png */ "./public/img/play-store.png"),
+                  alt: "",
+                },
+              }),
             ]),
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "col-12 col-lg-2" }, [
+          _c("div", { staticClass: " col-12 col-md-6 col-xl-2" }, [
             _c("ul", [
               _c("h3", [_vm._v("Aiuto")]),
               _vm._v(" "),
@@ -3614,13 +3671,11 @@ var staticRenderFns = [
             ]),
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "col-12 col-lg-2" }, [
+          _c("div", { staticClass: "col-12 col-md-6 col-xl-2" }, [
             _c("ul", [
-              _c("h3", [_vm._v("Scopri Deliveboo")]),
+              _c("h4", [_vm._v("Scopri Deliveboo")]),
               _vm._v(" "),
-              _c("li", [
-                _c("a", { attrs: { href: "#" } }, [_vm._v("Acceddi")]),
-              ]),
+              _c("li", [_c("a", { attrs: { href: "#" } }, [_vm._v("Accedi")])]),
               _vm._v(" "),
               _c("li", [
                 _c("a", { attrs: { href: "#" } }, [_vm._v("Chi Siamo")]),
@@ -3632,7 +3687,7 @@ var staticRenderFns = [
             ]),
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "col-12 col-lg-2" }, [
+          _c("div", { staticClass: "col-12 col-md-6 col-xl-2" }, [
             _c("ul", [
               _c("h3", [_vm._v("Note legali")]),
               _vm._v(" "),
@@ -3643,9 +3698,7 @@ var staticRenderFns = [
               ]),
               _vm._v(" "),
               _c("li", [
-                _c("a", { attrs: { href: "#" } }, [
-                  _vm._v("Informatica sulla privacy"),
-                ]),
+                _c("a", { attrs: { href: "#" } }, [_vm._v("Privacy")]),
               ]),
               _vm._v(" "),
               _c("li", [_c("a", { attrs: { href: "#" } }, [_vm._v("Cookie")])]),
@@ -3653,18 +3706,50 @@ var staticRenderFns = [
           ]),
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-12 col-lg-6 text-white fw-bold" }, [
-            _vm._v("carte di credito"),
+        _c("div", { staticClass: "row mt-5" }, [
+          _c("div", { staticClass: "col-12 col-md-6 col-xl-6 text-white" }, [
+            _c("a", { attrs: { href: "#" } }, [
+              _c("i", { staticClass: "bi bi-instagram mr-3" }),
+            ]),
+            _vm._v(" "),
+            _c("a", { attrs: { href: "#" } }, [
+              _c("i", { staticClass: "bi bi-facebook mr-3" }),
+            ]),
+            _vm._v(" "),
+            _c("a", { attrs: { href: "#" } }, [
+              _c("i", { staticClass: "bi bi-twitter mr-3" }),
+            ]),
           ]),
           _vm._v(" "),
-          _c("img", {
-            staticClass: "img",
-            attrs: {
-              src: __webpack_require__(/*! ./../../../public/img/logo-white.png */ "./public/img/logo-white.png"),
-              alt: "",
-            },
-          }),
+          _c("div", { staticClass: "col-12 col-md-6 col-xl-2" }, [
+            _c("img", {
+              staticClass: "img",
+              attrs: {
+                src: __webpack_require__(/*! ./../../../public/img/visaver.png */ "./public/img/visaver.png"),
+                alt: "",
+              },
+            }),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-12 col-md-6 col-xl-2" }, [
+            _c("img", {
+              staticClass: "img",
+              attrs: {
+                src: __webpack_require__(/*! ./../../../public/img/mastecardsc.png */ "./public/img/mastecardsc.png"),
+                alt: "",
+              },
+            }),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-12 col-md-6 col-xl-2" }, [
+            _c("img", {
+              staticClass: "img",
+              attrs: {
+                src: __webpack_require__(/*! ./../../../public/img/PayPal.png */ "./public/img/PayPal.png"),
+                alt: "",
+              },
+            }),
+          ]),
         ]),
       ]),
     ])
@@ -19498,14 +19583,58 @@ module.exports = g;
 
 /***/ }),
 
-/***/ "./public/img/logo-white.png":
+/***/ "./public/img/PayPal.png":
+/*!*******************************!*\
+  !*** ./public/img/PayPal.png ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/PayPal.png?882361dfde6914ceeaee52198f30f06c";
+
+/***/ }),
+
+/***/ "./public/img/app-store.png":
+/*!**********************************!*\
+  !*** ./public/img/app-store.png ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/app-store.png?111c6806e394288f0b6b3e68116f6bb3";
+
+/***/ }),
+
+/***/ "./public/img/mastecardsc.png":
+/*!************************************!*\
+  !*** ./public/img/mastecardsc.png ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/mastecardsc.png?81f225e758c8c69323bce22e9464bab2";
+
+/***/ }),
+
+/***/ "./public/img/play-store.png":
 /*!***********************************!*\
-  !*** ./public/img/logo-white.png ***!
+  !*** ./public/img/play-store.png ***!
   \***********************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/logo-white.png?59d91be70792637c0b41e8d94138685f";
+module.exports = "/images/play-store.png?2ba0bf1b9d2f45c3d8c5416e11486393";
+
+/***/ }),
+
+/***/ "./public/img/visaver.png":
+/*!********************************!*\
+  !*** ./public/img/visaver.png ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/visaver.png?c480625ab45660b1b302905618eca730";
 
 /***/ }),
 
@@ -20249,7 +20378,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/pietroline/Scrivania/Personale/boolean/GitHub/progettoFinale/DeliveBoo/resources/js/front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! C:\Users\emanuela\Desktop\boolean\Progetto Finale\DeliveBoo\DeliveBoo\DeliveBoo\resources\js\front.js */"./resources/js/front.js");
 
 
 /***/ })

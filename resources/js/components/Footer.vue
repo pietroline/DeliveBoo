@@ -1,47 +1,94 @@
 <template>
   <section id="footer">
     <div class="container py-5">
-      <div class="row text-white fw-bold">
-        <div class="col-12 col-lg-6">
-          <a href="#"><i class="bi bi-instagram mr-3"></i></a>
-          <a href="#"><i class="bi bi-facebook"></i></a>
-          <a href="#"><i class="bi bi-twitter"></i></a>
+      <div class="row text-white ">
+        <div class="col-12 col-md-6 col-xl-6">
+          <h3>Scarica App</h3>
+             <div class="col">
+          <img src="./../../../public/img/app-store.png" class="img" alt="" />
         </div>
-        <div class="col-12 col-lg-2">
+             <div class="col">
+        <img src="./../../../public/img/play-store.png" class="img" alt="" />
+        </div>
+          
+        
+        
+        </div>
+        <!--
+        <div class="col-2">
+          <img src="./../../../public/img/visa.png" class="img-fluid" alt="" />
+        </div>
+        <div class="col-2">
+          <img
+            src="./../../../public/img/mastecard.png"
+            class="img-fluid"
+            alt=""
+          />
+        </div>
+        <div class="col-2">
+          <img src="./../../../public/img/PayPal.png" class="img-fluid" alt="" />
+        </div>
+        -->
+
+        <div class=" col-12 col-md-6 col-xl-2">
+           
           <ul>
-            <h3>Aiuto</h3>
+           <h3>Aiuto</h3>
             <li><a href="#">Contatti</a></li>
             <li><a href="#">Faq</a></li>
             <li><a href="#">Altro</a></li>
           </ul>
         </div>
 
-        <div class="col-12 col-lg-2">
+        <div class="col-12 col-md-6 col-xl-2">
           <ul>
-            <h3>Scopri Deliveboo</h3>
-            <li><a href="#">Acceddi</a></li>
+            <h4>Scopri Deliveboo</h4>
+            <li><a href="#">Accedi</a></li>
             <li><a href="#">Chi Siamo</a></li>
             <li><a href="#">Lavora con noi</a></li>
           </ul>
         </div>
 
-        <div class="col-12 col-lg-2">
+        <div class="col-12 col-md-6 col-xl-2">
           <ul>
             <h3>Note legali</h3>
             <li><a href="#">Termini e condizioni</a></li>
-            <li><a href="#">Informatica sulla privacy</a></li>
+            <li><a href="#">Privacy</a></li>
             <li><a href="#">Cookie</a></li>
           </ul>
         </div>
       </div>
+  
 
-       <div class="row">
-        <div class="col-12 col-lg-6 text-white fw-bold">carte di credito</div>
-          <img src="./../../../public/img/logo-white.png"  class="img" alt="">
+      <div class="row mt-5">
+        <div class="col-12 col-md-6 col-xl-6 text-white">
+          <a href="#"><i class="bi bi-instagram mr-3"></i></a>
+          <a href="#"><i class="bi bi-facebook mr-3"></i></a>
+          <a href="#"><i class="bi bi-twitter mr-3"></i></a>
+        </div>
+
+        <div class="col-12 col-md-6 col-xl-2">
+           <img src="./../../../public/img/visaver.png" class="img" alt="">
+        
+        </div>
+        <div class="col-12 col-md-6 col-xl-2">
+           <img
+            src="./../../../public/img/mastecardsc.png"
+            class="img"
+            alt=""
+          />
+        </div>
+          <div class="col-12 col-md-6 col-xl-2">
+           <img
+            src="./../../../public/img/PayPal.png"
+            class="img"
+            alt=""
+          />
+        </div>
       </div>
 
+      
     </div>
-
   </section>
 </template>
 
@@ -55,20 +102,22 @@ export default {
 #footer {
   color: #fff;
   background-color: #ff8c28;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  margin: 0;
-
+  // position: absolute;
+  // bottom: 0;
+  // right: 0;
+  // left: 0;
+  // margin: 0;
 }
 
-.img{
-  width: 10rem;
+.img {
+  width: 8rem;
+  padding: 5px;
 }
 
 #footer ul {
   list-style-type: none;
+  padding: 5px;
+  
 }
 
 #footer i {
@@ -79,6 +128,7 @@ export default {
 #footer a {
   color: #ffff;
   font-size: 15px;
+  
 }
 </style>
 
