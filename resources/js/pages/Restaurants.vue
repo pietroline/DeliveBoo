@@ -36,7 +36,7 @@
                 <h1>Elenco ristoranti</h1>
             </div>
 
-            <div class="row row-cols-3">
+            <div class="row row-cols-3 ms_list">
                 <div class="col card-group" v-for="restaurant in restaurants" :key="'restaurant_'+restaurant.id">
 
                     <Restaurant 
@@ -181,6 +181,12 @@
     }
 </script>
 
-<style>
+<style lang="scss" scoped>
+@import "../../sass/_variables.scss";
+
+.ms_list{
+    background-color: $lightOrange;
+}
+
 
 </style>

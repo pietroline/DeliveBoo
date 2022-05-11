@@ -4,7 +4,7 @@
 
         <!-- <img src="..." class="card-img-top" alt="..."> -->
         
-        <div class="card-body">
+        <div class="card-body ms_card">
             <h5 class="card-title">{{name}}</h5>
         
             <div class="d-flex justify-content-center my-4">
@@ -26,6 +26,19 @@
     }
 </script>
 
-<style>
+<style lang="scss" scoped>
+@import "../../../sass/variables.scss";
+
+
+.ms_card {
+    border: 1px solid $darkOrange;
+    border-radius: 5px;
+}
+.ms_btn{
+    background-color: $darkOrange;
+    border: 1px solid $lightOrange;
+    color: white;
+    font-weight: bold;
+}
 
 </style>
