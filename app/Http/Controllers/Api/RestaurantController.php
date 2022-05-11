@@ -27,19 +27,6 @@ class RestaurantController extends Controller
     } 
 
     /**
-     * Funzione utilizzata per create a partire da un array un istanza di impaginazione manuale
-     * vedi https://laravel.com/docs/9.x/pagination#manually-creating-a-paginator
-     *
-     * @return \Illuminate\Http\Response
-     */
-    private function paginate($items, $perPage = 9, $page = null, $options = [])
-    {
-        $page = $page ?: (Paginator::resolveCurrentPage() ?: 1);
-        $items = $items instanceof Collection ? $items : Collection::make($items);
-        return new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, $options);
-    } 
-
-    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
