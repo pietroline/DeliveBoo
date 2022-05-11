@@ -37,6 +37,10 @@
                         routeName: "restaurants",
                         label: "Ristoranti"
                     },
+                    {
+                        routeName: "cart",
+                        label: "Carrello"
+                    }
                 ],
                
 
