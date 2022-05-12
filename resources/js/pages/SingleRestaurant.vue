@@ -310,10 +310,10 @@
 
 
         getCart(){
-          localStorage.setItem( "cart", JSON.stringify(this.cart) );
+          // localStorage.setItem( "cart", JSON.stringify(this.cart) );
            this.cart = JSON.parse(localStorage.getItem('cart') );
 
-           console.log(this.cart);
+          
         },
 
     
