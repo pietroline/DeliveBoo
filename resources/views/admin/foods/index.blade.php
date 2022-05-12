@@ -53,6 +53,17 @@
                         @endforeach
                     </tbody>
                   </table>
+
+                  {{-- inizio Leggenda --}}
+                  <div class="row row-cols-2">
+                      <div class="col d-flex align-items-center">
+                        <span class="bg-success rounded-circle ms_w-1rem ms_h-1rem d-inline-block mr-1"> </span>
+                        <span class="mr-3"> = Visibile al cliente; </span>
+                        <span class="bg-danger rounded-circle ms_w-1rem ms_h-1rem d-inline-block mr-1"> </span>
+                        <span> = Non visibile al cliente;</span>
+                      </div>
+                  </div>
+                  {{-- fine leggenda --}}
             </div>
         </div>
     </div>
