@@ -10,11 +10,6 @@
             <p class="card-text" v-if="description"><strong>Descrizione:</strong>{{description}}</p>
             <p class="card-text"><strong>Ingredienti: </strong>{{ingredients}}</p>
 
-            <div class="d-flex align-items-center">
-                <label :for="'quantity_' + id" class="my-0 mx-2">Quantità</label>
-                <input type="number" :id="'quantity_' + id" value="1" class="ms_w50px">
-            </div>
-
             <button class="btn btn-primary my-3" @click="pushItemInCart()">Aggiungi al carrello</button>
             
         </div>
@@ -55,9 +50,7 @@
                 }
 
                 this.$emit("addFood", item);
-                
-                // localStorage.setItem("carrello", JSON.stringify(item));
-                // console.log(JSON.parse(localStorage.getItem("carrello")))
+
             }
         }
 
