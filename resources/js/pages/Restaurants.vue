@@ -4,21 +4,21 @@
 
 <!-- inizio filtro ristoranti -->
 
-    <div class="row ms_fs3 mt-5">Filtro ristoranti per tipologie</div>
+    <div class="row ms_fs3 mt-5 mb-3 ms_title1">Filtro ristoranti per tipologie</div>
 
     <form class="row mb-5" @submit.prevent="getRestaurantsFiltered(1)" >
 
         <div class="col" v-for="typology in allTypologies" :key="typology.id">
 
             <div class="form-check">
-                <input  type="checkbox" class="form-check-input" v-model="typologySelected" :value="typology.id" :id="'typology_' + typology.id">
+                <input  type="checkbox" class="form-check-input ms_checkbox" v-model="typologySelected" :value="typology.id" :id="'typology_' + typology.id">
                 <label class="form-check-label" :for="'typology_' + typology.id">{{typology.name}}</label>
             </div>
 
         </div>
             
             <div class="col d-flex justify-content-center">
-                <button type="submit" class="btn btn-primary">Cerca</button>
+                <button type="submit" class="btn ms_btn1">Cerca</button>
             </div>
         
     </form>
@@ -33,10 +33,10 @@
 
 
              <div class="row">
-                <h1>Elenco ristoranti</h1>
+                <h1 class="ms_title1">Elenco ristoranti</h1>
             </div>
 
-            <div class="row row-cols-3">
+            <div class="row row-cols-3 ms_list">
                 <div class="col card-group" v-for="restaurant in restaurants" :key="'restaurant_'+restaurant.id">
 
                     <Restaurant 
@@ -181,6 +181,42 @@
     }
 </script>
 
-<style>
+<style lang="scss" scoped>
+@import "../../sass/_variables.scss";
+
+.ms_list{
+    background-color: $lightOrange;
+}
+
+.ms_title1{
+    color: $darkOrange;
+    font-weight: bolder;
+}
+
+.ms_btn1{
+      background-color: $darkOrange;
+    border: 1px solid $lightOrange;
+    color: white;
+    font-weight: bold;
+}
+
+
+.ms_checkbox {
+    -webkit-appearance: none;
+	background-color: $lightOrange;
+	border: 1px solid $darkOrange;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);
+	padding: 9px;
+	border-radius: 3px;
+	display: inline-block;
+    
+}
+
+.ms_checkbox:checked {
+	background-color: $darkOrange;
+	border: 1px solid $lightOrange;
+	box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05), inset 15px 10px -12px rgba(255,255,255,0.1);
+	color: white;
+}
 
 </style>
