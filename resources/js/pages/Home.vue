@@ -2,10 +2,7 @@
     <div class="container-fluid mt-3">
         <div class="row ms_carousel">
             <Carousel/>
-
             <BannerWorkForUs/>
-
-
             <Restaurants/>
             
 
@@ -26,7 +23,7 @@ import Restaurants from '../components/partials/Restaurants.vue'
 
         components:{
             Carousel,
-            BannerWorkForUs
+            BannerWorkForUs,
             Restaurants,
         }
     }
@@ -34,9 +31,9 @@ import Restaurants from '../components/partials/Restaurants.vue'
 
 <style lang="scss" scoped>
 
-.ms_carousel{
-    height: 400px;
-}
+    .ms_carousel{
+        height: 400px;
+    }
 
 
 </style> 
