@@ -9,16 +9,16 @@
 
         <div class="col-12 col-md-4 col-lg-1 d-flex align-items-center">
             <ul class="list-unstyled">
-                <li class="ms_fs3 font-weight-bold">
+                <li class="ms_fs2 font-weight-bold">
                   Aiuto
                 </li>
-                <li>
+                <li class="ms_fs5">
                   <a href="#">Contatti</a>
                 </li>
-                <li>
+                <li class="ms_fs5">
                   <a href="#">Faq</a>
                 </li>
-                <li>
+                <li class="ms_fs5">
                   <a href="#">Altro</a>
                 </li>
             </ul>
@@ -26,16 +26,16 @@
 
         <div class="col-12 col-md-4 col-lg-2 d-flex align-items-center">
             <ul class="list-unstyled">
-              <li  class="ms_fs3 font-weight-bold">
+              <li  class="ms_fs2 font-weight-bold">
                 Scopri Deliveboo
               </li>
-              <li>
+              <li class="ms_fs5">
                 <a href="#">Accedi</a>
               </li>
-              <li>
+              <li class="ms_fs5">
                 <a href="#">Chi Siamo</a>
               </li>
-              <li>
+              <li class="ms_fs5">
                 <a href="#">Lavora con noi</a>
               </li>
             </ul>
@@ -43,44 +43,43 @@
 
         <div class="col-12 col-md-4 col-lg-2 d-flex align-items-center">
             <ul class="list-unstyled">
-              <li  class="ms_fs3 font-weight-bold">
+              <li  class="ms_fs2 font-weight-bold">
                 Note legali
               </li>
-              <li>
+              <li class="ms_fs5">
                 <a href="#">Termini e condizioni</a>
               </li>
-              <li>
+              <li class="ms_fs5">
                 <a href="#">Privacy</a>
               </li>
-              <li>
+              <li class="ms_fs5">
                 <a href="#">Cookie</a>
               </li>
             </ul>
         </div>
       </div>
 
-      <div class="row justify-content-center">
-          <div class="col-12 col-md-6 col-lg-5 d-flex align-items-center">
-            <a href="#"><i class="bi bi-instagram mx-4 text-white ms_fs2"></i></a>
-            <a href="#"><i class="bi bi-facebook mx-4 text-white ms_fs2"></i></a>
-            <a href="#"><i class="bi bi-twitter mx-4 text-white ms_fs2"></i></a>
-          </div>
+      <div class="row justify-content-center my-3">
+        <div class="col-lg-5"></div>
+        <div class="col-12 col-md-6 col-lg-5 d-flex align-items-center">
+          
+            <a href="#" class="width-a m-auto"><img src="./../../../public/img/instagram.jpg" class="img-fluid rounded-circle" alt=""/></a>
+          
+            <a href="#" class="width-a m-auto"><img src="./../../../public/img/facebook.jpg" class="img-fluid rounded-circle" alt=""/></a>
 
-          <div class="col-12 col-md-6 col-lg-5 d-flex justify-content-center">
-            <div class="imgApp m-2">
-              <a href="#"><img src="./../../../public/img/app-store.png" class="w-100" alt=""/></a>
-            </div>
-            <div class="imgApp m-2">
-              <a href="#"><img src="./../../../public/img/play-store.png" class="w-100" alt=""/></a>
-            </div>
-              
-          </div>
+            <a href="#" class="width-a m-auto"><img src="./../../../public/img/twitter.jpg" class="img-fluid rounded-circle" alt=""/></a>
+
+            <a href="#" class="width-a m-auto"><img src="./../../../public/img/youtube.png" class="img-fluid rounded-circle" alt=""/></a>
+
+        </div>
+
+  
       </div>
 
 
       <div class="row justify-content-center">
 
-        <div class="col-12 col-lg-5 d-flex my-1">
+        <div class="col-12 col-lg-5 d-flex my-2">
 
           <div class="imgCard">
             <a href="#"><img src="./../../../public/img/logo-visa.png" class="w-100" alt=""></a>
@@ -139,6 +138,14 @@
         padding: 10px;
         border-radius: 10px;
         background-color: white;
+      }
+
+      .width-a{
+        width: 10%;
+      }
+
+      .border{
+        border-radius: 0.50rem;       
       }
 
       a{
