@@ -4,19 +4,22 @@
            
 
             <Carousel/>
+            <BannerWorkForUs/>
         </div>
     </div>
 </template>
 
 <script>
 
-import Carousel from '../components/partials/Carousel.vue'
+import Carousel from '../components/partials/Carousel.vue';
+import BannerWorkForUs from  '../components/partials/BannerWorkForUs.vue'
 
     export default {
         name: "Home",
 
         components:{
             Carousel,
+            BannerWorkForUs
         }
     }
 </script>
