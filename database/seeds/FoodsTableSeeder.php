@@ -16,12 +16,20 @@ class FoodsTableSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        for($i=0; $i<60; $i++){
+        for($i=0; $i<160; $i++){
             
             $newFood = new Food();
 
             $newFood->name = ucfirst($faker->word());
-            $newFood->slug = Str::slug($newFood->name); //è possibile che esistano più slug uguali quando $faker->word() ritorna porole uguali
+
+            // creazione slug, verifica se già esistente e crea slug univoco su DB
+            $newFood->slug = Str::slug($newFood->name);
+            $counter = 1;
+            while (Food::where('slug', $newFood->slug)->first()) {
+                $newFood->slug = Str::slug($newFood->name) . '-' . $counter;
+                $counter++;
+            }
+
             $newFood->category_id = $faker->numberBetween(1,10);
             $newFood->price = $faker->numberBetween(7, 25);
             $newFood->description = $faker->paragraph();
@@ -30,7 +38,7 @@ class FoodsTableSeeder extends Seeder
             $newFood->ingredients = str_replace(" ", ", ", $newFood->ingredients);
 
             $newFood->visible = rand(true, false);
-            $newFood->restaurant_id = $faker->numberBetween(1,5);
+            $newFood->restaurant_id = $faker->numberBetween(1,20);
 
             $newFood->save();
         }

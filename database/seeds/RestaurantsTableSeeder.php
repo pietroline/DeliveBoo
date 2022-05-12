@@ -20,7 +20,17 @@ class RestaurantsTableSeeder extends Seeder
             $newRestaurant = new Restaurant();
 
             $newRestaurant->name = ucfirst($faker->word());
-            $newRestaurant->slug = Str::slug($newRestaurant->name); //è possibile che esistano più slug uguali quando $faker->word() ritorna porole uguali
+
+
+            // creazione slug, verifica se già esistente e crea slug univoco su DB
+            $newRestaurant->slug = Str::slug($newRestaurant->name);
+            $counter = 1;
+            while (Restaurant::where('slug', $newRestaurant->slug)->first()) {
+                $newRestaurant->slug = Str::slug($newRestaurant->name) . '-' . $counter;
+                $counter++;
+            }
+            
+            
             $newRestaurant->address = $faker->address();
             $newRestaurant->phone = $faker->phoneNumber();
             $newRestaurant->email = $faker->email();

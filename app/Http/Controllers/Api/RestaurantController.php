@@ -109,7 +109,7 @@ class RestaurantController extends Controller
     {
         $restaurant = Restaurant::where("slug", $slug)->first();
 
-        $foods = Food::where("restaurant_id", $restaurant->id)->get();
+        $foods = Food::where([["restaurant_id", $restaurant->id], ["visible", 1]])->get();
 
         // il tipo di dato del foods[iesimo]->price ritornato è string, quindi converto in double
         foreach($foods as $food){
