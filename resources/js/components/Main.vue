@@ -13,7 +13,7 @@
 <style scoped>
 
 main{
-    height: 100vh;
+    min-height: 3000px;
 }
 
 </style>
