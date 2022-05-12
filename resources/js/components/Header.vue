@@ -33,10 +33,6 @@
                         routeName: "home",
                         label: "Home"
                     },
-                    {
-                        routeName: "restaurants",
-                        label: "Ristoranti"
-                    },
                 ],
                
 
