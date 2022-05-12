@@ -61,9 +61,11 @@
         <td>{{item.description}}</td>
         <td>{{item.ingredients}}</td>
         <td>{{item.price}} €</td>
-        <td class="d-flex">
-          <input type="number" class="ms_w-3rem mr-2" min="1" v-model="item.quantity">
-          <button class="btn btn-primary" @click="updateCart(item.id, item.price, item.quantity)">aggiorna</button>
+        <td class="d-flex justify-content-center align-items-center">
+          <i class="bi bi-dash-circle ms_fs4" @click="updateCart(item.id, item.price, item.quantity -1)"></i>
+          <span class="ms_fs3 mx-4">{{item.quantity}}</span>
+          <i class="bi bi-plus-circle ms_fs4" @click="updateCart(item.id, item.price, item.quantity +1)"></i>
+          
         </td>
         <td>{{item.total}} €</td>
         <td><button class="btn btn-danger" @click="deleteToCart(item.id)">Rimuovi</button></td>
@@ -310,10 +312,10 @@
 
 
         getCart(){
-          // localStorage.setItem( "cart", JSON.stringify(this.cart) );
+          //  localStorage.setItem( "cart", JSON.stringify(this.cart) );
            this.cart = JSON.parse(localStorage.getItem('cart') );
 
-          
+          //  console.log(this.cart);
         },
 
     
