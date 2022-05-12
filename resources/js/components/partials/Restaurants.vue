@@ -8,11 +8,11 @@
 
     <form class="row mb-5" @submit.prevent="getRestaurantsFiltered(1)" >
 
-        <div class="col" v-for="typology in allTypologies" :key="typology.id">
+        <div class="col-5" v-for="typology in allTypologies" :key="typology.id">
 
-            <div class="form-check">
-                <input  type="checkbox" class="form-check-input ms_checkbox" v-model="typologySelected" :value="typology.id" :id="'typology_' + typology.id">
-                <label class="form-check-label" :for="'typology_' + typology.id">{{typology.name}}</label>
+            <div class="form-check d-flex align-items-center">
+                <input  type="checkbox" class="form-check-input ms_checkbox mt-0" v-model="typologySelected" :value="typology.id" :id="'typology_' + typology.id">
+                <label class="form-check-label ml-2" :for="'typology_' + typology.id">{{typology.name}}</label>
             </div>
 
         </div>
