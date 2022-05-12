@@ -9,16 +9,16 @@
 
         <div class="col-12 col-md-4 col-lg-1 d-flex align-items-center">
             <ul class="list-unstyled">
-                <li class="ms_fs2 font-weight-bold">
+                <li class="ms_fs3 mb-2 font-weight-bold">
                   Aiuto
                 </li>
-                <li class="ms_fs5">
+                <li>
                   <a href="#">Contatti</a>
                 </li>
-                <li class="ms_fs5">
+                <li>
                   <a href="#">Faq</a>
                 </li>
-                <li class="ms_fs5">
+                <li>
                   <a href="#">Altro</a>
                 </li>
             </ul>
@@ -26,16 +26,16 @@
 
         <div class="col-12 col-md-4 col-lg-2 d-flex align-items-center">
             <ul class="list-unstyled">
-              <li  class="ms_fs2 font-weight-bold">
+              <li  class="ms_fs3 mb-2 font-weight-bold">
                 Scopri Deliveboo
               </li>
-              <li class="ms_fs5">
+              <li>
                 <a href="#">Accedi</a>
               </li>
-              <li class="ms_fs5">
+              <li>
                 <a href="#">Chi Siamo</a>
               </li>
-              <li class="ms_fs5">
+              <li>
                 <a href="#">Lavora con noi</a>
               </li>
             </ul>
@@ -43,16 +43,16 @@
 
         <div class="col-12 col-md-4 col-lg-2 d-flex align-items-center">
             <ul class="list-unstyled">
-              <li  class="ms_fs2 font-weight-bold">
+              <li  class="ms_fs3 mb-2 font-weight-bold">
                 Note legali
               </li>
-              <li class="ms_fs5">
+              <li>
                 <a href="#">Termini e condizioni</a>
               </li>
-              <li class="ms_fs5">
+              <li>
                 <a href="#">Privacy</a>
               </li>
-              <li class="ms_fs5">
+              <li>
                 <a href="#">Cookie</a>
               </li>
             </ul>
@@ -141,11 +141,7 @@
       }
 
       .width-a{
-        width: 10%;
-      }
-
-      .border{
-        border-radius: 0.50rem;       
+        width: 7%;
       }
 
       a{
