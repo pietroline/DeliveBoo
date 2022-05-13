@@ -13,13 +13,58 @@ class TypologiesTableSeeder extends Seeder
      */
     public function run()
     {
-        $typologies = ["Cinese", "Gelateria", "Giapponese", "Indiano", "Internazionale", "Italiano", "Messicano","Pizzeria", "Street food", "Vegetariano"];
+
+        $typologies = [
+            [
+                'name' => 'Cinese',
+                'path' => 'cinese.jpg'
+            ],
+            [
+                'name' => 'Gelateria',
+                'path' => 'gelateria.jpg'
+            ],
+            [
+                'name' => 'Giapponese',
+                'path' => 'giapponese.jpg'
+            ],
+            [
+                'name' => 'Indiano',
+                'path' => 'indiano.jpg'
+            ],
+            [
+                'name' => 'Internazionale',
+                'path' => 'internazionale.jpg'
+            ],
+            [
+                'name' => 'Italiano',
+                'path' => 'italiano.jpg'
+            ],
+            [
+                'name' => 'Messicano',
+                'path' => 'messicano.jpg'
+            ],
+            [
+                'name' => 'Pizzeria',
+                'path' => 'pizzeria.jpg'
+            ],
+            [
+                'name' => 'Street food',
+                'path' => 'street-food.jpg'
+            ],
+            [
+                'name' => 'Vegetariano',
+                'path' => 'vegetariano.jpg'
+            ],
+
+        ];
+
 
         foreach($typologies as $typology){
             $newTypology = new Typology();
 
-            $newTypology->name = $typology;
-            $newTypology->slug = Str::slug($typology);
+            $newTypology->name = $typology['name'];
+            $newTypology->slug = Str::slug($typology['name']);
+            $newTypology->image = $typology['path'];
 
             $newTypology->save();
         }

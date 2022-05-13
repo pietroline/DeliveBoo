@@ -4,23 +4,41 @@
 
         <!-- inizio filtro ristoranti -->
 
-            <div class="row ms_fs3 mt-5 mb-3 ms_title1">Filtro ristoranti per tipologie</div>
-
-            <form class="row mb-5" @submit.prevent="getRestaurantsFiltered(1)" >
-
-                <div class="col-5" v-for="typology in allTypologies" :key="typology.id">
-
-                    <div class="form-check d-flex align-items-center">
-                        <input  type="checkbox" class="form-check-input ms_checkbox mt-0" v-model="typologySelected" :value="typology.id" :id="'typology_' + typology.id">
-                        <label class="form-check-label ml-2" :for="'typology_' + typology.id">{{typology.name}}</label>
-                    </div>
-
+            <div class="row ms_fs3 mt-5 mb-3 ms_title1">
+                <div class="col-12 d-flex justify-content-center">
+                    <span class="text-center">
+                        Filtro ristoranti per tipologie
+                    </span>
                 </div>
-                    
-                    <div class="col d-flex justify-content-center">
-                        <button type="submit" class="btn ms_btn1">Cerca</button>
-                    </div>
                 
+            </div>
+<!-- :class="(showBorder == true && typology.id == 1) ? 'borderActive' : '' " -->
+            <form  @submit.prevent="getRestaurantsFiltered(1)" >
+
+                <div class="row mb-3">
+                    <div class="col-12 col-md-6 col-lg-3 card-typology mb-5" v-for="(typology, count) in allTypologies" :key="typology.id">
+                        
+                        <div class="form-check p-0">
+                            <input  type="checkbox" class="form-check-input d-none" v-model="typologySelected" :value="typology.id" :id="'typology_' + typology.id">
+                            <label class="form-check-label" :for="'typology_' + typology.id">
+                                <img :src="require('../../../../public/img/' + typology.image)" class="card-typology ms_cursor_pointer"  :alt="typology.name"
+                                :class="(arrayTypology.includes(typology.id)) ? 'borderActive' : '' "
+                                @click="addBorder(typology.id, count)">
+                            </label>
+                            <p class="mb-5 mt-1 text-center">
+                                {{typology.name}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-12 d-flex justify-content-center">
+                    <button type="submit" class="btn ms_btn1">Cerca</button>
+                </div>
+                </div>
+                
+                    
             </form>
 
         <!-- fine filtro ristoranti -->
@@ -106,13 +124,24 @@
                 typologySelected: [],
                 restaurants: [],
                 currentPage: 1,
-                lastPage: null
+                lastPage: null,
+                showBorderTypology: [],
+                arrayTypology: [],
             };
         },
 
         mounted(){
             this.getAllTypologies();  
-            this.getAllRestaurants(1);      
+            this.getAllRestaurants(1);
+        },
+
+        computed: {
+            function(){
+                // popolo showBorderTypology in funzione della dimensione di typology
+                for (let i = 0; i < this.allTypologies.length; i++) {
+                    this.showBorderTypology.push(false);
+                }
+            }
         },
 
         methods:{
@@ -174,7 +203,21 @@
             mJS_selectedPage(selectedPage){
                 this.currentPage = selectedPage;
                 this.getRestaurantsFiltered(this.currentPage);
-            }
+            },
+
+            addBorder(id, index){
+                if (this.showBorderTypology[index] == false) {
+                    this.showBorderTypology[index] = true
+                    this.arrayTypology.push(id);
+                }else{
+                    this.showBorderTypology[index] = false
+                    for (let i = 0; i < this.arrayTypology.length; i++) {
+                        if (this.arrayTypology[i] == id) {
+                            this.arrayTypology.splice(i,1);
+                        } 
+                    }     
+                }
+            },
         }
     }
 </script>
@@ -201,8 +244,7 @@
 
     .ms_checkbox {
         -webkit-appearance: none;
-        background-color: $lightOrange;
-        border: 1px solid $darkOrange;
+        border: 1px solid black;
         box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);
         padding: 9px;
         border-radius: 3px;
@@ -215,6 +257,17 @@
         border: 1px solid $lightOrange;
         box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05), inset 15px 10px -12px rgba(255,255,255,0.1);
         color: white;
+    }
+
+    .card-typology{
+        width: 255px;
+        height: 140px;
+        border-radius: 20px;
+    }
+
+    .borderActive{
+        border: solid 3px $darkOrange;
+        border-radius: 20px;
     }
 
 </style>
