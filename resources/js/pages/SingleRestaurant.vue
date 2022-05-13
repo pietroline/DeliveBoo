@@ -237,6 +237,14 @@
       };
     },
 
+    created(){
+      // al primo avvio del browser se la variabile del cart è null allora assegna il valore di [] a cart
+      if(JSON.parse(localStorage.getItem('cart')) == null){
+        localStorage.setItem( "cart", JSON.stringify(this.cart) );
+        console.log("test");
+      } 
+    },
+
     mounted() {
       this.getMenu(1);
       this.getCart();
@@ -312,10 +320,7 @@
 
 
         getCart(){
-          //  localStorage.setItem( "cart", JSON.stringify(this.cart) );
            this.cart = JSON.parse(localStorage.getItem('cart') );
-
-          //  console.log(this.cart);
         },
 
     
@@ -342,7 +347,6 @@
           })
           .then((response) => {
             // handle success
-            console.log(response)
             if (response.data.success == true) {
               this.currentPage = response.data.showMenuRestaurant.current_page;
               this.restaurant = response.data.showRestaurant;
@@ -363,7 +367,7 @@
 
 <style lang="scss" scoped>
 
- @import "./../../sass/common.scss";
+ @import "./../../sass/_common.scss";
 
 
 </style>

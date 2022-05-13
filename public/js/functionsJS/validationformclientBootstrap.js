@@ -91,27 +91,31 @@
   !*** ./resources/js/functionsJS/validationformclientBootstrap.js ***!
   \*******************************************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-(function () {
-  'use strict';
+"use strict";
+// inizio gestione della conferma di eliminazione
+// resources/views/admin/home.blade.php
+// resources/views/admin/foods/create.blade.php
 
-  window.addEventListener('load', function () {
-    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-    var forms = document.getElementsByClassName('needs-validation'); // Loop over them and prevent submission
 
-    var validation = Array.prototype.filter.call(forms, function (form) {
-      form.addEventListener('submit', function (event) {
-        if (form.checkValidity() === false) {
-          event.preventDefault();
-          event.stopPropagation();
-        }
+window.addEventListener('load', function () {
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  var forms = document.getElementsByClassName('needs-validation'); // Loop over them and prevent submission
 
-        form.classList.add('was-validated');
-      }, false);
-    });
-  }, false);
-})();
+  var validation = Array.prototype.filter.call(forms, function (form) {
+    form.addEventListener('submit', function (event) {
+      if (form.checkValidity() === false) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+
+      form.classList.add('was-validated');
+    }, false);
+  });
+}, false); // fine gestione della conferma di eliminazione
+// ----------------------------------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------------------------------
 
 /***/ }),
 
@@ -122,7 +126,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\Matteo\Documents\Progetto finale Boolean\DeliveBoo\resources\js\functionsJS\validationformclientBootstrap.js */"./resources/js/functionsJS/validationformclientBootstrap.js");
+module.exports = __webpack_require__(/*! /home/pietroline/Scrivania/Personale/boolean/GitHub/progettoFinale/DeliveBoo/resources/js/functionsJS/validationformclientBootstrap.js */"./resources/js/functionsJS/validationformclientBootstrap.js");
 
 
 /***/ })

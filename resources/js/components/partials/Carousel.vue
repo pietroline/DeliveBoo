@@ -1,5 +1,6 @@
 <template>
   <div class="container-fluid">
+
     <b-carousel
       class="container-fluid"
       id="carousel-1"
@@ -10,8 +11,10 @@
       @sliding-start="onSlideStart"
       @sliding-end="onSlideEnd"
     >
+
       <!-- Slides with img slot -->
       <!-- Note the classes .d-block and .img-fluid to prevent browser default image alignment -->
+
       <b-carousel-slide>
         <template #img>
           <img
@@ -42,37 +45,38 @@
         </template>
       </b-carousel-slide>
     </b-carousel>
+
   </div>
 </template>
 
 <script>
-export default {
-  name: "Carousel",
+  export default {
+    name: "Carousel",
 
-  data() {
-    return {
-      slide: 0,
-      sliding: null,
-    };
-  },
-  methods: {
-    onSlideStart(slide) {
-      this.sliding = true;
+    data() {
+      return {
+        slide: 0,
+        sliding: null,
+      };
     },
-    onSlideEnd(slide) {
-      this.sliding = false;
+    methods: {
+      onSlideStart(slide) {
+        this.sliding = true;
+      },
+      onSlideEnd(slide) {
+        this.sliding = false;
+      },
     },
-  },
-};
+  };
 </script>
 
 <style lang="scss" scoped>
-div {
-  max-height: 400px;
+  div {
+    max-height: 400px;
 
-  img {
-    height: 400px;
-    object-fit: cover;
+    img {
+      height: 400px;
+      object-fit: cover;
+    }
   }
-}
 </style>
