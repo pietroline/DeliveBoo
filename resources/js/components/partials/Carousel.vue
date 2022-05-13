@@ -1,8 +1,8 @@
 <template>
-  <div class="container-fluid">
+  <div class="container-fluid p-0">
 
     <b-carousel
-      class="container-fluid"
+      class="container-fluid p-0"
       id="carousel-1"
       v-model="slide"
       :interval="4000"
