@@ -182,6 +182,15 @@
 <style lang="scss" scoped>
     @import "../../../sass/_variables.scss";
 
+    .page-link{
+        color: $darkOrange;
+    }
+
+    .page-item.active .page-link{
+        background-color: $navigator;
+        border-color: $navigator;
+    }
+
     .ms_list{
         background-color: $lightOrange;
     }
