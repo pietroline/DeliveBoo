@@ -13,6 +13,7 @@
             <button class="btn btn-primary my-3" @click="pushItemInCart()">Aggiungi al carrello</button>
             
         </div>
+        
     </div>
 
 </template>

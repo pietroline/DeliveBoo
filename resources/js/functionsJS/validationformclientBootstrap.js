@@ -1,4 +1,8 @@
-(function() {
+
+// inizio gestione della conferma di eliminazione
+// resources/views/admin/home.blade.php
+// resources/views/admin/foods/create.blade.php
+
     'use strict';
     window.addEventListener('load', function() {
       // Fetch all the forms we want to apply custom Bootstrap validation styles to
@@ -14,4 +18,11 @@
         }, false);
       });
     }, false);
-  })();
+
+
+
+// fine gestione della conferma di eliminazione
+
+
+// ----------------------------------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------------------------------

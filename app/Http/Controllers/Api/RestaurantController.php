@@ -5,8 +5,6 @@ namespace App\Http\Controllers\Api;
 use App\Food;
 use App\Http\Controllers\Controller;
 use App\Restaurant;
-use App\Typology;
-use Illuminate\Http\Request;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
@@ -56,36 +54,44 @@ class RestaurantController extends Controller
         // filter è una stringa, è necessario convertirla in array per poi ciclare i valori
         $filter = explode(",", $filter);
        
+        // inizialmente setto $restaurantFiltered a tutti i ristoranti 
         $restaurantFiltered = $allRestaurants;
 
         
-
-        
-       
+        // filtro tutti gli id contenuti nell'array $filter
         for($k=0; $k<count($filter); $k++){
 
 
             
 
-           
+            // filtro tutti i ristoranti contenuti in $restaurantFiltered
             foreach($restaurantFiltered as $key =>  $restaurant){
-                $flag = 0;
 
-             
+
+              
+
+                // ogni risotarante potrebbe avere più tipologie,
+                // quindo itero tutte le tipologie, verifico se l'id della tipologia[iesima] è pari all'id del filter[kesimo]]. 
+                // Se la condizione è verificata, 
+                // significa che la tipologia del filter[kesimo] è contenuta nell'elenco delle tipologie del ristorante preso in esame
+                // allora incremento la variabile flag
+                $flag = 0;
                 for($i=0; $i<count($restaurant->typologies); $i++){
-                    
-                   
                     if($restaurant->typologies[$i]->id == $filter[$k]){
-                            $flag++;
-                        
-                        
+                            $flag++;     
                     }
                 } 
 
+                // se la variabile flag==0 significa che l'id del filter[kesimo] non è contenuto nell'arrray di tipologie di $restaurant
+                // quindi elimino il restaurant dal $restaurantFiltered,
+                //  in maniera tale da ottenere solo i ristoranti con tutti gli id di tipologia contenuti in $filterr
                 if($flag == 0 ){
                     unset($restaurantFiltered[$key], $key); 
                 }
             }
+
+
+
 
         }
         

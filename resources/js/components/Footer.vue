@@ -1,11 +1,12 @@
 <template>
   <footer>
+
     <div class="container-fluid py-2 pt-2 pb-4">
       <div class="row justify-content-center">
+
         <div class="col-12 col-lg-5">
           <a href="#"><img src="./../../../public/img/logo-orange.png" class="imgLogo" alt="" /></a>
         </div>
-
 
         <div class="col-12 col-md-4 col-lg-1 d-flex align-items-center">
             <ul class="list-unstyled">
@@ -79,7 +80,6 @@
 
 
       <div class="row justify-content-center">
-
         <div class="col-12 col-lg-5 d-flex my-1">
 
           <div class="imgCard">
@@ -93,12 +93,12 @@
           <div class="imgCard">
             <a href="#"><img src="./../../../public/img/logo-paypal.png" class="w-100" alt=""></a>
           </div> 
-
         </div>
 
         <div class="col-12 col-lg-5 my-1 d-flex align-items-center justify-content-center">
           <div class="ms_fs5">DeliveBoo Italy S.r.l. - P.IVA 05141940750</div>
         </div>
+
       </div>
     </div>
 
@@ -115,7 +115,7 @@
 
 <style lang="scss" scoped>
 
-  @import "./../../sass/common.scss";
+  @import "./../../sass/_common.scss";
 
   
 
@@ -144,5 +144,5 @@
       a{
         color: white!important;
       }
-}
+  }
 </style>

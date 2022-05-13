@@ -1,22 +1,20 @@
 <template>
     <div class="container-fluid mt-3">
         <div class="row ms_carousel">
+
             <Carousel/>
             <BannerWorkForUs/>
             <Restaurants/>
             
-
         </div>
     </div>
 </template>
 
 <script>
 
-
-import Carousel from '../components/partials/Carousel.vue';
-import BannerWorkForUs from  '../components/partials/BannerWorkForUs.vue'
-import Restaurants from '../components/partials/Restaurants.vue'
-
+    import Carousel from '../components/partials/Carousel.vue';
+    import BannerWorkForUs from  '../components/partials/BannerWorkForUs.vue'
+    import Restaurants from '../components/partials/Restaurants.vue'
 
     export default {
         name: "Home",
@@ -27,6 +25,7 @@ import Restaurants from '../components/partials/Restaurants.vue'
             Restaurants,
         }
     }
+
 </script>
 
 <style lang="scss" scoped>

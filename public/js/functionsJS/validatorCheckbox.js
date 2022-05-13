@@ -93,6 +93,9 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+// inizio gestione di validazione delle checkbox lato client
+// resources/views/admin/home.blade.php
+// resources/views/admin/foods/create.blade.php
 var form = document.querySelector('#sectionForm');
 var checkboxes = form.querySelectorAll('input[type=checkbox]');
 
@@ -118,7 +121,9 @@ if (checkboxes) {
   }
 
   checkValidity();
-}
+} // fine gestione di validazione delle checkbox lato client
+// ----------------------------------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------------------------------
 
 /***/ }),
 
@@ -129,7 +134,7 @@ if (checkboxes) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\Matteo\Documents\Progetto finale Boolean\DeliveBoo\resources\js\functionsJS\validatorCheckbox.js */"./resources/js/functionsJS/validatorCheckbox.js");
+module.exports = __webpack_require__(/*! /home/pietroline/Scrivania/Personale/boolean/GitHub/progettoFinale/DeliveBoo/resources/js/functionsJS/validatorCheckbox.js */"./resources/js/functionsJS/validatorCheckbox.js");
 
 
 /***/ })

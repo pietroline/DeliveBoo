@@ -94,7 +94,7 @@
 /***/ (function(module, exports) {
 
 // inizio validazione group input checkbox
-// resources/views/admin/foods/index.blade.php
+// resources/views/admin/home.blade.php
 var checkboxes = document.getElementsByClassName("mJS_checkbox");
 var displayRequired = document.getElementById("mJS_displayRequired");
 var checkboxTrue = 0;
@@ -136,7 +136,7 @@ for (var i = 0; i < checkboxes.length; i++) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\Matteo\Documents\Progetto finale Boolean\DeliveBoo\resources\js\functionsJS\validationRequiredGroupCheckbox.js */"./resources/js/functionsJS/validationRequiredGroupCheckbox.js");
+module.exports = __webpack_require__(/*! /home/pietroline/Scrivania/Personale/boolean/GitHub/progettoFinale/DeliveBoo/resources/js/functionsJS/validationRequiredGroupCheckbox.js */"./resources/js/functionsJS/validationRequiredGroupCheckbox.js");
 
 
 /***/ })
