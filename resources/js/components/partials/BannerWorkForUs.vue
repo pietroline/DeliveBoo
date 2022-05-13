@@ -10,37 +10,25 @@
 
         <b-row>
           <b-col>
-            <b-img
-              :src="require('../../../../public/img/app-store.png')"
-              fluid
-              alt="logo app store"
-            ></b-img>
+            <b-img class= "ms_img" :src="require('../../../../public/img/app-store.png')"  alt="logo app store"></b-img>
           </b-col>
 
           <b-col>
-            <b-img
-              :src="require('../../../../public/img/play-store.png')"
-              fluid
-              alt="logo play store"
-            ></b-img>
+            <b-img :src="require('../../../../public/img/play-store.png')" class="ms_img" alt="logo play store"></b-img>
           </b-col>
         </b-row>
       </b-col>
-      <b-col cols="4" class="ms_ban">
-        <b-img
-          class="img-fluid"
-          :src="require('../../../../public/img/banner-deliveboo.png')"
-          alt="deliveboo banner1"
-        ></b-img>
+      <b-col cols="4" class="ms_ban p-0">
+        <b-img class="ms_img" :src="require('../../../../public/img/banner-deliveboo.png')" alt="deliveboo banner1"></b-img>
       </b-col>
     </b-row>
 
     <!--SECONDO BANNER-->
 
     <b-row class="my-4 justify-content-center rounded">
-      <b-col class="ms_ban" cols="4">
+      <b-col class="ms_ban p-0" cols="4">
         <b-img
-          :src="require('../../../../public/img/banner-deliveboo-2.png')" fluid alt="deliveboo banner2"></b-img>
+          :src="require('../../../../public/img/banner-deliveboo-2.png')" class="img-fluid" alt="deliveboo banner2"></b-img>
       </b-col>
       <b-col cols="4" class="d-flex ms_bg-dOrange justify-content-center align-items-center rounded text-center">
         <div>
@@ -82,7 +70,7 @@ export default {
 .ms_ban {
   border: 1px solid $darkOrange;
   border-radius: 5px;
-  padding: 0;
+ padding: 0;
 }
 
 .ms_img {
