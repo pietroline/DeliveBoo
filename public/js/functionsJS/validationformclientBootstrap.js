@@ -126,7 +126,7 @@ window.addEventListener('load', function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/pietroline/Scrivania/Personale/boolean/GitHub/progettoFinale/DeliveBoo/resources/js/functionsJS/validationformclientBootstrap.js */"./resources/js/functionsJS/validationformclientBootstrap.js");
+module.exports = __webpack_require__(/*! C:\Users\Matteo\Documents\Progetto finale Boolean\DeliveBoo\resources\js\functionsJS\validationformclientBootstrap.js */"./resources/js/functionsJS/validationformclientBootstrap.js");
 
 
 /***/ })
