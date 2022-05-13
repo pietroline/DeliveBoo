@@ -1,5 +1,5 @@
 <template>
-    <div class="container-fluid mt-3">
+    <div class="container-fluid">
         <div class="row ms_carousel">
             <Carousel/>
         </div>
