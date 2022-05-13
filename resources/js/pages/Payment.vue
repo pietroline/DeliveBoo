@@ -92,7 +92,12 @@ payment
                 axios.get('api/payment')
                     .then(response =>{
                         // handle success
-                        console.log(response);
+                        if(response.data.success == true){
+                            alert("Ordine completato!! Arriviamo subito!!");
+                        }else{
+                            alert("Pagamento rifiutato. Riprova più tardi")
+                        }
+
                     })
                     .catch(error => {
                         // handle error

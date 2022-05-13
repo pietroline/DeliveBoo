@@ -23,7 +23,7 @@ const router = new VueRouter({
             component: SingleRestaurant
         },
         {
-            path:"/restaurant/payment",
+            path:"/payment",
             name: "payment",
             component: Payment
         },
