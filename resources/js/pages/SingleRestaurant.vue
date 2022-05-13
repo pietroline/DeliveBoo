@@ -367,7 +367,16 @@
 
 <style lang="scss" scoped>
 
- @import "./../../sass/_common.scss";
+  @import "./../../sass/_common.scss";
+  @import "./../../sass/_variables.scss";
 
+  .page-link{
+        color: $darkOrange;
+    }
 
+  .page-item.active .page-link{
+      background-color: $navigator;
+      border-color: $navigator;
+  }
+  
 </style>
