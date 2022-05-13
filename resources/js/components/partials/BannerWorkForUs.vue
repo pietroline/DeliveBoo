@@ -1,6 +1,7 @@
 <template>
   <b-container fluid class="my-3">
 
+
     <!-- INIZIO PRIMO BANNER -->
       <b-row class="mx-auto justify-content-center align-items-center">
 
@@ -60,8 +61,7 @@
 <style lang="scss" scoped>
 
   @import "../../../sass/_variables.scss";
-
-
+  
   .ms-btn-banner{
       background-color: $darkOrange;
       border: 1px solid $lightOrange;
@@ -73,28 +73,28 @@
       border: 1px solid $lightOrange;
       color:$darkOrange;
       }
-  }
+    }
 
+    .ms_ban{
+      border: 1px solid $darkOrange;
+      border-radius: 5px;
+    }
 
-  .ms_ban{
-    border: 1px solid $darkOrange;
-    border-radius: 5px;
-  }
+    .ms_img{
+      width: 100%;
+      height: 100%;
+    }
 
-  .ms_img{
-    width: 100%;
-    height: 100%;
-  }
+    .ms_orange{
+      color: $darkOrange;
+    }
 
-  .ms_orange{
-    color: $darkOrange;
-  }
+    .ms_bg-dOrange{
+      background-color: $darkOrange;
+    }
 
-  .ms_bg-dOrange{
-    background-color: $darkOrange;
-  }
+    .ms_bolder{
+      font-weight: bolder;
+    }
 
-  .ms_bolder{
-    font-weight: bolder;
-  }
 </style>
