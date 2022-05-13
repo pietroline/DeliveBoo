@@ -25,3 +25,8 @@ Route::get("/typologies", "Api\TypologyController@index");
 
 // rotta per ristoranti filtrati
 Route::get("/restaurant/{filter}", "Api\RestaurantController@filter");
+
+// rotta per conferma ordine
+Route::get("/payment", "Api\PaymentController@paymentController");
+
+
