@@ -1,12 +1,14 @@
 <template>
     <div class="container-fluid mt-3">
         <div class="row ms_carousel">
-
             <Carousel/>
-            <BannerWorkForUs/>
-            <Restaurants/>
-            
         </div>
+        <div class="row">
+            <Restaurants/>
+        </div>
+        <div class="row">
+            <BannerWorkForUs/>
+        </div>      
     </div>
 </template>
 

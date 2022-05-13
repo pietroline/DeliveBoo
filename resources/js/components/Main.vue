@@ -12,8 +12,5 @@
 
 <style scoped>
 
-main{
-    min-height: 3000px;
-}
 
 </style>
