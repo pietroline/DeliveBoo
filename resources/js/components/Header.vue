@@ -1,6 +1,6 @@
 <template>
   <header>
-  <b-navbar toggleable="lg">
+  <b-navbar toggleable="lg" type="dark">
     <router-link class="navbar-brand" :to="{name: 'home'}"><a href="#"><img src="./../../../public/img/logo-white.png" class="img" alt=""/></a></router-link>
 
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -48,7 +48,7 @@ export default {
 <style lang="scss" scoped>
  
  header{
-   background-color: #ff8c28;
+   background-color: rgb(41, 49, 51);
  
  }
 
