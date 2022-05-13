@@ -16,7 +16,7 @@
             <form  @submit.prevent="getRestaurantsFiltered(1)" >
 
                 <div class="row mb-3">
-                    <div class="col-12 col-md-6 col-lg-3 card-typology mb-5" v-for="(typology, count) in allTypologies" :key="typology.id">
+                    <div class="col-12 col-md-6 col-lg-3 card-typology mb-5 d-flex justify-content-center" v-for="(typology, count) in allTypologies" :key="typology.id">
                         
                         <div class="form-check p-0">
                             <input  type="checkbox" class="form-check-input d-none" v-model="typologySelected" :value="typology.id" :id="'typology_' + typology.id">
