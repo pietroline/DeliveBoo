@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 // rotta per tutti i ristoranti
 Route::get("/restaurants", "Api\RestaurantController@index");
 
-// rotta per ristorante singolo, dettagli del ristorante
+// rotta per ristorante singolo, dettagli del ristorante e menu ristorante
 Route::get("/restaurants/{slug}", "Api\RestaurantController@show");
 
 // rotta per tutte le tipologie di ristorante

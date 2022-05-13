@@ -94,7 +94,7 @@
 /***/ (function(module, exports) {
 
 // inizio validazione group input checkbox
-// resources/views/admin/foods/index.blade.php
+// resources/views/admin/home.blade.php
 var checkboxes = document.getElementsByClassName("mJS_checkbox");
 var displayRequired = document.getElementById("mJS_displayRequired");
 var checkboxTrue = 0;

@@ -1,73 +1,86 @@
 <template>
-  <section id="footer">
-    <div class="container py-5">
+  <footer>
 
-      <div class="row row-cols-1 row-cols-md-3 row-cols-xl-4 text-white ">
+    <div class="container-fluid py-2 pt-2 pb-4">
+      <div class="row justify-content-center">
 
-        <div class="col col-md-12 d-flex flex-column align-items-center">
-          <div class="imgLogo">
-              <a href="#"><img src="./../../../public/img/logo-white.png" class="w-100" alt="" /></a>
+        <div class="col-12 col-lg-5">
+          <a href="#"><img src="./../../../public/img/logo-orange.png" class="imgLogo" alt="" /></a>
+        </div>
+
+        <div class="col-12 col-md-4 col-lg-1 d-flex align-items-center">
+            <ul class="list-unstyled">
+                <li class="ms_fs3 font-weight-bold">
+                  Aiuto
+                </li>
+                <li>
+                  <a href="#">Contatti</a>
+                </li>
+                <li>
+                  <a href="#">Faq</a>
+                </li>
+                <li>
+                  <a href="#">Altro</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="col-12 col-md-4 col-lg-2 d-flex align-items-center">
+            <ul class="list-unstyled">
+              <li  class="ms_fs3 font-weight-bold">
+                Scopri Deliveboo
+              </li>
+              <li>
+                <a href="#">Accedi</a>
+              </li>
+              <li>
+                <a href="#">Chi Siamo</a>
+              </li>
+              <li>
+                <a href="#">Lavora con noi</a>
+              </li>
+            </ul>
+        </div>
+
+        <div class="col-12 col-md-4 col-lg-2 d-flex align-items-center">
+            <ul class="list-unstyled">
+              <li  class="ms_fs3 font-weight-bold">
+                Note legali
+              </li>
+              <li>
+                <a href="#">Termini e condizioni</a>
+              </li>
+              <li>
+                <a href="#">Privacy</a>
+              </li>
+              <li>
+                <a href="#">Cookie</a>
+              </li>
+            </ul>
+        </div>
+      </div>
+
+      <div class="row justify-content-center">
+          <div class="col-12 col-md-6 col-lg-5 d-flex align-items-center">
+            <a href="#"><i class="bi bi-instagram mx-4 text-white ms_fs2"></i></a>
+            <a href="#"><i class="bi bi-facebook mx-4 text-white ms_fs2"></i></a>
+            <a href="#"><i class="bi bi-twitter mx-4 text-white ms_fs2"></i></a>
           </div>
-        </div>
 
-        <div class="col d-flex flex-column align-items-center justify-content-center my-3">
-           
-          <ul class="list-unstyled text-center">
-            <li class="ms_fs3 font-weight-bold">Aiuto</li>
-            <li><a href="#" class="text-white">Contatti</a></li>
-            <li><a href="#" class="text-white ">Faq</a></li>
-            <li><a href="#" class="text-white ">Altro</a></li>
-          </ul>
-
-        </div>
-
-         <div class="col d-flex flex-column align-items-center justify-content-center my-3">
-           
-          <ul class="list-unstyled text-center">
-            <li class="ms_fs3 font-weight-bold">Scopri Deliveboo</li>
-            <li><a href="#" class="text-white">Accedi</a></li>
-            <li><a href="#" class="text-white">Chi Siamo</a></li>
-            <li><a href="#" class="text-white">Lavora con noi</a></li>
-          </ul>
- 
-        </div>
-
-         <div class="col d-flex flex-column align-items-center justify-content-center my-3">
-           
-          <ul class="list-unstyled text-center">
-            <li class="ms_fs3 font-weight-bold">Note legali</li>
-            <li><a href="#" class="text-white">Termini e condizioni</a></li>
-            <li><a href="#" class="text-white">Privacy</a></li>
-            <li><a href="#" class="text-white">Cookie</a></li>
-          </ul>
-
-        </div>
-      
+          <div class="col-12 col-md-6 col-lg-5 d-flex justify-content-center">
+            <div class="imgApp m-2">
+              <a href="#"><img src="./../../../public/img/app-store.png" class="w-100" alt=""/></a>
+            </div>
+            <div class="imgApp m-2">
+              <a href="#"><img src="./../../../public/img/play-store.png" class="w-100" alt=""/></a>
+            </div>
+              
+          </div>
       </div>
 
-      <div class="row row-cols-1 row-cols-md-2">
-         <div class="col d-flex justify-content-center align-items-center my-3">
-            <a href="#"><i class="bi bi-instagram mx-5 text-white ms_fs2"></i></a>
-            <a href="#"><i class="bi bi-facebook mx-5 text-white ms_fs2"></i></a>
-            <a href="#"><i class="bi bi-twitter mx-5 text-white ms_fs2"></i></a>
-        </div>
 
-        <div class="col d-flex flex-column flex-xl-row justify-content-around align-items-center my-3">
-          <div class="font-weight-bold ms_fs2 d-xl-none ">Scarica App</div>
-         
-              <div class="imgApp my-2">
-                <a href="#"><img src="./../../../public/img/app-store.png" class="w-100" alt=""/></a>
-              </div>
-              <div class="imgApp my-2">
-                <a href="#"><img src="./../../../public/img/play-store.png" class="w-100" alt=""/></a>
-              </div>
-         
-        </div>
-        
-      </div>
-
-      <div class="row row-cols-1 row-cols-md-2">
-        <div class="col d-flex justify-content-center my-3">
+      <div class="row justify-content-center">
+        <div class="col-12 col-lg-5 d-flex my-1">
 
           <div class="imgCard">
             <a href="#"><img src="./../../../public/img/logo-visa.png" class="w-100" alt=""></a>
@@ -80,18 +93,18 @@
           <div class="imgCard">
             <a href="#"><img src="./../../../public/img/logo-paypal.png" class="w-100" alt=""></a>
           </div> 
-
         </div>
 
-        <div class="col d-flex justify-content-center align-items-center my-3">
+        <div class="col-12 col-lg-5 my-1 d-flex align-items-center justify-content-center">
           <div class="ms_fs5">DeliveBoo Italy S.r.l. - P.IVA 05141940750</div>
         </div>
+
       </div>
-          
-        
-        
     </div>
-  </section>
+
+  </footer>
+  
+  
 </template>
 
 <script>
@@ -102,24 +115,34 @@
 
 <style lang="scss" scoped>
 
-  @import "./../../sass/common.scss";
-  #footer {
+  @import "./../../sass/_common.scss";
+
+  
+
+  footer{
     color: #fff;
-    background-color: #ff8c28;
-  }
+    background-color: rgb(41, 49, 51);
+    width: 100%;
+    min-height: 10vh;
 
-  .imgLogo {
-    width: 15rem;
-  }
+      .imgLogo {
+        width: 15rem;
+      }
 
-  .imgApp {
-    width: 10rem;
-  }
+      .imgApp {
+        width: 10rem;
+      }
 
-  .imgCard{
-    width: 5rem;
-    margin: 0 1.5rem;
-  }
+      .imgCard{
+        width: 5rem;
+        margin: 0 1.5rem;
+        padding: 10px;
+        border-radius: 10px;
+        background-color: white;
+      }
 
+      a{
+        color: white!important;
+      }
+  }
 </style>
-

@@ -1,5 +1,5 @@
 // inizio validazione group input checkbox
-// resources/views/admin/foods/index.blade.php
+// resources/views/admin/home.blade.php
 
   const checkboxes = document.getElementsByClassName("mJS_checkbox");
   const displayRequired = document.getElementById("mJS_displayRequired");

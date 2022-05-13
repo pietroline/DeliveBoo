@@ -37,6 +37,58 @@
 
 
 
+
+  <!-- inizio carrello -->
+
+  <h1>Carrello</h1>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Nome</th>
+        <th scope="col">id</th>
+        <th scope="col">descrizione</th>
+        <th scope="col">ingredienti</th>
+        <th scope="col">prezzo</th>
+        <th scope="col">quantità</th>
+        <th scope="col">totale</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="item in cart" :key="'food_'+item.id">
+        <td>{{item.name}}</td>
+        <td>{{item.id}}</td>
+        <td>{{item.description}}</td>
+        <td>{{item.ingredients}}</td>
+        <td>{{item.price}} €</td>
+        <td class="d-flex justify-content-center align-items-center">
+          <i class="bi bi-dash-circle ms_fs4" @click="updateCart(item.id, item.price, item.quantity -1)"></i>
+          <span class="ms_fs3 mx-4">{{item.quantity}}</span>
+          <i class="bi bi-plus-circle ms_fs4" @click="updateCart(item.id, item.price, item.quantity +1)"></i>
+          
+        </td>
+        <td>{{item.total}} €</td>
+        <td><button class="btn btn-danger" @click="deleteToCart(item.id)">Rimuovi</button></td>
+      </tr>
+
+    </tbody>
+  </table>
+
+  <div class="d-flex justify-content-end align-items-center">
+    <div class="mr-3 ms_fs3" v-if="getTotal() > 0">Totale carrello {{getTotal()}} €</div>
+    <button class="btn btn-danger" @click="deleteCart()">Elimina carrello</button>
+  </div>
+
+
+<!-- fine carrello -->
+
+
+
+
+
+
+
+
     <section v-if="menuRestaurant">
 
 
@@ -61,6 +113,8 @@
                     :price="food.price"
                     :description="food.description ? food.description : ''" 
                     :ingredients="food.ingredients"
+
+                    @addFood="addToCart"
                 />
 
             </div>
@@ -178,15 +232,109 @@
         restaurant: null,
         menuRestaurant: null,
         currentPage: 1,
-        lastPage: null
+        lastPage: null,
+        cart: []
       };
+    },
+
+    created(){
+      // al primo avvio del browser se la variabile del cart è null allora assegna il valore di [] a cart
+      if(JSON.parse(localStorage.getItem('cart')) == null){
+        localStorage.setItem( "cart", JSON.stringify(this.cart) );
+        console.log("test");
+      } 
     },
 
     mounted() {
       this.getMenu(1);
+      this.getCart();
     },
 
     methods:{
+
+
+       //inizio metodi per carrello
+        deleteCart(){
+          this.cart.splice(0, this.cart.length);
+        },
+
+        addToCart(item){
+          // aggiunge il food nel carrello
+          
+
+          let flag = 0;
+          
+          this.cart.forEach(element => {
+            if(element.id == item.id){
+              alert("Il prodotto inserito è già presente nel carrello");
+              flag = 1;
+            }
+          });
+
+          if(flag == 0){
+            this.cart.push(item);
+            localStorage.setItem( "cart", JSON.stringify(this.cart) );
+          }
+         
+        },
+
+        updateCart(idFood, price, newQuantity){
+          // aggiorna la quantità del food passato ad argomento
+
+          if(parseInt(newQuantity) && newQuantity > 0 && parseInt(idFood) && idFood > 0){
+
+            // solo se newQuantity è un intero e newQuantity > 0 e idFood è un numero intero e idFood > 0
+            this.cart.filter(item =>{
+              if(item["id"] == idFood){
+                item["quantity"] = newQuantity;
+                item["total"] = price * newQuantity; 
+              }
+            })
+          }
+          localStorage.setItem( "cart", JSON.stringify(this.cart) );
+        },
+
+        deleteToCart(idFood){
+          // elimina il food passato ad argomento
+
+          if(parseInt(idFood) && idFood > 0){
+
+            // solo se idFood è un intero e idFood > 0
+            this.cart.forEach((item, count) => {
+              if(item["id"] == idFood){
+                this.cart.splice(count, 1);
+              }
+            });
+            
+          }
+          localStorage.setItem( "cart", JSON.stringify(this.cart) );
+        },
+
+        getTotal(){
+          let total = 0;
+          this.cart.forEach(item => {
+            total += item.total;
+          });
+          return total
+        },
+
+
+        getCart(){
+           this.cart = JSON.parse(localStorage.getItem('cart') );
+        },
+
+    
+
+      // fine metodi per carrello
+
+
+
+
+
+
+
+
+
 
       getMenu(RequestPage){
         const $slug = this.$route.params.slug;
@@ -199,7 +347,6 @@
           })
           .then((response) => {
             // handle success
-            console.log(response)
             if (response.data.success == true) {
               this.currentPage = response.data.showMenuRestaurant.current_page;
               this.restaurant = response.data.showRestaurant;
@@ -219,4 +366,8 @@
 </script>
 
 <style lang="scss" scoped>
+
+ @import "./../../sass/_common.scss";
+
+
 </style>

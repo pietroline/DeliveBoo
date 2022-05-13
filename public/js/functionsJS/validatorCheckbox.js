@@ -93,6 +93,9 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+// inizio gestione di validazione delle checkbox lato client
+// resources/views/admin/home.blade.php
+// resources/views/admin/foods/create.blade.php
 var form = document.querySelector('#sectionForm');
 var checkboxes = form.querySelectorAll('input[type=checkbox]');
 
@@ -118,7 +121,9 @@ if (checkboxes) {
   }
 
   checkValidity();
-}
+} // fine gestione di validazione delle checkbox lato client
+// ----------------------------------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------------------------------
 
 /***/ }),
 
