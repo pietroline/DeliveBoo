@@ -34,6 +34,32 @@
             </div>
         </div>
 
+        <div class="row"  v-if="errors">
+            <div class="col">
+           
+                    <div class="row justify-content-center">
+                        <div class="col-md-12">
+
+                             <!-- Per errori dovuti alle verifiche sui form -->
+                           
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        <!-- @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach -->
+                                        <li v-for="(error, count) in errors" :key="'error_'+count">
+                                            <span v-for="(messageError, count) in error" :key="'messageError_'+count">{{messageError}}</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                           
+                            
+                        </div>
+                    </div>
+                
+            </div>
+        </div>
+
         <div class="row">
             <div class="col">
 
@@ -74,6 +100,7 @@
                 name: null,
                 address: null,
                 phone: null,
+                errors: null
             };
         },
 
@@ -88,7 +115,12 @@
                 if(this.name && this.address && this.phone){
 
                     if(this.cart){
-                        axios.get('api/payment')
+                        axios.post('api/payment', {
+                                name: this.name,
+                                address: this.address,
+                                phone: this.phone,
+                                total: this.total
+                        })
                         .then(response =>{
                             // handle success
                             if(response.data.success == true){
@@ -125,8 +157,8 @@
                         })
                         .catch(error => {
                             // handle error
-                            console.log(error);
-                            alert("Problemi di connessione. Riprova più tardi")
+                            console.log(error.response.data.errors);
+                            this.errors = error.response.data.errors;
                         })
                     }else{
                         alert("Carrello vuoto");
