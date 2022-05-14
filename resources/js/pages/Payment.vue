@@ -1,5 +1,3 @@
-payment
-
 <template>
     <div class="container">
         <div class="row">
@@ -56,12 +54,12 @@ payment
                         <input type="text" class="form-control" id="address" name="address" minlength="5" v-model="address" required>
                     </div>
     
-                    <button type="submit" class="btn btn-primary my-3">Invia</button>
-
+                     <button type="submit" class="btn btn-primary my-3">Invia</button>
                 </form>
-        
+               
             </div>
         </div>
+
     </div>
 </template>
 
@@ -75,7 +73,7 @@ payment
                 total: 0,
                 name: null,
                 address: null,
-                phone: null
+                phone: null,
             };
         },
 
@@ -87,26 +85,56 @@ payment
 
        methods: {
            sendOrder(){
-               if(this.name && this.address && this.phone){
+                if(this.name && this.address && this.phone){
 
-                axios.get('api/payment')
-                    .then(response =>{
-                        // handle success
-                        if(response.data.success == true){
-                            alert("Ordine completato!! Arriviamo subito!!");
-                        }else{
-                            alert("Pagamento rifiutato. Riprova più tardi")
-                        }
+                    if(this.cart){
+                        axios.get('api/payment')
+                        .then(response =>{
+                            // handle success
+                            if(response.data.success == true){
+                                // Se l'ordine va a buon fine reindirizzo alla pagina /orderConfirmed, vedi router.js
+                               this.$router.push({
+                                    name: 'orderConfirmed', 
+                                    params: { arrayData: [
+                                        {
+                                            "data": "name",
+                                            "content": this.name
+                                        },
+                                        {
+                                            "data": "address",
+                                            "content": this.address
+                                        },
+                                        {
+                                            "data": "phone",
+                                            "content": this.phone
+                                        },
+                                        {
+                                            "data": "cart",
+                                            "content": this.cart
+                                        },
+                                        {
+                                            "data": "total",
+                                            "content": this.total
+                                        }
+                                    ] }
+                                });
+                            }else{
+                                // altrimenti reindirizzo alla pagine /orderNegated, vedi router.js
+                               this.$router.push({name: 'orderNegated'});
+                            }
+                        })
+                        .catch(error => {
+                            // handle error
+                            console.log(error);
+                            alert("Problemi di connessione. Riprova più tardi")
+                        })
+                    }else{
+                        alert("Carrello vuoto");
+                    }
 
-                    })
-                    .catch(error => {
-                        // handle error
-                        console.log(error);
-                    })
-
-               }else{
-                   alert("Form non compilato correttamente")
-               }
+                }else{
+                    alert("Form non compilato correttamente")
+                }
            }
        }
        
