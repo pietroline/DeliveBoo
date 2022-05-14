@@ -247,7 +247,7 @@
     methods:{
 
 
-       //inizio metodi per carrello
+      //inizio metodi per carrello
         deleteCart(){
           this.cart.splice(0, this.cart.length);
         },

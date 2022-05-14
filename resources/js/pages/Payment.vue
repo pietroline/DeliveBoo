@@ -1,5 +1,6 @@
 <template>
     <div class="container">
+
         <div class="row">
             <div class="col">
 
@@ -34,31 +35,35 @@
             </div>
         </div>
 
-        <div class="row"  v-if="errors">
-            <div class="col">
-           
-                    <div class="row justify-content-center">
-                        <div class="col-md-12">
+         <!-- inizio sezione errori dovuti alle verifiche sui form -->
 
-                             <!-- Per errori dovuti alle verifiche sui form -->
-                           
-                                <div class="alert alert-danger">
-                                    <ul>
-                                        <!-- @foreach ($errors->all() as $error)
-                                            <li>{{ $error }}</li>
-                                        @endforeach -->
-                                        <li v-for="(error, count) in errors" :key="'error_'+count">
-                                            <span v-for="(messageError, count) in error" :key="'messageError_'+count">{{messageError}}</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                           
+            <div class="row"  v-if="errors">
+                <div class="col">
+            
+                        <div class="row justify-content-center">
+                            <div class="col-md-12">
+
+                                
                             
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            <!-- @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach -->
+                                            <li v-for="(error, count) in errors" :key="'error_'+count">
+                                                <span v-for="(messageError, count) in error" :key="'messageError_'+count">{{messageError}}</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                            
+                                
+                            </div>
                         </div>
-                    </div>
-                
+                    
+                </div>
             </div>
-        </div>
+
+        <!-- fine sezione errori dovuti alle verifiche sui form -->
 
         <div class="row">
             <div class="col">
@@ -104,11 +109,37 @@
             };
         },
 
-       created(){
-        // Quando si apre la pagina payment, popolo il dato "cart" con il valore passato come parametro
+        created(){
+            // Quando si apre la pagina payment, popolo il dato "cart" con il valore passato come parametro
             this.cart = this.$route.params.cart;
             this.total = this.$route.params.total; 
-       },
+          
+            // salvo i dati in valiabili localStorage, in maniera tale da mantenere il dato anche se riavviata la pagina
+            if( this.cart != undefined ){
+                localStorage.setItem( "cartPayment", JSON.stringify(this.cart)); 
+            }else{
+                this.cart = JSON.parse(localStorage.getItem('cartPayment'));
+            }
+
+            if( this.total != undefined){
+                localStorage.setItem( "totalPayment", JSON.stringify(this.total)); 
+            }else{
+                this.total = JSON.parse(localStorage.getItem('totalPayment'));
+            }
+        },
+
+        mounted(){
+            
+
+            // if(JSON.parse(localStorage.getItem('totalPayment')) == null){
+            //     localStorage.setItem( "totalPayment", JSON.stringify(this.total)); 
+            // }else{
+            //     this.total = JSON.parse(localStorage.getItem('totalPayment'));
+            // }
+
+            
+            
+        },
 
        methods: {
            sendOrder(){
