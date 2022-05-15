@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ValidationOrdersFilter;
 use App\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
@@ -60,7 +61,7 @@ class OrderController extends Controller
 
         }
 
-        $orders = Order::orderBy($column, $filter)->get();
+        $orders = Order::where("restaurant_id", Auth::id())->orderBy($column, $filter)->get();
 
         return view("admin.orders.index", compact("orders", "selected"));
         
