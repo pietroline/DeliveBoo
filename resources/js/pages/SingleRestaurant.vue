@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid" v-if="restaurant">
+  <div class="container" v-if="restaurant">
 
 
 
@@ -60,7 +60,7 @@
         <div class="row">
           <div class="col">
             <div class="row">
-              <div class="col col-lg-8">
+              <div class="col-12 col-lg-8">
                 
                 <div class="card-group" v-for="food in menuRestaurant" :key="'menuRestaurant_'+food.id">
 
@@ -81,7 +81,7 @@
               </div>
               <!-- inizio carrello -->
 
-              <div class="col col-lg-4">
+              <div class="col-12 col-lg-4">
                <div class="row">
                   <h1>Carrello</h1>
 
