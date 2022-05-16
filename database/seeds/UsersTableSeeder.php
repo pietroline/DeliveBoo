@@ -18,9 +18,9 @@ class UsersTableSeeder extends Seeder
 
             $newUser = new User();
 
-            $newUser->name = $faker->word();
+            $newUser->name = $faker->name();
             $newUser->email = $faker->email();
-            $newUser->password = Hash::make('testtest');;
+            $newUser->password = Hash::make('testtest');
            
             $newUser->save();
         }
