@@ -405,6 +405,7 @@
 <style lang="scss" scoped>
 
  @import "./../../sass/_common.scss";
+ @import "./../../sass/_variables.scss";
 
   .page-item.active .page-link{
       background-color: $navigator;
