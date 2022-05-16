@@ -102,6 +102,7 @@
             return {
                 cart: [],
                 total: 0,
+                restaurant_id: null,
                 name: null,
                 address: null,
                 phone: null,
@@ -113,6 +114,7 @@
             // Quando si apre la pagina payment, popolo il dato "cart" con il valore passato come parametro
             this.cart = this.$route.params.cart;
             this.total = this.$route.params.total; 
+            this.restaurant_id = this.$route.params.restaurant_id; 
           
             // salvo i dati in valiabili localStorage, in maniera tale da mantenere il dato anche se riavviata la pagina
             if( this.cart != undefined ){
@@ -128,19 +130,6 @@
             }
         },
 
-        mounted(){
-            
-
-            // if(JSON.parse(localStorage.getItem('totalPayment')) == null){
-            //     localStorage.setItem( "totalPayment", JSON.stringify(this.total)); 
-            // }else{
-            //     this.total = JSON.parse(localStorage.getItem('totalPayment'));
-            // }
-
-            
-            
-        },
-
        methods: {
            sendOrder(){
                 if(this.name && this.address && this.phone){
@@ -150,7 +139,8 @@
                                 name: this.name,
                                 address: this.address,
                                 phone: this.phone,
-                                total: this.total
+                                total: this.total,
+                                restaurant_id: this.restaurant_id
                         })
                         .then(response =>{
                             // handle success

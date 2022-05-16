@@ -351,7 +351,7 @@
         // ovviamente solo se il carrello contiene dei food
 
         if(this.cart.length > 0){
-          this.$router.push({name:"payment", params:{cart: this.cart, total: this.getTotal()}});
+          this.$router.push({name:"payment", params:{cart: this.cart, total: this.getTotal(), restaurant_id: this.restaurant.id}});
         }else{
           alert("Il carrello è vuoto");
         }
