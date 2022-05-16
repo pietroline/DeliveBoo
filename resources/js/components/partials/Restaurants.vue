@@ -82,17 +82,17 @@
 
                                 <!-- precedente -->
                                 <li class="page-item" :class="(currentPage == 1) ? 'disabled' : '' ">
-                                    <span class="page-link ms_cursor_pointer" @click="getRestaurantsFiltered(currentPage -1)">Precedente</span>
+                                    <span class="page-link ms_cursor_pointer ms_colorTextNavigator" @click="getRestaurantsFiltered(currentPage -1)">Precedente</span>
                                 </li>
 
                                 <!-- visualizzo numero di pagina -->
                                 <li class="page-item" @click="mJS_selectedPage(page)" :class="(page == currentPage) ? 'active' : ''" v-for="page in lastPage" :key="page">
-                                    <span class="page-link ms_cursor_pointer">{{page}}</span>
+                                    <span class="page-link ms_cursor_pointer ms_colorTextNavigator">{{page}}</span>
                                 </li>
 
                                 <!-- successivo -->
                                 <li class="page-item" :class="(currentPage == lastPage) ? 'disabled' : '' ">
-                                    <span class="page-link ms_cursor_pointer" @click="getRestaurantsFiltered(currentPage +1)">Successivo</span>
+                                    <span class="page-link ms_cursor_pointer ms_colorTextNavigator" @click="getRestaurantsFiltered(currentPage +1)">Successivo</span>
                                 </li>
                             </ul>
                         </nav>
@@ -268,6 +268,15 @@
     .borderActive{
         border: solid 3px $darkOrange;
         border-radius: 20px;
+    }
+
+    .ms_colorTextNavigator{
+        color: $darkOrange;
+    }
+
+    .page-item.active .page-link{
+        background-color: $navigator;
+        border-color: $navigator;
     }
 
 </style>

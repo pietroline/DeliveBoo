@@ -78,6 +78,9 @@
                     this.total = element.content;
                 }
             });
+
+
+            localStorage.removeItem("cart");
             
         }
     }
