@@ -6,7 +6,16 @@
         
         <div class="card-body ms_card">
             <h5 class="card-title">{{name}}</h5>
-        
+
+            <strong v-if="tipologies.length > 1">Tipologie:</strong>
+            <strong v-else>Tipologia:</strong>  
+            <span v-for="(tipology, count) in tipologies" :key="'typology_' + tipology.id">
+                {{tipology.name}}
+                <span v-if="count < tipology.length-1">, </span>
+            </span>
+
+            <p class="my-3">{{description}}</p>
+  
             <div class="d-flex justify-content-center my-4">
                 <router-link class="btn ms_btn" :to="{name: 'single-restaurant', params: {slug: slug}}">Vai al Ristorante</router-link>
             </div>
@@ -22,7 +31,9 @@
 
         props:{
             "name": String,
-            "slug": String
+            "slug": String,
+            "tipologies": Array,
+            "description": String
         }
     }
 </script>

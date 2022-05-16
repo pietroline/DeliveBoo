@@ -59,6 +59,8 @@
 
                             <Restaurant 
                                 :name="restaurant.name"
+                                :tipologies="restaurant.typologies"
+                                :description="restaurant.description"
                                 :slug="restaurant.slug"
                             />
 
