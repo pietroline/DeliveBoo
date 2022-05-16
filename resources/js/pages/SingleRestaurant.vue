@@ -170,6 +170,11 @@
       <h1>Non esiste nessun menu per questo ristorante</h1>
     </section>
 
+    <div class="row">
+      <b-modal v-model="emptyCart" ok-only>Il carrello è vuoto! Inserisci almeno un prodotto per proseguire</b-modal>
+    </div>
+
+
 
   </div>
 </template>
@@ -190,7 +195,8 @@
         menuRestaurant: null,
         currentPage: 1,
         lastPage: null,
-        cart: []
+        cart: [],
+        emptyCart: false
       };
     },
 
@@ -353,7 +359,7 @@
         if(this.cart.length > 0){
           this.$router.push({name:"payment", params:{cart: this.cart, total: this.getTotal(), restaurant_id: this.restaurant.id}});
         }else{
-          alert("Il carrello è vuoto");
+          this.emptyCart = true;
         }
         
       }
