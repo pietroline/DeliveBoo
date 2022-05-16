@@ -34,6 +34,10 @@ class RestaurantController extends Controller
     {
         $restaurants = Restaurant::all();
 
+        foreach($restaurants as $restaurant){
+            $restaurant["typologies"] = $restaurant->typologies;
+        }
+
         return response()->json(
             [
                 "results" => $this->paginate($restaurants),
