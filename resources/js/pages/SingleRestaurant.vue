@@ -39,13 +39,10 @@
 
   <h1>Carrello</h1>
 
-  <table class="table">
+  <table class="table text-center">
     <thead>
       <tr>
         <th scope="col">Nome</th>
-        <th scope="col">id</th>
-        <th scope="col">descrizione</th>
-        <th scope="col">ingredienti</th>
         <th scope="col">prezzo</th>
         <th scope="col">quantità</th>
         <th scope="col">totale</th>
@@ -54,9 +51,6 @@
     <tbody>
       <tr v-for="item in cart" :key="'food_'+item.id">
         <td>{{item.name}}</td>
-        <td>{{item.id}}</td>
-        <td>{{item.description}}</td>
-        <td>{{item.ingredients}}</td>
         <td>{{item.price}} €</td>
         <td class="d-flex justify-content-center align-items-center">
           <i class="bi bi-dash-circle ms_fs4" @click="updateCart(item.id, item.price, item.quantity -1)"></i>
@@ -73,6 +67,7 @@
 
   <div class="d-flex justify-content-end align-items-center">
     <div class="mr-3 ms_fs3" v-if="getTotal() > 0">Totale carrello {{getTotal()}} €</div>
+     <button class="btn btn-success mr-3" @click="goToPayment()">Paga</button>
     <button class="btn btn-danger" @click="deleteCart()">Elimina carrello</button>
   </div>
 
@@ -243,7 +238,6 @@
       // al primo avvio del browser se la variabile del cart è null allora assegna il valore di [] a cart
       if(JSON.parse(localStorage.getItem('cart')) == null){
         localStorage.setItem( "cart", JSON.stringify(this.cart) );
-        console.log("test");
       } 
     },
 
@@ -255,7 +249,7 @@
     methods:{
 
 
-       //inizio metodi per carrello
+      //inizio metodi per carrello
         deleteCart(){
           this.cart.splice(0, this.cart.length);
           localStorage.setItem( "cart", JSON.stringify(this.cart) );
@@ -395,19 +389,28 @@
             // handle error
             console.log(error);
           });
+      },
+
+      goToPayment(){
+        // questa funzione permette di reindirizzare la pagina alla pagina definita su router.js di nome payment 
+        // e inoltre passo nei parametri il carrello
+        // ovviamente solo se il carrello contiene dei food
+
+        if(this.cart.length > 0){
+          this.$router.push({name:"payment", params:{cart: this.cart, total: this.getTotal()}});
+        }else{
+          alert("Il carrello è vuoto");
         }
+        
+      }
+
     }
   };
 </script>
 
 <style lang="scss" scoped>
 
-  @import "./../../sass/_common.scss";
-  @import "./../../sass/_variables.scss";
-
-  .page-link{
-        color: $darkOrange;
-    }
+ @import "./../../sass/_common.scss";
 
   .page-item.active .page-link{
       background-color: $navigator;
@@ -420,5 +423,5 @@
         color: white;
         font-weight: bold;   
     }
-  
+
 </style>

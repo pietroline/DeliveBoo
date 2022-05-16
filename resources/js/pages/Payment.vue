@@ -1,0 +1,209 @@
+<template>
+    <div class="container">
+
+        <div class="row">
+            <div class="col">
+
+                 <h1>Ci siamo quasi stai per inviare l'ordine</h1>
+
+                <h3>Ecco il riepilogo dell'ordine</h3>
+
+                <table class="table text-center">
+                    <thead>
+                        <tr>
+                            <th scope="col">Nome</th>
+                            <th scope="col">prezzo</th>
+                            <th scope="col">quantità</th>
+                            <th scope="col">totale</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="item in cart" :key="'food_'+item.id">
+                            <td>{{item.name}}</td>
+                            <td>{{item.price}} €</td>
+                            <td>{{item.quantity}}
+                            <td>{{item.total}} €</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="d-flex justify-content-end align-items-center">
+                    <div class="mr-3 ms_fs3">Totale carrello {{total}} €</div>
+                </div>
+
+
+            </div>
+        </div>
+
+         <!-- inizio sezione errori dovuti alle verifiche sui form -->
+
+            <div class="row"  v-if="errors">
+                <div class="col">
+            
+                        <div class="row justify-content-center">
+                            <div class="col-md-12">
+
+                                
+                            
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            <!-- @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach -->
+                                            <li v-for="(error, count) in errors" :key="'error_'+count">
+                                                <span v-for="(messageError, count) in error" :key="'messageError_'+count">{{messageError}}</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                            
+                                
+                            </div>
+                        </div>
+                    
+                </div>
+            </div>
+
+        <!-- fine sezione errori dovuti alle verifiche sui form -->
+
+        <div class="row">
+            <div class="col">
+
+                <form @submit.prevent="sendOrder()">
+
+                    <div class="form-group">
+                        <label for="name">Nome *</label>
+                        <input type="text" class="form-control" id="name" name="name" minlength="3" v-model="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Numero telefono *</label>
+                        <input type="tel" pattern="[0-9]{6,15}" class="form-control" id="phone" name="phone" v-model="phone" required>
+                    </div>
+ 
+                    <div class="form-group">
+                        <label for="address">Indirizzo *</label>
+                        <input type="text" class="form-control" id="address" name="address" minlength="5" v-model="address" required>
+                    </div>
+    
+                     <button type="submit" class="btn btn-primary my-3">Invia</button>
+                </form>
+               
+            </div>
+        </div>
+
+    </div>
+</template>
+
+<script>
+    export default {    
+        name: "Payment",
+
+        data() {
+            return {
+                cart: [],
+                total: 0,
+                name: null,
+                address: null,
+                phone: null,
+                errors: null
+            };
+        },
+
+        created(){
+            // Quando si apre la pagina payment, popolo il dato "cart" con il valore passato come parametro
+            this.cart = this.$route.params.cart;
+            this.total = this.$route.params.total; 
+          
+            // salvo i dati in valiabili localStorage, in maniera tale da mantenere il dato anche se riavviata la pagina
+            if( this.cart != undefined ){
+                localStorage.setItem( "cartPayment", JSON.stringify(this.cart)); 
+            }else{
+                this.cart = JSON.parse(localStorage.getItem('cartPayment'));
+            }
+
+            if( this.total != undefined){
+                localStorage.setItem( "totalPayment", JSON.stringify(this.total)); 
+            }else{
+                this.total = JSON.parse(localStorage.getItem('totalPayment'));
+            }
+        },
+
+        mounted(){
+            
+
+            // if(JSON.parse(localStorage.getItem('totalPayment')) == null){
+            //     localStorage.setItem( "totalPayment", JSON.stringify(this.total)); 
+            // }else{
+            //     this.total = JSON.parse(localStorage.getItem('totalPayment'));
+            // }
+
+            
+            
+        },
+
+       methods: {
+           sendOrder(){
+                if(this.name && this.address && this.phone){
+
+                    if(this.cart){
+                        axios.post('api/payment', {
+                                name: this.name,
+                                address: this.address,
+                                phone: this.phone,
+                                total: this.total
+                        })
+                        .then(response =>{
+                            // handle success
+                            if(response.data.success == true){
+                                // Se l'ordine va a buon fine reindirizzo alla pagina /orderConfirmed, vedi router.js
+                               this.$router.push({
+                                    name: 'orderConfirmed', 
+                                    params: { arrayData: [
+                                        {
+                                            "data": "name",
+                                            "content": this.name
+                                        },
+                                        {
+                                            "data": "address",
+                                            "content": this.address
+                                        },
+                                        {
+                                            "data": "phone",
+                                            "content": this.phone
+                                        },
+                                        {
+                                            "data": "cart",
+                                            "content": this.cart
+                                        },
+                                        {
+                                            "data": "total",
+                                            "content": this.total
+                                        }
+                                    ] }
+                                });
+                            }else{
+                                // altrimenti reindirizzo alla pagine /orderNegated, vedi router.js
+                               this.$router.push({name: 'orderNegated'});
+                            }
+                        })
+                        .catch(error => {
+                            // handle error
+                            console.log(error.response.data.errors);
+                            this.errors = error.response.data.errors;
+                        })
+                    }else{
+                        alert("Carrello vuoto");
+                    }
+
+                }else{
+                    alert("Form non compilato correttamente")
+                }
+           }
+       }
+       
+    }
+</script>
+
+<style>
+
+</style>
