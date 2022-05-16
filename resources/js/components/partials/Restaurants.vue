@@ -60,6 +60,8 @@
                             <Restaurant 
                                 :name="restaurant.name"
                                 :slug="restaurant.slug"
+                                 :tipologies="restaurant.typologies"
+                                :description="restaurant.description"
                             />
 
                         </div>
