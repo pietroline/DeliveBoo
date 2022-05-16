@@ -3,9 +3,6 @@
 
 
 
-
-
-
    <!-- inizio dati ristorante -->
 
     <div class="row">
@@ -79,9 +76,13 @@
 
 
 
-
-
-
+<!-- inizio btn torna ai ristoranti -->
+    <div class="row">
+      <div class="col">
+         <router-link class="btn ms_btn" :to="{name: 'home'}">Torna ai ristoranti</router-link>
+      </div>
+    </div>
+<!-- fine btn torna ai ristoranti -->
 
 
     <section v-if="menuRestaurant">
@@ -108,6 +109,7 @@
                     :price="food.price"
                     :description="food.description ? food.description : ''" 
                     :ingredients="food.ingredients"
+                    :restaurant_id="food.restaurant_id"
 
                     @addFood="addToCart"
                 />
@@ -250,25 +252,58 @@
       //inizio metodi per carrello
         deleteCart(){
           this.cart.splice(0, this.cart.length);
+          localStorage.setItem( "cart", JSON.stringify(this.cart) );
         },
 
         addToCart(item){
           // aggiunge il food nel carrello
           
+          // verifico se il carrello ha già dei prodotti
 
-          let flag = 0;
-          
+        if(this.cart.length > 0){
+
+          let flagFoodInCart = 0;
+          let flagFoodOtherRestaurant = 0;
+
+          // itero tutti gli elementi del carrello
           this.cart.forEach(element => {
+            // se il prodotto è già presente nel carrello setto flagFoodInCart = 1
             if(element.id == item.id){
-              alert("Il prodotto inserito è già presente nel carrello");
-              flag = 1;
+              flagFoodInCart = 1;
+            }
+
+            // se il prodotto da aggiungere al carrello appartiene ad un ristorante diverso 
+            // rispetto ai prodotti presenti già sul carrello, aumento flagFoodOtherRestaurant
+            if(element.restaurant_id != item.restaurant_id){
+              flagFoodOtherRestaurant++;
+
             }
           });
 
-          if(flag == 0){
-            this.cart.push(item);
-            localStorage.setItem( "cart", JSON.stringify(this.cart) );
+          // terminata l'iterazione dei prodotti sul carrello
+          // se flagFoodOtherRestaurant > 0 significa che il prodotto da inserire non appartiene 
+          // allo stesso ristorante dei prodotti già presenti nel carrello, quindi avviso l'utente
+          if(flagFoodOtherRestaurant > 0){
+            alert("È possibile acquistare da un solo ristorante. Il carrello contiene prodotti appartenenti ad un altro ristorante. Per proseguire, svuotare prima il carrello");
+          }else{
+            // se flagFoodInCart = 0 significa che il prodotto da inserire non è già presente nel carrello
+            // posso quindi aggiungerlo, altrimenti avviso l'utente
+            if(flagFoodInCart == 0){
+              this.cart.push(item);
+              localStorage.setItem( "cart", JSON.stringify(this.cart) );
+            }else{
+              alert("Il prodotto inserito è già presente nel carrello");
+            }
           }
+
+        }else{
+          // il carrello è vuoto, inserisco il primo prodotto nel carrello
+          this.cart.push(item);
+          localStorage.setItem( "cart", JSON.stringify(this.cart) );
+        }
+         
+
+          
          
         },
 
@@ -377,5 +412,16 @@
 
  @import "./../../sass/_common.scss";
 
+  .page-item.active .page-link{
+      background-color: $navigator;
+      border-color: $navigator;
+  }
+
+   .ms_btn{
+        background-color: $darkOrange;
+        border: 1px solid $lightOrange;
+        color: white;
+        font-weight: bold;   
+    }
 
 </style>

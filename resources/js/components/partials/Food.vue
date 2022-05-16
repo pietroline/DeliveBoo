@@ -27,7 +27,9 @@
             "id": Number,
             "price": Number,
             "description":String,
-            "ingredients":String
+            "ingredients":String,
+            "restaurant_id":Number
+
         },
 
         data(){
@@ -47,7 +49,8 @@
                     "ingredients": this.ingredients,
                     "price": this.price,
                     "quantity": this.quantity,
-                    "total": this.price * this.quantity
+                    "total": this.price * this.quantity,
+                    "restaurant_id": this.restaurant_id
                 }
 
                 this.$emit("addFood", item);
