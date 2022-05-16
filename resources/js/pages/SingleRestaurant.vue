@@ -8,7 +8,7 @@
     <div class="row">
       <div class="col">
 
-        <div class="px-4 py-5 my-5 text-center">
+        <div class="px-4 py-3 my-3 text-center">
 
           <img class="d-block mx-auto mb-4" src="/docs/5.1/assets/brand/bootstrap-logo.svg"/>
           <h1 class="display-5 fw-bold">{{ restaurant.name }}</h1>
@@ -38,97 +38,91 @@
 
    <!-- fine dati ristorante -->
 
+  
 
-
-
-
-
-
-  <!-- inizio carrello -->
-
-  <h1>Carrello</h1>
-
-  <table class="table text-center">
-    <thead>
-      <tr>
-        <th scope="col">Nome</th>
-        <th scope="col">prezzo</th>
-        <th scope="col">quantità</th>
-        <th scope="col">totale</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr v-for="item in cart" :key="'food_'+item.id">
-        <td>{{item.name}}</td>
-        <td>{{item.price}} €</td>
-        <td class="d-flex justify-content-center align-items-center">
-          <i class="bi bi-dash-circle ms_fs4" @click="updateCart(item.id, item.price, item.quantity -1)"></i>
-          <span class="ms_fs3 mx-4">{{item.quantity}}</span>
-          <i class="bi bi-plus-circle ms_fs4" @click="updateCart(item.id, item.price, item.quantity +1)"></i>
-          
-        </td>
-        <td>{{item.total}} €</td>
-        <td><button class="btn btn-danger" @click="deleteToCart(item.id)">Rimuovi</button></td>
-      </tr>
-
-    </tbody>
-  </table>
-
-  <div class="d-flex justify-content-end align-items-center">
-    <div class="mr-3 ms_fs3" v-if="getTotal() > 0">Totale carrello {{getTotal()}} €</div>
-    <button class="btn btn-success mr-3" @click="goToPayment()" v-if="cart">Paga</button>
-    <button class="btn btn-danger" @click="deleteCart()">Elimina carrello</button>
-  </div>
-
-
-<!-- fine carrello -->
-
-
-
-<!-- inizio btn torna ai ristoranti -->
-    <div class="row">
+  <!-- inizio btn torna ai ristoranti -->
+    <div class="row text-center mb-5">
       <div class="col">
          <router-link class="btn ms_btn" :to="{name: 'home'}">Torna ai ristoranti</router-link>
       </div>
     </div>
-<!-- fine btn torna ai ristoranti -->
+  <!-- fine btn torna ai ristoranti -->
 
 
     <section v-if="menuRestaurant">
 
-
-
-
       <!-- inizio menu ristorante -->
 
-
-
-
-        <div class="row">
+        <div class="row justify-content-center">
             <h1>Menu</h1>
         </div>
 
-        <div class="row row-cols-3">
-            <div class="col card-group" v-for="food in menuRestaurant" :key="'menuRestaurant_'+food.id">
+        <div class="row">
+          <div class="col-12">
+            <div class="row">
+              <div class="col-8">
+                
+                <div class="col card-group" v-for="food in menuRestaurant" :key="'menuRestaurant_'+food.id">
 
-                <!-- food.description assume valore di NULL quando non è presente una descrizione del food, per questo popolo la prop :description in maniera tale da essere sempre string -->
-                <Food 
-                    :name="food.name"
-                    :id="food.id"
-                    :price="food.price"
-                    :description="food.description ? food.description : ''" 
-                    :ingredients="food.ingredients"
-                    :restaurant_id="food.restaurant_id"
+                     <!-- food.description assume valore di NULL quando non è presente una descrizione del food, per questo popolo la prop :description in maniera tale da essere sempre string -->
+                    <Food 
+                        :name="food.name"
+                        :id="food.id"
+                        :price="food.price"
+                        :description="food.description ? food.description : ''" 
+                        :ingredients="food.ingredients"
+                        :restaurant_id="food.restaurant_id"
 
-                    @addFood="addToCart"
-                />
+                        @addFood="addToCart"
+                    />
 
+                 </div>
+       
+              </div>
+              <!-- inizio carrello -->
+
+              <div class="col-4">
+
+                  <h1>Carrello</h1>
+
+                  <table class="table text-center">
+                    <thead>
+                      <tr>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Prezzo</th>
+                        <th scope="col">Quantità</th>
+                        <th scope="col">Totale</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr v-for="item in cart" :key="'food_'+item.id">
+                        <td>{{item.name}}</td>
+                        <td>{{item.price}} €</td>
+                        <td class="d-flex justify-content-center align-items-center">
+                          <i class="bi bi-dash-circle ms_fs4" @click="updateCart(item.id, item.price, item.quantity -1)"></i>
+                          <span class="ms_fs3 mx-4">{{item.quantity}}</span>
+                          <i class="bi bi-plus-circle ms_fs4" @click="updateCart(item.id, item.price, item.quantity +1)"></i>
+                          
+                        </td>
+                        <td>{{item.total}} €</td>
+                        <td><button class="btn btn-danger" @click="deleteToCart(item.id)">Rimuovi</button></td>
+                      </tr>
+
+                    </tbody>
+                  </table>
+
+                  <div class="d-flex justify-content-end align-items-center">
+                    <div class="mr-3 ms_fs3" v-if="getTotal() > 0">Totale carrello {{getTotal()}} €</div>
+                    <button class="btn btn-success mr-3" @click="goToPayment()" v-if="cart">Paga</button>
+                    <button class="btn btn-danger" @click="deleteCart()">Elimina carrello</button>
+                  </div>
+             
+              </div>
+              <!-- fine carrello -->
             </div>
+          </div>
         </div>
-
-
-
-
+          
       <!-- fine menu ristorante -->
 
       <!-- inizio page navigator -->
