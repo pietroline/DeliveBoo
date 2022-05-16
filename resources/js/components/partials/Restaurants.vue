@@ -12,20 +12,22 @@
                 </div>
                 
             </div>
-<!-- :class="(showBorder == true && typology.id == 1) ? 'borderActive' : '' " -->
+
             <form  @submit.prevent="getRestaurantsFiltered(1)" >
 
                 <div class="row mb-3">
-                    <div class="col-12 col-md-6 col-lg-3 card-typology mb-5 d-flex justify-content-center" v-for="(typology, count) in allTypologies" :key="typology.id">
+                    <div class="col-12 col-md-6 col-lg-3 d-flex justify-content-center" v-for="(typology) in allTypologies" :key="typology.id">
                         
-                        <div class="form-check p-0">
-                            <input  type="checkbox" class="form-check-input d-none" v-model="typologySelected" :value="typology.id" :id="'typology_' + typology.id">
+                        <div class="form-check p-0 position-relative">
+                            
                             <label class="form-check-label" :for="'typology_' + typology.id">
-                                <img :src="require('../../../../public/img/' + typology.image)" class="card-typology ms_cursor_pointer"  :alt="typology.name"
-                                :class="(arrayTypology.includes(typology.id)) ? 'borderActive' : '' "
-                                @click="addBorder(typology.id, count)">
+                                <img :src="require('../../../../public/img/' + typology.image)" class="card-typology ms_cursor_pointer"  :alt="typology.name">
                             </label>
-                            <p class="mb-5 mt-1 text-center">
+                            <div class="ms_position-absolute">
+                                <input  type="checkbox" class="form-check-input ms_checkbox" v-model="typologySelected" :value="typology.id" :id="'typology_' + typology.id">
+                            </div>
+ 
+                            <p class="mb-4 mt-1 text-center">
                                 {{typology.name}}
                             </p>
                         </div>
@@ -125,23 +127,12 @@
                 restaurants: [],
                 currentPage: 1,
                 lastPage: null,
-                showBorderTypology: [],
-                arrayTypology: [],
             };
         },
 
         mounted(){
             this.getAllTypologies();  
             this.getAllRestaurants(1);
-        },
-
-        computed: {
-            function(){
-                // popolo showBorderTypology in funzione della dimensione di typology
-                for (let i = 0; i < this.allTypologies.length; i++) {
-                    this.showBorderTypology.push(false);
-                }
-            }
         },
 
         methods:{
@@ -205,19 +196,6 @@
                 this.getRestaurantsFiltered(this.currentPage);
             },
 
-            addBorder(id, index){
-                if (this.showBorderTypology[index] == false) {
-                    this.showBorderTypology[index] = true
-                    this.arrayTypology.push(id);
-                }else{
-                    this.showBorderTypology[index] = false
-                    for (let i = 0; i < this.arrayTypology.length; i++) {
-                        if (this.arrayTypology[i] == id) {
-                            this.arrayTypology.splice(i,1);
-                        } 
-                    }     
-                }
-            },
         }
     }
 </script>
@@ -246,28 +224,28 @@
         -webkit-appearance: none;
         border: 1px solid black;
         box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);
-        padding: 9px;
-        border-radius: 3px;
-        display: inline-block;
+        padding: 10px;
+        border-radius: 50%;
+        background-color: white;
         
     }
 
     .ms_checkbox:checked {
         background-color: $darkOrange;
-        border: 1px solid $lightOrange;
-        box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05), inset 15px 10px -12px rgba(255,255,255,0.1);
+        border: 2px solid greenyellow;
         color: white;
     }
 
     .card-typology{
-        width: 255px;
+        width: 230px;
         height: 140px;
         border-radius: 20px;
     }
 
-    .borderActive{
-        border: solid 3px $darkOrange;
-        border-radius: 20px;
+    .ms_position-absolute{
+        position: absolute;
+        top: 3%;
+        right: 6%;
     }
 
 </style>

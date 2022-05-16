@@ -359,12 +359,6 @@
 
 
 
-
-
-
-
-
-
       getMenu(RequestPage){
         const $slug = this.$route.params.slug;
 
