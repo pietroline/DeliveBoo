@@ -22,7 +22,9 @@ Route::middleware("auth")
     ->group(function(){
         Route::get('/', 'HomeController@index')->name('home');
         Route::resource('/foods', 'FoodController');
+        Route::resource('restaurants/orders', 'OrderController');
         Route::resource('/restaurants', 'RestaurantController');
+        
     });
 
 Route::get("{any?}", function(){
