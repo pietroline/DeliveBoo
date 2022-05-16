@@ -32,5 +32,23 @@ class ValidationFood extends FormRequest
             "visible" => "required | boolean"
         ];
     }
+
+    /**
+     * Get custom attributes for validator errors.
+     *
+     * @return array
+     */
+    public function attributes()
+    {
+        return [
+            'name' => 'Nome portata',
+            'category_id' => 'Categoria',
+            'price' => 'Prezzo',
+            'ingredients' => 'Ingredienti',
+            'visible' => 'Disponibilità',
+        ];
+
+    }
+    
 }
 
