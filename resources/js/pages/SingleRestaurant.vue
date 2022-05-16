@@ -1,5 +1,5 @@
 <template>
-  <div class="container" v-if="restaurant">
+  <div class="container-fluid" v-if="restaurant">
 
 
 
@@ -58,11 +58,11 @@
         </div>
 
         <div class="row">
-          <div class="col-12">
+          <div class="col">
             <div class="row">
-              <div class="col-8">
+              <div class="col col-lg-8">
                 
-                <div class="col card-group" v-for="food in menuRestaurant" :key="'menuRestaurant_'+food.id">
+                <div class="card-group" v-for="food in menuRestaurant" :key="'menuRestaurant_'+food.id">
 
                      <!-- food.description assume valore di NULL quando non è presente una descrizione del food, per questo popolo la prop :description in maniera tale da essere sempre string -->
                     <Food 
@@ -76,13 +76,13 @@
                         @addFood="addToCart"
                     />
 
-                 </div>
+                </div>
        
               </div>
               <!-- inizio carrello -->
 
-              <div class="col-4">
-
+              <div class="col col-lg-4">
+               <div class="row">
                   <h1>Carrello</h1>
 
                   <table class="table text-center">
@@ -92,30 +92,41 @@
                         <th scope="col">Prezzo</th>
                         <th scope="col">Quantità</th>
                         <th scope="col">Totale</th>
+                        
                       </tr>
                     </thead>
+                   
                     <tbody>
                       <tr v-for="item in cart" :key="'food_'+item.id">
                         <td>{{item.name}}</td>
                         <td>{{item.price}} €</td>
+                         
                         <td class="d-flex justify-content-center align-items-center">
-                          <i class="bi bi-dash-circle ms_fs4" @click="updateCart(item.id, item.price, item.quantity -1)"></i>
-                          <span class="ms_fs3 mx-4">{{item.quantity}}</span>
-                          <i class="bi bi-plus-circle ms_fs4" @click="updateCart(item.id, item.price, item.quantity +1)"></i>
+                        <i class="bi bi-dash-circle ms_fs4" @click="updateCart(item.id, item.price, item.quantity -1)"></i> 
+                           <span class="ms_fs3 mx-4">{{item.quantity}}</span>
+                           <i class="bi bi-plus-circle ms_fs4" @click="updateCart(item.id, item.price, item.quantity +1)"></i> 
                           
                         </td>
+                        
                         <td>{{item.total}} €</td>
                         <td><button class="btn btn-danger" @click="deleteToCart(item.id)">Rimuovi</button></td>
+                         
                       </tr>
 
+
                     </tbody>
+                   
                   </table>
 
                   <div class="d-flex justify-content-end align-items-center">
                     <div class="mr-3 ms_fs3" v-if="getTotal() > 0">Totale carrello {{getTotal()}} €</div>
                     <button class="btn btn-success mr-3" @click="goToPayment()" v-if="cart">Paga</button>
-                    <button class="btn btn-danger" @click="deleteCart()">Elimina carrello</button>
+                    <button class="btn btn-danger" @click="deleteCart()">Elimina</button>
                   </div>
+               </div>
+                      
+               
+               
              
               </div>
               <!-- fine carrello -->
@@ -126,9 +137,6 @@
       <!-- fine menu ristorante -->
 
       <!-- inizio page navigator -->
-
-
-
 
 
         <div class="row justify-content-center my-5">
