@@ -209,7 +209,7 @@ class FoodsTableSeeder extends Seeder
             [
                 'name' => 'Nigiri con Salmone',
                 'path' => 'nigiriSalmone.png',
-                'category_id' => '',
+                'category_id' => '3',
                 'restaurant_id' => '16',
             ],
             [
@@ -532,39 +532,15 @@ class FoodsTableSeeder extends Seeder
 
 
 
-        for($i=0; $i<160; $i++){
-            
-            $newFood = new Food();
-
-            $newFood->name = ucfirst($faker->word());
-
-            // creazione slug, verifica se già esistente e crea slug univoco su DB
-            $newFood->slug = Str::slug($newFood->name);
-            $counter = 1;
-            while (Food::where('slug', $newFood->slug)->first()) {
-                $newFood->slug = Str::slug($newFood->name) . '-' . $counter;
-                $counter++;
-            }
-
-            $newFood->category_id = $faker->numberBetween(1,10);
-            $newFood->price = $faker->numberBetween(7, 25);
-            $newFood->description = $faker->paragraph();
-            
-            $newFood->ingredients = $faker->words(5, true);
-            $newFood->ingredients = str_replace(" ", ", ", $newFood->ingredients);
-
-            $newFood->visible = rand(true, false);
-            $newFood->restaurant_id = $faker->numberBetween(1,20);
-
-            $newFood->save();
-        }
+       
 
 
         foreach($foods as $food) {
-            $newFood = new Foods();
+            $newFood = new Food();
 
             $newFood->name = $food['name'];
             $newFood->slug = Str::slug($newFood->name);
+            $newFood->image = $food['path'];
             $newFood->category_id = $food['category_id'];
 
 
@@ -579,9 +555,6 @@ class FoodsTableSeeder extends Seeder
             $newFood->restaurant_id =$food['restaurant_id'];
 
             $newFood->save();
-
-
-
 
             
         }

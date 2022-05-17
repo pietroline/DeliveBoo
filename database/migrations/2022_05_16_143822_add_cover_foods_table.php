@@ -27,6 +27,9 @@ class AddCoverFoodsTable extends Migration
      */
     public function down()
     {
-        $table->dropColumn('image');
-    }
+        Schema::table('foods', function (Blueprint $table) {
+            
+            $table->dropColumn('image');
+    });
+}
 }
