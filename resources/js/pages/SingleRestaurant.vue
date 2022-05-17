@@ -185,6 +185,27 @@
       <h1>Non esiste nessun menu per questo ristorante</h1>
     </section>
 
+    <!-- modal per prodotto già presente nel carrello -->
+      <b-modal no-close-on-backdrop ok-only v-model="foodInCart">
+        <p class="my-4">Il prodotto inserito è già presente nel carrello</p>
+      </b-modal>
+
+    <!-- modal per carrello vuoto -->
+      <b-modal no-close-on-backdrop ok-only v-model="foodInCart">
+        <p class="my-4">Il carrello è vuoto</p>
+      </b-modal>
+
+    <!-- modal se si aggiunge un prodotto al carrello, diverso da qulli già presenti appartenenti ad un altro ristorante -->
+      <b-modal no-close-on-backdrop v-model="onlyOneRestaurant">
+        <p class="my-4">È possibile acquistare da un solo ristorante. Il carrello contiene prodotti appartenenti ad un altro ristorante. Per proseguire, svuotare prima il carrello</p>
+      
+         <template #modal-footer="{ ok, cancel }">
+            <!-- Emulate built in modal footer ok and cancel button actions -->
+            <b-button size="sm" variant="success" @click="ok()">Annulla</b-button>
+            <b-button size="sm" variant="danger" @click="deleteCart(); addToCart(loadFood); cancel()">Svuota carrello e aggiungi prodotto</b-button>
+          </template>
+      </b-modal>
+
 
   </div>
 </template>
@@ -205,7 +226,11 @@
         menuRestaurant: null,
         currentPage: 1,
         lastPage: null,
-        cart: []
+        cart: [],
+        foodInCart: false,
+        emptyCart: false,
+        onlyOneRestaurant: false,
+        loadFood: null
       };
     },
 
@@ -259,7 +284,8 @@
           // se flagFoodOtherRestaurant > 0 significa che il prodotto da inserire non appartiene 
           // allo stesso ristorante dei prodotti già presenti nel carrello, quindi avviso l'utente
           if(flagFoodOtherRestaurant > 0){
-            alert("È possibile acquistare da un solo ristorante. Il carrello contiene prodotti appartenenti ad un altro ristorante. Per proseguire, svuotare prima il carrello");
+            this.onlyOneRestaurant = true;
+            this.loadFood = item;
           }else{
             // se flagFoodInCart = 0 significa che il prodotto da inserire non è già presente nel carrello
             // posso quindi aggiungerlo, altrimenti avviso l'utente
@@ -267,7 +293,7 @@
               this.cart.push(item);
               localStorage.setItem( "cart", JSON.stringify(this.cart) );
             }else{
-              alert("Il prodotto inserito è già presente nel carrello");
+              this.foodInCart = true;
             }
           }
 
@@ -368,7 +394,7 @@
         if(this.cart.length > 0){
           this.$router.push({name:"payment", params:{cart: this.cart, total: this.getTotal()}});
         }else{
-          alert("Il carrello è vuoto");
+          this.emptyCart = true;
         }
         
       }
