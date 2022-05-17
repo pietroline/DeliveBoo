@@ -17,4 +17,5 @@ mix.js('resources/js/app.js', 'public/js')
     .js('resources/js/functionsJS/validationRequiredGroupCheckbox.js', 'public/js/functionsJS')
     .js('resources/js/functionsJS/validatorCheckbox.js', 'public/js/functionsJS')
     .js('resources/js/functionsJS/validationformclientBootstrap.js', 'public/js/functionsJS')
+    .js('resources/js/functionsJS/chartJS.js', 'public/js/functionsJS')
     .sass('resources/sass/app.scss', 'public/css');

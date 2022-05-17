@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col d-flex justify-content-end">
 
-                <form method="GET" action="{{route('admin.orders.index')}}">
+                <form method="GET" action="{{route('admin.orders')}}">
 
                     @csrf
 
@@ -16,10 +16,10 @@
                             
                             <option value="1" {{$selected == 1 ? "selected" : ""}}>Data conferma ordine decrescente</option>
                             <option value="2" {{$selected == 2 ? "selected" : ""}}>Data conferma ordine crescente</option>
-                            <option value="3" {{$selected == 2 ? "selected" : ""}}>Nome ordine decrescente</option>
-                            <option value="4" {{$selected == 2 ? "selected" : ""}}>Nome ordine crescente</option>
-                            <option value="5" {{$selected == 2 ? "selected" : ""}}>Totale ordine decrescente</option>
-                            <option value="6" {{$selected == 2 ? "selected" : ""}}>Totale ordine crescente</option>
+                            <option value="3" {{$selected == 3 ? "selected" : ""}}>Nome ordine decrescente</option>
+                            <option value="4" {{$selected == 4 ? "selected" : ""}}>Nome ordine crescente</option>
+                            <option value="5" {{$selected == 5 ? "selected" : ""}}>Totale ordine decrescente</option>
+                            <option value="6" {{$selected == 6 ? "selected" : ""}}>Totale ordine crescente</option>
                             
                         </select>
                         
