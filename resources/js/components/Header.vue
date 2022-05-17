@@ -1,7 +1,7 @@
 <template>
     <header>
         <b-navbar toggleable="lg" type="dark" class="p-0">
-            <router-link class="navbar-brand p-0" :to="{name: 'home'}"> <a href="#"><img src="./../../../public/img/logo-orange.png" class="img" alt=""></a></router-link>
+            <router-link class="navbar-brand p-0" :to="{name: 'home'}"> <a href="#"><img src="./../../../public/img/deliveboo-logo-orange-textwhite.png" class="img" alt=""></a></router-link>
             <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
             <b-collapse id="nav-collapse" is-nav>
