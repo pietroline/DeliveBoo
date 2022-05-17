@@ -552,7 +552,9 @@ class FoodsTableSeeder extends Seeder
 
             $newFood->visible = rand(true, false);
 
+
             $newFood->restaurant_id =$food['restaurant_id'];
+
 
             $newFood->save();
 

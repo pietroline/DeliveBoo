@@ -1,5 +1,5 @@
 <template>
-    <div class="container mt-3">
+    <div class="container-fluid mt-3">
 
 
         <!-- inizio filtro ristoranti -->
@@ -13,7 +13,8 @@
                 
             </div>
 
-            <form  @submit.prevent="getRestaurantsFiltered(1)" >
+           <div class="container">
+                <form  @submit.prevent="getRestaurantsFiltered(1)" >
 
                 <div class="row mb-3">
                     <div class="col-12 col-md-6 col-lg-3 d-flex justify-content-center" v-for="(typology) in allTypologies" :key="typology.id">
@@ -35,31 +36,34 @@
                 </div>
                 
                 <div class="row">
-                    <div class="col-12 d-flex justify-content-center">
+                    <div class="col-12 d-flex justify-content-center mb-5">
                     <button type="submit" class="btn ms_btn1">Cerca</button>
                 </div>
                 </div>
                 
                     
             </form>
+           </div>
 
         <!-- fine filtro ristoranti -->
 
 
         <!-- inizio risultati ricerca -->
 
-                <section v-if="restaurants">
+                <section class="px-3" v-if="restaurants">
 
-                    <div class="row">
+                    <div class="row justify-content-center mt-5">
                         <h1 class="ms_title1">Elenco ristoranti</h1>
                     </div>
 
-                    <div class="row row-cols-3 ms_list">
-                        <div class="col card-group" v-for="restaurant in restaurants" :key="'restaurant_'+restaurant.id">
+                    <div class="row">
+                        <div class="card-group col-12 col-md-6 col-lg-3 px-5 px-md-3 px-lg-3" v-for="restaurant in restaurants" :key="'restaurant_'+restaurant.id">
 
                             <Restaurant 
                                 :name="restaurant.name"
                                 :slug="restaurant.slug"
+                                 :typologies="restaurant.typologies"
+                                :description="restaurant.description"
                             />
 
                         </div>
@@ -214,9 +218,14 @@
 
     .ms_btn1{
         background-color: $darkOrange;
-        border: 1px solid $lightOrange;
+        border: 2px solid brown;
         color: white;
         font-weight: bold;
+
+        &:hover{
+            border: 2px solid $darkOrange;
+            background-color: brown;
+        }
     }
 
 
@@ -232,7 +241,7 @@
 
     .ms_checkbox:checked {
         background-color: $darkOrange;
-        border: 2px solid greenyellow;
+        border: 2px solid brown;
         color: white;
     }
 

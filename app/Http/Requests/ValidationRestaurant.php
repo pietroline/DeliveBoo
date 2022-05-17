@@ -33,4 +33,22 @@ class ValidationRestaurant extends FormRequest
             "typologies" => "required"
         ];
     }
+
+    /**
+     * Get custom attributes for validator errors.
+     *
+     * @return array
+     */
+    public function attributes()
+    {
+        return [
+            'name' => 'Nome ristorante',
+            'address' => 'Indirizzo ristorante',
+            'phone' => 'Numero di telefono ristorante',
+            'email' => 'Email ristorante',
+            'vat' => 'Partita IVA ristorante',
+            'typologies' => 'Email ristorante',
+        ];
+
+    }
 }
