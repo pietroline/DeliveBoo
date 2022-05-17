@@ -42,7 +42,8 @@
             "name": String,
             "slug": String,
             "typologies": Array,
-            "description": String
+            "description": String,
+            "image": String
         }
     }
 </script>
