@@ -18,79 +18,99 @@ class RestaurantsTableSeeder extends Seeder
         $restaurants = [
             [
                 "name" => "alGazebo",
-                "tipology" => ["vegano"]
+                "tipology" => ["vegano"],
+                "path" => "alGazebo-vegano.png"
             ],
             [
                 "name" => "amarJakal",
-                "tipology" => ["indiano", "internazionale"]
+                "tipology" => ["indiano", "internazionale"],
+                "path" => "amarJakadal-indiano.png"
             ],
             [
                 "name" => "Cadde Burger",
-                "tipology" => ["street food"]
+                "tipology" => ["street food"],
+                "path" => "caddeBurger-streetfood.png"
             ],
             [
-                "name" => "Cadde del Ramen",
-                "tipology" => ["giapponese", "cinese"]
+                "name" => "Casa del Ramen",
+                "tipology" => ["giapponese", "cinese"],
+                "path" => "casaDelRamen-giapponese.png"
             ],
             [
                 "name" => "Da Vittorio",
-                "tipology" => ["italiano", "pizzeria", "vegetariano"]
+                "tipology" => ["italiano", "pizzeria", "vegetariano"],
+                "path" => "daVittorio-italiano.png"
             ],
             [
                 "name" => "Dolci delizie",
-                "tipology" => ["gelateria", "vegano"]
+                "tipology" => ["gelateria", "vegano"],
+                "path" => "dolciDelizie-gelateria.png"
             ],
             [
                 "name" => "donPacho",
-                "tipology" => ["messicano", "internazionale"]
+                "tipology" => ["messicano", "internazionale"],
+                "path" => "donPacho-messicano.png"
             ],
             [
                 "name" => "Hot spot",
-                "tipology" => ["internazionale"]
+                "tipology" => ["internazionale"],
+                "path" => "hotSpot-internazionale.png"
             ],
             [
                 "name" => "Lanterna Rossa",
-                "tipology" => ["cinese", "pizzeria"]
+                "tipology" => ["cinese", "pizzeria"],
+                "path" => "lanternaRossa-cinese.png"
             ],
             [
                 "name" => "LeafinGreen",
-                "tipology" => ["vegano", "vegetariano"]
+                "tipology" => ["vegano", "vegetariano"],
+                "path" => "leafinGreen-vegano.png"
             ],
             [
                 "name" => "Mashed Potato",
-                "tipology" => ["street food"]
+                "tipology" => ["street food"],
+                "path" => "mashedPotato-streetfood.png"
             ],
             [
                 "name" => "Milkosa",
-                "tipology" => ["gelateria"]
+                "tipology" => ["gelateria"],
+                "path" => "milkosa-gelateria.png"
             ],
             [
                 "name" => "Paradiso degli Hamb",
-                "tipology" => ["street food"]
+                "tipology" => ["street food"],
+                "path" => "paradisoDegliHamb-streetfood.png"
             ],
             [
                 "name" => "Pizza Slice",
-                "tipology" => ["pizzeria", "italiano"]
+                "tipology" => ["pizzeria", "italiano"],
+                "path" => "pizzaSlice-pizzeria.png"
             ],
             [
                 "name" => "SpicyPizza",
-                "tipology" => ["pizzeria", "street food"]
+                "tipology" => ["pizzeria", "street food"],
+                "path" => "spicyPizza-pizzeria.png"
             ],
             [
                 "name" => "Sushi brand",
-                "tipology" => ["giapponese", "internazionale"]
+                "tipology" => ["giapponese", "internazionale"],
+                "path" => "sushibrand-giapponese.png"
             ],
             [
                 "name" => "TacoBill",
-                "tipology" => ["messicano"]
+                "tipology" => ["messicano"],
+                "path" => "tacoBill-messicano.png"
+
             ],
             [
                 "name" => "Toekbokki",
-                "tipology" => ["internazionale"]
+                "tipology" => ["internazionale"],
+                "path" => "toekbokki-internazionale.png"
             ],
             [
                 "name" => "Toriigate",
-                "tipology" => ["giapponese", "cinese"]
+                "tipology" => ["giapponese", "cinese"],
+                "path" => "toriigate-giapponese.png"
             ],
             
         ];
@@ -101,7 +121,7 @@ class RestaurantsTableSeeder extends Seeder
 
             $newRestaurant->name = $restaurant["name"];
             $newRestaurant->slug = Str::slug($newRestaurant->name);
-           
+            $newRestaurant->image = $restaurant['path'];
             $newRestaurant->address = $faker->address();
             $newRestaurant->phone = $faker->phoneNumber();
             $newRestaurant->email = $faker->email();
