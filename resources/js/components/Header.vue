@@ -1,5 +1,5 @@
 <template>
-    <header>
+    <header class="px-2">
         <b-navbar toggleable="lg" type="dark" class="p-0">
             <router-link class="navbar-brand p-0" :to="{name: 'home'}"> <a href="#"><img src="./../../../public/img/deliveboo-logo-orange-textwhite.png" class="img" alt=""></a></router-link>
             <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -50,8 +50,7 @@ header{
 }
 
 img{
-    width: 89px;
-    height: 89px;
+    width: 90px;
 }
 
 .ms_color{

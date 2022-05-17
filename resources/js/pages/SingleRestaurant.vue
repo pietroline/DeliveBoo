@@ -1,33 +1,31 @@
 <template>
   <div class="container" v-if="restaurant">
 
-
-
    <!-- inizio dati ristorante -->
 
     <div class="row">
       <div class="col">
 
-        <div class="px-4 py-5 my-5 text-center">
+        <div class="px-4 py-3 my-3 text-center">
 
           <img class="d-block mx-auto mb-4" src="/docs/5.1/assets/brand/bootstrap-logo.svg"/>
           <h1 class="display-5 fw-bold">{{ restaurant.name }}</h1>
           <div class="col-lg-6 mx-auto">
-          <p class="lead mb-4">{{ restaurant.description }}</p>
+            <p class="lead mb-4">{{ restaurant.description }}</p>
 
-          <div> <strong>Phone:</strong> {{restaurant.phone}}</div>
-          <div> <strong>Email:</strong>  {{restaurant.email}}</div>
-          <div> <strong>Indirizzo:</strong> {{restaurant.address}}</div>
-      
-          <div v-if="restaurant.typologies">
-                <strong>Tipologia:</strong>  
-                
+            <div> <strong>Phone:</strong> {{restaurant.phone}}</div>
+            <div> <strong>Email:</strong>  {{restaurant.email}}</div>
+            <div> <strong>Indirizzo:</strong> {{restaurant.address}}</div>
+        
+            <div v-if="restaurant.typologies">
+              <strong>Tipologia:</strong>  
+                  
               <span v-for="(typology, count) in restaurant.typologies" :key="'typology_' + typology.id">
                   {{typology.name}}
                   <span v-if="count < restaurant.typologies.length-1">, </span>
               </span>
-              
-          </div>
+                
+            </div>
 
           </div>
 
@@ -38,128 +36,139 @@
 
    <!-- fine dati ristorante -->
 
+  
 
-
-
-
-
-
-  <!-- inizio carrello -->
-
-  <h1>Carrello</h1>
-
-  <table class="table text-center">
-    <thead>
-      <tr>
-        <th scope="col">Nome</th>
-        <th scope="col">prezzo</th>
-        <th scope="col">quantità</th>
-        <th scope="col">totale</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr v-for="item in cart" :key="'food_'+item.id">
-        <td>{{item.name}}</td>
-        <td>{{item.price}} €</td>
-        <td class="d-flex justify-content-center align-items-center">
-          <i class="bi bi-dash-circle ms_fs4" @click="updateCart(item.id, item.price, item.quantity -1)"></i>
-          <span class="ms_fs3 mx-4">{{item.quantity}}</span>
-          <i class="bi bi-plus-circle ms_fs4" @click="updateCart(item.id, item.price, item.quantity +1)"></i>
-          
-        </td>
-        <td>{{item.total}} €</td>
-        <td><button class="btn btn-danger" @click="deleteToCart(item.id)">Rimuovi</button></td>
-      </tr>
-
-    </tbody>
-  </table>
-
-  <div class="d-flex justify-content-end align-items-center">
-    <div class="mr-3 ms_fs3" v-if="getTotal() > 0">Totale carrello {{getTotal()}} €</div>
-    <button class="btn btn-success mr-3" @click="goToPayment()" v-if="cart">Paga</button>
-    <button class="btn btn-danger" @click="deleteCart()">Elimina carrello</button>
-  </div>
-
-
-<!-- fine carrello -->
-
-
-
-<!-- inizio btn torna ai ristoranti -->
-    <div class="row">
-      <div class="col">
-         <router-link class="btn ms_btn" :to="{name: 'home'}">Torna ai ristoranti</router-link>
+    <!-- inizio btn torna ai ristoranti -->
+      <div class="row text-center mb-5">
+        <div class="col">
+          <router-link class="btn ms_btn" :to="{name: 'home'}">Torna ai ristoranti</router-link>
+        </div>
       </div>
-    </div>
-<!-- fine btn torna ai ristoranti -->
+    <!-- fine btn torna ai ristoranti -->
 
 
     <section v-if="menuRestaurant">
 
-
-
-
       <!-- inizio menu ristorante -->
 
+      <div class="d-flex justify-content-center">
+          <h1 class="m-0">Menu</h1>
+      </div>
 
-
-
-        <div class="row">
-            <h1>Menu</h1>
-        </div>
-
-        <div class="row row-cols-3">
-            <div class="col card-group" v-for="food in menuRestaurant" :key="'menuRestaurant_'+food.id">
+      <div class="row">
+        <div class="col-12 col-lg-8">
+          <div class="row">
+            <div class="card-group col-12 col-md-6 col-lg-4" v-for="food in menuRestaurant" :key="'menuRestaurant_'+food.id">
 
                 <!-- food.description assume valore di NULL quando non è presente una descrizione del food, per questo popolo la prop :description in maniera tale da essere sempre string -->
                 <Food 
-                    :name="food.name"
-                    :id="food.id"
-                    :price="food.price"
-                    :description="food.description ? food.description : ''" 
-                    :ingredients="food.ingredients"
-                    :restaurant_id="food.restaurant_id"
+                  :name="food.name"
+                  :id="food.id"
+                  :price="food.price"
+                  :description="food.description ? food.description : ''" 
+                  :ingredients="food.ingredients"
+                  :restaurant_id="food.restaurant_id"
 
-                    @addFood="addToCart"
+                  @addFood="addToCart"
                 />
 
-            </div>
+              </div>
+          </div>
         </div>
 
+        <!-- inizio carrello -->
+        <div class="col-12 col-lg-4">
+          <div class="row"> 
+            <div class="col-12">
+              <h1 class="text-center pt-4">Carrello</h1>
+              <div v-if="cart.length > 0">
+                <table class="table text-center">
+                  <thead>
+                    <tr>
+                      <th scope="col">Nome</th>
+                      <th scope="col">Prezzo</th>
+                      <th scope="col">Quantità</th>
+                      <th scope="col">Totale</th>
+                      <th scope="col">Elimina</th>
+                    </tr>
+                  </thead>
 
+                  <tbody>
+                    <tr v-for="item in cart" :key="'food_'+item.id">
+                      <td class="align-middle p-0">{{item.name}}</td>
+                      <td class="align-middle">{{item.price}} €</td>
+                        
+                      <td>
+                        <div class="d-flex justify-content-center">
+                          <div class="d-flex align-items-center">
+                          <i class="bi bi-dash-circle ms_fs5 ms_cursor_pointer" @click="updateCart(item.id, item.price, item.quantity -1)"></i> 
+                          </div>
+                          <div>
+                            <span class="ms_fs3 px-1">{{item.quantity}}</span>
+                          </div>
+                          <div class="d-flex align-items-center">
+                            <i class="bi bi-plus-circle ms_fs5 ms_cursor_pointer" @click="updateCart(item.id, item.price, item.quantity +1)"></i> 
+                          </div>
+                        </div>
+                      </td>
+                      
+                      <td class="align-middle">{{item.total}} €</td>
+                      
+                      <td class="align-middle p-0">
+                        <button class="btn btn-danger" @click="deleteToCart(item.id)">X</button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
 
+                <div class="d-flex justify-content-center align-items-center">
+                  <div class="mr-3 ms_fs3" v-if="getTotal() > 0">Totale carrello {{getTotal()}} €</div>
+                  <button class="btn btn-success mr-3" @click="goToPayment()">Paga</button>
+                  <button class="btn btn-danger" @click="deleteCart()">Svuota</button>
+                </div>
+              </div>
+              
+              <div v-else class="d-flex justify-content-center align-items-center ms_carrello-vuoto rounded ms_fs5 mt-4">
+                <span>Il carrello è vuoto</span>
+              </div>
 
+            </div> 
+            
+          </div>
+        </div>
+        <!-- fine carrello -->      
+
+            
+
+      </div>   
       <!-- fine menu ristorante -->
 
+
+
       <!-- inizio page navigator -->
+      <div class="row justify-content-center my-5">
 
+        <nav aria-label="Page navigation">
+            <ul class="pagination justify-content-center">
 
+                <!-- precedente -->
+                <li class="page-item" :class="(currentPage == 1) ? 'disabled' : '' ">
+                    <span class="page-link ms_cursor_pointer" @click="getMenu(currentPage -1)">Precedente</span>
+                </li>
 
+                <!-- visualizzo numero di pagina -->
+                <li class="page-item" @click="mJS_selectedPage(page)" :class="(page == currentPage) ? 'active' : ''" v-for="page in lastPage" :key="page">
+                    <span class="page-link ms_cursor_pointer">{{page}}</span>
+                </li>
 
+                <!-- successivo -->
+                <li class="page-item" :class="(currentPage == lastPage) ? 'disabled' : '' ">
+                    <span class="page-link ms_cursor_pointer" @click="getMenu(currentPage +1)">Successivo</span>
+                </li>
+            </ul>
+        </nav>
 
-        <div class="row justify-content-center my-5">
-
-          <nav aria-label="Page navigation">
-              <ul class="pagination justify-content-center">
-
-                  <!-- precedente -->
-                  <li class="page-item" :class="(currentPage == 1) ? 'disabled' : '' ">
-                      <span class="page-link ms_cursor_pointer" @click="getMenu(currentPage -1)">Precedente</span>
-                  </li>
-
-                  <!-- visualizzo numero di pagina -->
-                  <li class="page-item" @click="mJS_selectedPage(page)" :class="(page == currentPage) ? 'active' : ''" v-for="page in lastPage" :key="page">
-                      <span class="page-link ms_cursor_pointer">{{page}}</span>
-                  </li>
-
-                  <!-- successivo -->
-                  <li class="page-item" :class="(currentPage == lastPage) ? 'disabled' : '' ">
-                      <span class="page-link ms_cursor_pointer" @click="getMenu(currentPage +1)">Successivo</span>
-                  </li>
-              </ul>
-          </nav>
-
-        </div>
+      </div>
 
       <!-- fine page navigator -->
 
@@ -169,37 +178,6 @@
     <section v-else>
       <h1>Non esiste nessun menu per questo ristorante</h1>
     </section>
-
-    <!-- Modal per carrello vuoto -->
-    <div class="row">
-      <b-modal no-close-on-backdrop v-model="emptyCart" ok-only>Il carrello è vuoto! Inserisci almeno un prodotto per proseguire</b-modal>
-    </div>
-
-    <!-- Modal per foods presenti nel carrello appartenenti ad un altro ristorante-->
-    <div class="row">
-      <b-modal no-close-on-backdrop v-model="foodsInCart">
-
-       <p> È possibile acquistare da un solo ristorante. Il carrello contiene prodotti appartenenti ad un altro ristorante. Per proseguire, svuotare prima il carrello</p>
-        
-        <template #modal-footer="{ ok, cancel }">
-         
-          <b-button size="sm" variant="success" @click="ok()">
-            Annulla
-          </b-button>
-          <b-button size="sm" variant="danger" @click="deleteCart(); addToCart(addFood); cancel()">
-            Svuota carrello e aggiungi nuovo prodotto
-          </b-button>
-         
-        </template>
-      </b-modal>
-    </div>
-
-    <!-- Modal per carrello vuoto -->
-    <div class="row">
-      <b-modal no-close-on-backdrop v-model="foodExist" ok-only>Il prodotto inserito è già presente nel carrello</b-modal>
-    </div>
-
-
 
 
   </div>
@@ -221,11 +199,7 @@
         menuRestaurant: null,
         currentPage: 1,
         lastPage: null,
-        cart: [],
-        emptyCart: false,
-        foodsInCart: false,
-        addFood: null, //addFood contiene il food da aggiungere al carrello se sono presenti altri food appartenenti ad un altro ristorante
-        foodExist: false
+        cart: []
       };
     },
 
@@ -279,8 +253,7 @@
           // se flagFoodOtherRestaurant > 0 significa che il prodotto da inserire non appartiene 
           // allo stesso ristorante dei prodotti già presenti nel carrello, quindi avviso l'utente
           if(flagFoodOtherRestaurant > 0){
-            this.foodsInCart = true;
-            this.addFood = item
+            alert("È possibile acquistare da un solo ristorante. Il carrello contiene prodotti appartenenti ad un altro ristorante. Per proseguire, svuotare prima il carrello");
           }else{
             // se flagFoodInCart = 0 significa che il prodotto da inserire non è già presente nel carrello
             // posso quindi aggiungerlo, altrimenti avviso l'utente
@@ -288,7 +261,7 @@
               this.cart.push(item);
               localStorage.setItem( "cart", JSON.stringify(this.cart) );
             }else{
-              this.foodExist = true;
+              alert("Il prodotto inserito è già presente nel carrello");
             }
           }
 
@@ -387,9 +360,9 @@
         // ovviamente solo se il carrello contiene dei food
 
         if(this.cart.length > 0){
-          this.$router.push({name:"payment", params:{cart: this.cart, total: this.getTotal(), restaurant_id: this.restaurant.id}});
+          this.$router.push({name:"payment", params:{cart: this.cart, total: this.getTotal()}});
         }else{
-          this.emptyCart = true;
+          alert("Il carrello è vuoto");
         }
         
       }
@@ -408,11 +381,23 @@
       border-color: $navigator;
   }
 
-   .ms_btn{
+  .ms_btn{
         background-color: $darkOrange;
-        border: 1px solid $lightOrange;
+        border: 2px solid brown;
         color: white;
-        font-weight: bold;   
+        font-weight: bold;
+        
+        &:hover{
+            border: 2px solid $darkOrange;
+            background-color: brown;
+        }
     }
+
+  .ms_carrello-vuoto{
+    height: 30px;
+    width: 100%;
+    background-color: brown;
+    color: white;
+  }
 
 </style>

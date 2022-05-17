@@ -4,13 +4,18 @@
 
         <!-- <img src="..." class="card-img-top" alt="..."> -->
 
-        <div class="card-body">
-            <h3 class="card-title">{{name}}</h3>
-            <h5 >{{price}} €</h5>
-            <p class="card-text" v-if="description"><strong>Descrizione:</strong>{{description}}</p>
+        <div class="card-body d-flex flex-column">
+            <h3 class="card-title text-center">{{name}}</h3>
+            
+            <p class="card-text" v-if="description"><strong>Descrizione: </strong>{{description}}</p>
             <p class="card-text"><strong>Ingredienti: </strong>{{ingredients}}</p>
 
-            <button class="btn btn-primary my-3" @click="pushItemInCart()">Aggiungi al carrello</button>
+            <p class="card-text mt-auto mx-auto"><strong>Prezzo:</strong> {{price}} €</p>
+
+            <div class="mx-auto">
+                <button class="btn ms_btn my-3" @click="pushItemInCart()">Aggiungi al carrello</button>
+            </div>
+            
             
         </div>
         
@@ -61,8 +66,23 @@
     }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+
+@import "../../../sass/variables.scss";
+
     .ms_w50px{
         width: 50px;
+    }
+
+    .ms_btn{
+        background-color: $darkOrange;
+        border: 2px solid brown;
+        color: white;
+        font-weight: bold;
+        
+        &:hover{
+            border: 2px solid $darkOrange;
+            background-color: brown;
+        }
     }
 </style>
