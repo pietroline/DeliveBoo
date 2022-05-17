@@ -9,7 +9,6 @@
     <div class="container">
 
        
-
             <div class="row align-items-center">
 
                 <div class="col">
@@ -23,13 +22,13 @@
         
                             <div class="form-group m-0">
                                 <select class="form-control" id="year" name="year" onchange="this.form.submit()">
-                                    
-                                    @if(is_array($yearSelected))
+                                
+                                    @if(is_array($arrayYear))
                                         @foreach ($arrayYear as $year)
                                             <option :value="$year" {{$yearSelected == $year ? "selected" : ""}}>{{$year}}</option>
                                         @endforeach
                                     @else
-                                        <option :value="$yearSelected" selected>{{$yearSelected}}</option>
+                                        <option :value="$arrayYear" selected>{{$arrayYear}}</option>
                                     @endif
                                     
                                 </select>
