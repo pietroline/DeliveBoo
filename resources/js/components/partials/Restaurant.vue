@@ -2,7 +2,7 @@
 
     <div class="card my-3">
 
-         <img :src="require('../../../../public/img/loghi-restaurants/' + image)" class="card-img-top" :alt="image + 'name' "> 
+        <img :src="require('../../../../public/img/loghi-restaurants/' + image)" class="card-img-top" :alt="image + 'name' "> 
         
         <div class="card-body d-flex flex-column">
                 <h5 class="card-title">{{name}}</h5>
@@ -16,7 +16,6 @@
                 </strong>
                 <strong v-else>
                     Tipologia: 
-
                     <span class="font-weight-normal" v-for="(typology, count) in typologies" :key="'typology_' + typology.id">
                         {{typology.name}}<span v-if="count < typologies.length -1">, </span>
 

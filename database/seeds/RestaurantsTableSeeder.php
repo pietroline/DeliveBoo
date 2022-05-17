@@ -18,98 +18,98 @@ class RestaurantsTableSeeder extends Seeder
         $restaurants = [
             [
                 "name" => "alGazebo",
-                "tipology" => ["vegano"],
+                "typologies" => [10],
                 "path" => "alGazebo-vegano.png"
             ],
             [
                 "name" => "amarJakal",
-                "tipology" => ["indiano", "internazionale"],
+                "typologies" => [4, 5],
                 "path" => "amarJakadal-indiano.png"
             ],
             [
                 "name" => "Cadde Burger",
-                "tipology" => ["street food"],
+                "typologies" => [9],
                 "path" => "caddeBurger-streetfood.png"
             ],
             [
                 "name" => "Casa del Ramen",
-                "tipology" => ["giapponese", "cinese"],
+                "typologies" => [3, 1],
                 "path" => "casaDelRamen-giapponese.png"
             ],
             [
                 "name" => "Da Vittorio",
-                "tipology" => ["italiano", "pizzeria", "vegetariano"],
+                "typologies" => [6, 8, 10],
                 "path" => "daVittorio-italiano.png"
             ],
             [
                 "name" => "Dolci delizie",
-                "tipology" => ["gelateria", "vegano"],
+                "typologies" => [2, 10],
                 "path" => "dolciDelizie-gelateria.png"
             ],
             [
                 "name" => "donPacho",
-                "tipology" => ["messicano", "internazionale"],
+                "typologies" => [7, 5],
                 "path" => "donPacho-messicano.png"
             ],
             [
                 "name" => "Hot spot",
-                "tipology" => ["internazionale"],
+                "typologies" => [5],
                 "path" => "hotSpot-internazionale.png"
             ],
             [
                 "name" => "Lanterna Rossa",
-                "tipology" => ["cinese", "pizzeria"],
+                "typologies" => [1, 8],
                 "path" => "lanternaRossa-cinese.png"
             ],
             [
                 "name" => "LeafinGreen",
-                "tipology" => ["vegano", "vegetariano"],
+                "typologies" => [10, 10],
                 "path" => "leafinGreen-vegano.png"
             ],
             [
                 "name" => "Mashed Potato",
-                "tipology" => ["street food"],
+                "typologies" => [9],
                 "path" => "mashedPotato-streetfood.png"
             ],
             [
                 "name" => "Milkosa",
-                "tipology" => ["gelateria"],
+                "typologies" => [2],
                 "path" => "milkosa-gelateria.png"
             ],
             [
                 "name" => "Paradiso degli Hamb",
-                "tipology" => ["street food"],
+                "typologies" => [9],
                 "path" => "paradisoDegliHamb-streetfood.png"
             ],
             [
                 "name" => "Pizza Slice",
-                "tipology" => ["pizzeria", "italiano"],
+                "typologies" => [8, 6],
                 "path" => "pizzaSlice-pizzeria.png"
             ],
             [
                 "name" => "SpicyPizza",
-                "tipology" => ["pizzeria", "street food"],
+                "typologies" => [8, 9],
                 "path" => "spicyPizza-pizzeria.png"
             ],
             [
                 "name" => "Sushi brand",
-                "tipology" => ["giapponese", "internazionale"],
+                "typologies" => [3, 5],
                 "path" => "sushibrand-giapponese.png"
             ],
             [
                 "name" => "TacoBill",
-                "tipology" => ["messicano"],
+                "typologies" => [7],
                 "path" => "tacoBill-messicano.png"
 
             ],
             [
                 "name" => "Toekbokki",
-                "tipology" => ["internazionale"],
+                "typologies" => [5],
                 "path" => "toekbokki-internazionale.png"
             ],
             [
                 "name" => "Toriigate",
-                "tipology" => ["giapponese", "cinese"],
+                "typologies" => [3, 1],
                 "path" => "toriigate-giapponese.png"
             ],
             
@@ -133,10 +133,29 @@ class RestaurantsTableSeeder extends Seeder
 
         }
 
+
+        // per tabella pivot con le typologies
+        $records = Restaurant::all();
+
+        foreach($restaurants as $key => $restaurant){
+            $typologies = $restaurant["typologies"];
+            
+            $records[$key]->typologies()->sync($typologies);
+            $newRestaurant->save();
+        }
+        
+
+
+
         
 
         // se vuoi dei seeds sui restaurants più generici togli i commenti sotto e commenta sopra
 
+
+
+
+
+        
         // for($i=0; $i<20; $i++){
             
         //     $newRestaurant = new Restaurant();
@@ -166,7 +185,7 @@ class RestaurantsTableSeeder extends Seeder
         // // per tabella pivot con le typologies
         // $records = Restaurant::all();
 
-        // for($i=0; $i<20; $i++){
+        // for($i=0; $i<count($records); $i++){
 
         //     $n_typologies = rand(1,3);
         //     $typologies = [];
