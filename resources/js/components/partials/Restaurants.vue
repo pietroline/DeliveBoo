@@ -55,15 +55,16 @@
                     <div class="row justify-content-center mt-5">
                         <h1 class="ms_title1">Elenco ristoranti</h1>
                     </div>
-
+                
                     <div class="row">
                         <div class="card-group col-12 col-md-6 col-lg-3 px-5 px-md-3 px-lg-3" v-for="restaurant in restaurants" :key="'restaurant_'+restaurant.id">
 
                             <Restaurant 
                                 :name="restaurant.name"
                                 :slug="restaurant.slug"
-                                 :tipologies="restaurant.typologies"
+                                :typologies="restaurant.typologies"
                                 :description="restaurant.description"
+                                :image="restaurant.image"
                             />
 
                         </div>
