@@ -116,7 +116,7 @@ class FoodsTableSeeder extends Seeder
                 'path' => 'croccheVegani-vegetariano.png',
                 'category_id' => '6',
                 'description' => '',
-                'restaurant_id' => '',
+                'restaurant_id' => '1',
             ],
             [
                 'name' => 'Donut',
