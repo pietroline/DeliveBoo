@@ -62,7 +62,7 @@
                             <Restaurant 
                                 :name="restaurant.name"
                                 :slug="restaurant.slug"
-                                 :tipologies="restaurant.typologies"
+                                 :typologies="restaurant.typologies"
                                 :description="restaurant.description"
                             />
 

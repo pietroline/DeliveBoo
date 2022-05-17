@@ -7,16 +7,19 @@
         <div class="card-body d-flex flex-column">
                 <h5 class="card-title">{{name}}</h5>
 
-                <strong v-if="tipologies.length > 1">
+                <strong v-if="typologies.length > 1">
                     Tipologie: 
-                    <span class="font-weight-normal" v-for="(tipology, count) in tipologies" :key="'typology_' + tipology.id">
-                        {{tipology.name}}<span v-if="count < tipologies.length -1">, </span>
+                    <span class="font-weight-normal" v-for="(typology, count) in typologies" :key="'typology_' + typology.id">
+                        {{typology.name}}<span v-if="count < typologies.length -1">, </span>
+
                     </span>
                 </strong>
                 <strong v-else>
                     Tipologia: 
-                    <span class="font-weight-normal" v-for="(tipology, count) in tipologies" :key="'typology_' + tipology.id">
-                        {{tipology.name}}<span v-if="count < tipologies.length -1">, </span>
+
+                    <span class="font-weight-normal" v-for="(typology, count) in typologies" :key="'typology_' + typology.id">
+                        {{typology.name}}<span v-if="count < typologies.length -1">, </span>
+
                     </span>
                 </strong>
     
@@ -38,7 +41,7 @@
         props:{
             "name": String,
             "slug": String,
-            "tipologies": Array,
+            "typologies": Array,
             "description": String
         }
     }

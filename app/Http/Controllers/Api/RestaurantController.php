@@ -47,7 +47,7 @@ class RestaurantController extends Controller
     }
 
     /**
-     * Filtro ristoranti per tipologie.
+     * Filtro ristoranti per typologies.
      *
      * @return \Illuminate\Http\Response
      */
@@ -74,10 +74,10 @@ class RestaurantController extends Controller
 
               
 
-                // ogni risotarante potrebbe avere più tipologie,
-                // quindo itero tutte le tipologie, verifico se l'id della tipologia[iesima] è pari all'id del filter[kesimo]]. 
+                // ogni risotarante potrebbe avere più typologies,
+                // quindo itero tutte le typologies, verifico se l'id della typology[iesima] è pari all'id del filter[kesimo]]. 
                 // Se la condizione è verificata, 
-                // significa che la tipologia del filter[kesimo] è contenuta nell'elenco delle tipologie del ristorante preso in esame
+                // significa che la typology del filter[kesimo] è contenuta nell'elenco delle typologies del ristorante preso in esame
                 // allora incremento la variabile flag
                 $flag = 0;
                 for($i=0; $i<count($restaurant->typologies); $i++){
@@ -86,9 +86,9 @@ class RestaurantController extends Controller
                     }
                 } 
 
-                // se la variabile flag==0 significa che l'id del filter[kesimo] non è contenuto nell'arrray di tipologie di $restaurant
+                // se la variabile flag==0 significa che l'id del filter[kesimo] non è contenuto nell'arrray di typologies di $restaurant
                 // quindi elimino il restaurant dal $restaurantFiltered,
-                //  in maniera tale da ottenere solo i ristoranti con tutti gli id di tipologia contenuti in $filterr
+                //  in maniera tale da ottenere solo i ristoranti con tutti gli id di typology contenuti in $filterr
                 if($flag == 0 ){
                     unset($restaurantFiltered[$key], $key); 
                 }
