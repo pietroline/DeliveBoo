@@ -38,7 +38,7 @@ class FoodsTableSeeder extends Seeder
             $newFood->ingredients = str_replace(" ", ", ", $newFood->ingredients);
 
             $newFood->visible = rand(true, false);
-            $newFood->restaurant_id = $faker->numberBetween(1,20);
+            $newFood->restaurant_id = $faker->numberBetween(1,19);
 
             $newFood->save();
         }
