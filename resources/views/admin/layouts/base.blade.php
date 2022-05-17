@@ -29,7 +29,6 @@
     <script src="{{ asset('js/functionsJS/confirmDelete.js') }}" defer></script>
     <script src="{{ asset('js/functionsJS/validationRequiredGroupCheckbox.js') }}" defer></script>
     <script src="{{ asset('js/functionsJS/validationformclientBootstrap.js') }}" defer></script>
-    <script src="{{ asset('js/functionsJS/chartJS.js') }}" defer></script>
     @yield('scriptJS')
     
     <!-- Fonts -->
@@ -44,7 +43,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                   DeliveBoo
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
