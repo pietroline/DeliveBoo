@@ -31,4 +31,20 @@ class ValidationPayment extends FormRequest
             "total" => "required | numeric | min:0 | max:1000000000"
         ];
     }
+
+    /**
+     * Get custom attributes for validator errors.
+     *
+     * @return array
+     */
+    public function attributes()
+    {
+        return [
+            'name' => 'Nome',
+            'address' => 'Indirizzo',
+            'phone' => 'Numero di telefono',
+            'total' => 'totale',
+        ];
+
+    }
 }
