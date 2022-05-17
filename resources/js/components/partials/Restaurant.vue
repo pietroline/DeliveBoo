@@ -16,10 +16,8 @@
                 </strong>
                 <strong v-else>
                     Tipologia: 
-
                     <span class="font-weight-normal" v-for="(typology, count) in typologies" :key="'typology_' + typology.id">
                         {{typology.name}}<span v-if="count < typologies.length -1">, </span>
-
                     </span>
                 </strong>
     
