@@ -16,33 +16,33 @@
            <div class="container">
                 <form  @submit.prevent="getRestaurantsFiltered(1)" >
 
-                <div class="row mb-3">
-                    <div class="col-12 col-md-6 col-lg-3 d-flex justify-content-center" v-for="(typology) in allTypologies" :key="typology.id">
-                        
-                        <div class="form-check p-0 position-relative">
+                    <div class="row mb-3">
+                        <div class="col-12 col-md-6 col-lg-3 d-flex justify-content-center" v-for="(typology) in allTypologies" :key="typology.id">
                             
-                            <label class="form-check-label" :for="'typology_' + typology.id">
-                                <img :src="require('../../../../public/img/' + typology.image)" class="card-typology ms_cursor_pointer"  :alt="typology.name">
-                            </label>
-                            <div class="ms_position-absolute">
-                                <input  type="checkbox" class="form-check-input ms_checkbox" v-model="typologySelected" :value="typology.id" :id="'typology_' + typology.id">
+                            <div class="form-check p-0 position-relative">
+                                
+                                <label class="form-check-label" :for="'typology_' + typology.id">
+                                    <img :src="require('../../../../public/img/' + typology.image)" class="card-typology ms_cursor_pointer"  :alt="typology.name">
+                                </label>
+                                <div class="ms_position-absolute">
+                                    <input  type="checkbox" class="form-check-input ms_checkbox" v-model="typologySelected" :value="typology.id" :id="'typology_' + typology.id">
+                                </div>
+    
+                                <p class="mb-4 mt-1 text-center">
+                                    {{typology.name}}
+                                </p>
                             </div>
- 
-                            <p class="mb-4 mt-1 text-center">
-                                {{typology.name}}
-                            </p>
                         </div>
                     </div>
-                </div>
-                
-                <div class="row">
-                    <div class="col-12 d-flex justify-content-center mb-5">
-                    <button type="submit" class="btn ms_btn1">Cerca</button>
-                </div>
-                </div>
-                
                     
-            </form>
+                    <div class="row">
+                        <div class="col-12 d-flex justify-content-center mb-5">
+                        <button type="submit" class="btn ms_btn1">Cerca</button>
+                    </div>
+                    </div>
+                    
+                        
+                </form>
            </div>
 
         <!-- fine filtro ristoranti -->
