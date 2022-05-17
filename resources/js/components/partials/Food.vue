@@ -6,11 +6,13 @@
 
         <div class="card-body d-flex flex-column">
             <h3 class="card-title text-center">{{name}}</h3>
-            <p><strong>Prezzo:</strong> {{price}} €</p>
+            
             <p class="card-text" v-if="description"><strong>Descrizione: </strong>{{description}}</p>
             <p class="card-text"><strong>Ingredienti: </strong>{{ingredients}}</p>
 
-            <div class="mt-auto mx-auto">
+            <p class="card-text mt-auto mx-auto"><strong>Prezzo:</strong> {{price}} €</p>
+
+            <div class="mx-auto">
                 <button class="btn ms_btn my-3" @click="pushItemInCart()">Aggiungi al carrello</button>
             </div>
             
