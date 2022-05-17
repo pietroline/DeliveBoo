@@ -91,6 +91,16 @@
             </div>
         </div>
 
+        <!-- Modal per carrello vuoto -->
+        <div class="row">
+            <b-modal no-close-on-backdrop v-model="emptyCart" ok-only>Il carrello è vuoto</b-modal>
+        </div>
+
+         <!-- Modal per carrello vuoto -->
+        <div class="row">
+            <b-modal no-close-on-backdrop v-model="errorsForm" ok-only>Form non compilato correttamente</b-modal>
+        </div>
+
     </div>
 </template>
 
@@ -106,7 +116,9 @@
                 name: null,
                 address: null,
                 phone: null,
-                errors: null
+                errors: null,
+                emptyCart: false,
+                errorsForm: false
             };
         },
 
@@ -182,11 +194,11 @@
                             this.errors = error.response.data.errors;
                         })
                     }else{
-                        alert("Carrello vuoto");
+                        this.emptyCart = true;
                     }
 
                 }else{
-                    alert("Form non compilato correttamente")
+                    this.errorsForm = true;
                 }
            }
        }
