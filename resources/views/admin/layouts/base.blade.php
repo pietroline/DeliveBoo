@@ -29,6 +29,7 @@
     <script src="{{ asset('js/functionsJS/confirmDelete.js') }}" defer></script>
     <script src="{{ asset('js/functionsJS/validationRequiredGroupCheckbox.js') }}" defer></script>
     <script src="{{ asset('js/functionsJS/validationformclientBootstrap.js') }}" defer></script>
+    <script src="{{ asset('js/functionsJS/chartJS.js') }}" defer></script>
     @yield('scriptJS')
     
     <!-- Fonts -->
@@ -61,7 +62,8 @@
                         {{-- **controllo-if** --}}
                         @if ($restaurant)
                             <li class="mx-2"><a href="{{route('admin.foods.index')}}">Foods</a></li>
-                            <li class="mx-2"><a href="{{route('admin.orders.index')}}">Orders</a></li>
+                            <li class="mx-2"><a href="{{route('admin.orders')}}">Orders</a></li>
+                            <li class="mx-2"><a href="{{route('admin.charts')}}">Charts</a></li>
                         @endif
                         
                         {{-- ----------------------------------------- --}}

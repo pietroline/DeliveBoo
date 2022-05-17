@@ -28,5 +28,3 @@ Route::get("/restaurant/{filter}", "Api\RestaurantController@filter");
 
 // rotta per conferma ordine
 Route::post("/payment", "Api\PaymentController@paymentController");
-
-

@@ -16,33 +16,33 @@
            <div class="container">
                 <form  @submit.prevent="getRestaurantsFiltered(1)" >
 
-                <div class="row mb-3">
-                    <div class="col-12 col-md-6 col-lg-3 d-flex justify-content-center" v-for="(typology) in allTypologies" :key="typology.id">
-                        
-                        <div class="form-check p-0 position-relative">
+                    <div class="row mb-3">
+                        <div class="col-12 col-md-6 col-lg-3 d-flex justify-content-center" v-for="(typology) in allTypologies" :key="typology.id">
                             
-                            <label class="form-check-label" :for="'typology_' + typology.id">
-                                <img :src="require('../../../../public/img/' + typology.image)" class="card-typology ms_cursor_pointer"  :alt="typology.name">
-                            </label>
-                            <div class="ms_position-absolute">
-                                <input  type="checkbox" class="form-check-input ms_checkbox" v-model="typologySelected" :value="typology.id" :id="'typology_' + typology.id">
+                            <div class="form-check p-0 position-relative">
+                                
+                                <label class="form-check-label" :for="'typology_' + typology.id">
+                                    <img :src="require('../../../../public/img/' + typology.image)" class="card-typology ms_cursor_pointer"  :alt="typology.name">
+                                </label>
+                                <div class="ms_position-absolute">
+                                    <input  type="checkbox" class="form-check-input ms_checkbox" v-model="typologySelected" :value="typology.id" :id="'typology_' + typology.id">
+                                </div>
+    
+                                <p class="mb-4 mt-1 text-center">
+                                    {{typology.name}}
+                                </p>
                             </div>
- 
-                            <p class="mb-4 mt-1 text-center">
-                                {{typology.name}}
-                            </p>
                         </div>
                     </div>
-                </div>
-                
-                <div class="row">
-                    <div class="col-12 d-flex justify-content-center mb-5">
-                    <button type="submit" class="btn ms_btn1">Cerca</button>
-                </div>
-                </div>
-                
                     
-            </form>
+                    <div class="row">
+                        <div class="col-12 d-flex justify-content-center mb-5">
+                        <button type="submit" class="btn ms_btn1">Cerca</button>
+                    </div>
+                    </div>
+                    
+                        
+                </form>
            </div>
 
         <!-- fine filtro ristoranti -->
@@ -62,9 +62,8 @@
                             <Restaurant 
                                 :name="restaurant.name"
                                 :slug="restaurant.slug"
-                                :typologies="restaurant.typologies"
+                                 :tipologies="restaurant.typologies"
                                 :description="restaurant.description"
-                                :image="restaurant.image"
                             />
 
                         </div>
@@ -115,16 +114,12 @@
 </template>
 
 <script>
-
     import Restaurant from "./../partials/Restaurant.vue";
-
     export default {
         name: "Restaurants",
-
         components:{
             Restaurant
         },
-
         data() {
             return {
                 allTypologies: null,
@@ -134,14 +129,11 @@
                 lastPage: null,
             };
         },
-
         mounted(){
             this.getAllTypologies();  
             this.getAllRestaurants(1);
         },
-
         methods:{
-
             getAllTypologies(){
                 // prelevo tutte le tipologie
                 axios.get('api/typologies')
@@ -149,7 +141,6 @@
                         this.allTypologies = response.data.results;
                     })
             },
-
             getAllRestaurants(RequestPage){
                 axios.get('/api/restaurants',{
                     "params": {
@@ -166,12 +157,9 @@
                         // handle error
                         console.log(error);
                     })
-
             },
-
             getRestaurantsFiltered(RequestPage){
                 this.restaurants = [];
-
                 // solo se typologySelected contiene almeno una tipologia faccio richiesta dei ristoranti filtrati, 
                 // altrimenti torno tutti i ristoranti
                 if(this.typologySelected.length > 0){
@@ -195,41 +183,33 @@
                 }
                 
             },
-
             mJS_selectedPage(selectedPage){
                 this.currentPage = selectedPage;
                 this.getRestaurantsFiltered(this.currentPage);
             },
-
         }
     }
 </script>
 
 <style lang="scss" scoped>
     @import "../../../sass/_variables.scss";
-
     .ms_list{
         background-color: $lightOrange;
     }
-
     .ms_title1{
         color: $darkOrange;
         font-weight: bolder;
     }
-
     .ms_btn1{
         background-color: $darkOrange;
         border: 2px solid brown;
         color: white;
         font-weight: bold;
-
         &:hover{
             border: 2px solid $darkOrange;
             background-color: brown;
         }
     }
-
-
     .ms_checkbox {
         -webkit-appearance: none;
         border: 1px solid black;
@@ -239,32 +219,26 @@
         background-color: white;
         
     }
-
     .ms_checkbox:checked {
         background-color: $darkOrange;
         border: 2px solid brown;
         color: white;
     }
-
     .card-typology{
         width: 230px;
         height: 140px;
         border-radius: 20px;
     }
-
     .ms_position-absolute{
         position: absolute;
         top: 3%;
         right: 6%;
     }
-
     .ms_colorTextNavigator{
         color: $darkOrange;
     }
-
     .page-item.active .page-link{
         background-color: $navigator;
         border-color: $navigator;
     }
-
 </style>
