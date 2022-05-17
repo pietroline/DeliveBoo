@@ -64,6 +64,7 @@
                                 :slug="restaurant.slug"
                                  :typologies="restaurant.typologies"
                                 :description="restaurant.description"
+                                :image="restaurant.image"
                             />
 
                         </div>

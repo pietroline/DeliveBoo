@@ -2,7 +2,7 @@
 
     <div class="card my-3">
 
-        <img src="https://picsum.photos/150/100" class="card-img-top" alt=""> 
+        <img :src="require('../../../../public/img/loghi-restaurants/' + image)" class="card-img-top" :alt="image + 'name' "> 
         
         <div class="card-body d-flex flex-column">
                 <h5 class="card-title">{{name}}</h5>
@@ -42,7 +42,8 @@
             "name": String,
             "slug": String,
             "typologies": Array,
-            "description": String
+            "description": String,
+            "image": String,
         }
     }
 </script>
