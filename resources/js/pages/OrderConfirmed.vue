@@ -79,7 +79,7 @@
                 }
             });
 
-
+            // resetto il carrello memorizzato 
             localStorage.removeItem("cart");
             
         }
