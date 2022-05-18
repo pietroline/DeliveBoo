@@ -8,7 +8,7 @@
 
         <div class="px-4 py-3 my-3 text-center">
 
-          <img class="d-block mx-auto mb-4" :src="require('../../../public/img/loghi-restaurants/' + restaurant.image)"/>
+          <img class="img-fluid mx-auto mb-4" :src="require('../../../public/img/loghi-restaurants/' + restaurant.image)"/>
           <h1 class="display-5 fw-bold">{{ restaurant.name }}</h1>
           <div class="col-lg-6 mx-auto">
             <p class="lead mb-4">{{ restaurant.description }}</p>
@@ -57,29 +57,27 @@
 
       <div class="row">
         <div class="col-12 col-lg-8">
-          <div class="row">
-              <div v-if="menuRestaurant.length > 0">
-                <div class="card-group col-12 col-md-6 col-lg-4" v-for="food in menuRestaurant" :key="'menuRestaurant_'+food.id">
+            <div  class="row" v-if="menuRestaurant.length > 0">
+              <div class="card-group col-12 col-md-6 col-lg-4" v-for="food in menuRestaurant" :key="'menuRestaurant_'+food.id">
 
-                  <!-- food.description assume valore di NULL quando non è presente una descrizione del food, per questo popolo la prop :description in maniera tale da essere sempre string -->
-                  <Food 
-                    :name="food.name"
-                    :id="food.id"
-                    :price="food.price"
-                    :description="food.description ? food.description : ''" 
-                    :ingredients="food.ingredients"
-                    :restaurant_id="food.restaurant_id"
-                    :image="food.image"
+                <!-- food.description assume valore di NULL quando non è presente una descrizione del food, per questo popolo la prop :description in maniera tale da essere sempre string -->
+                <Food 
+                  :name="food.name"
+                  :id="food.id"
+                  :price="food.price"
+                  :description="food.description ? food.description : ''" 
+                  :ingredients="food.ingredients"
+                  :restaurant_id="food.restaurant_id"
+                  :image="food.image"
 
-                    @addFood="addToCart"
-                  />
+                  @addFood="addToCart"
+                />
 
-                </div>
               </div>
-              <div v-else>
-                <div>Non ci sono cibi del menu da visualizzare</div>
-              </div>
-          </div>
+            </div>
+            <div v-else>
+              <div>Non ci sono cibi del menu da visualizzare</div>
+            </div>
         </div>
 
         <!-- inizio carrello -->
