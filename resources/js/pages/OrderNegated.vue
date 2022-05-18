@@ -2,7 +2,7 @@
 
   <section class="container-fluid">
     <div class="row justify-content-center ">
-      <div class="col-9">
+      <div class="col-12 col-md-9 col-lg-9">
 
         <div class="jumbotron ms_jumbo mx-auto">
 

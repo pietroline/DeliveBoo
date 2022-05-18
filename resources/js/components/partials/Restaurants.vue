@@ -1,6 +1,5 @@
 <template>
-    <div class="container-fluid mt-3">
-
+    <div>
 
         <!-- inizio filtro ristoranti -->
 
@@ -55,23 +54,22 @@
                     <div class="row justify-content-center mt-5">
                         <h1 class="ms_title1">Elenco ristoranti</h1>
                     </div>
-        
-                    <div class="row">
-                        <div class="card-group col-12 col-md-6 col-lg-3 px-5 px-md-3 px-lg-3" v-for="restaurant in restaurants" :key="'restaurant_'+restaurant.id">
+                    <div class="ms_height">
+                        <div class="row">
+                            <div class="card-group col-12 col-md-6 col-lg-3 px-5 px-md-3 px-lg-3" v-for="restaurant in restaurants" :key="'restaurant_'+restaurant.id">
 
-                            <Restaurant 
-                                :name="restaurant.name"
-                                :slug="restaurant.slug"
-                                :typologies="restaurant.typologies"
-                                :description="restaurant.description"
-                                :image="restaurant.image"
-                            />
+                                <Restaurant 
+                                    :name="restaurant.name"
+                                    :slug="restaurant.slug"
+                                    :typologies="restaurant.typologies"
+                                    :description="restaurant.description"
+                                    :image="restaurant.image"
+                                />
 
+                            </div>
                         </div>
                     </div>
-
-
-
+                    
                 </section>
                 <section v-else>
 
@@ -82,7 +80,7 @@
 
                 <!-- inizio page navigator -->
 
-                    <div class="row justify-content-center my-5">
+                    <div class="row justify-content-center mt-2 mb-5">
 
                         <nav aria-label="Page navigation">
                             <ul class="pagination justify-content-center">
@@ -105,7 +103,7 @@
                         </nav>
 
                     </div>
-
+                
                 <!-- fine page navigator -->
             
 
@@ -194,6 +192,12 @@
 
 <style lang="scss" scoped>
     @import "../../../sass/_variables.scss";
+
+    .ms_height{
+        width: 100%;
+        min-height: 80vh;
+    }
+
     .ms_list{
         background-color: $lightOrange;
     }

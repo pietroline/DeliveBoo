@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="container ms-height mt-5">
 
         <div class="row">
             <div class="col">
@@ -206,6 +206,8 @@
     }
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+    .ms-height{
+        height: 100vh;
+    }
 </style>

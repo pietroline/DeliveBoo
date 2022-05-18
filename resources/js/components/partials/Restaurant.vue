@@ -6,7 +6,7 @@
         <img v-else :src="require('../../../../public/img/LogoDeliveboo640.png')" alt="img restaurant default">
 
         <div class="card-body d-flex flex-column">
-                <h5 class="card-title">{{name}}</h5>
+                <h4 class="card-title text-center"><strong>{{name}}</strong></h4>
 
                 <strong v-if="typologies.length > 1">
                     Tipologie: 
