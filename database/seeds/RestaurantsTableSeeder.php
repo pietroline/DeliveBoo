@@ -119,6 +119,7 @@ class RestaurantsTableSeeder extends Seeder
 
             $newRestaurant = new Restaurant();
 
+            $newRestaurant->seed = true;
             $newRestaurant->name = $restaurant["name"];
             $newRestaurant->slug = Str::slug($newRestaurant->name);
             $newRestaurant->image = $restaurant['path'];

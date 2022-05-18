@@ -34,6 +34,11 @@ class RestaurantController extends Controller
     {
         $restaurants = Restaurant::all();
 
+        // genero url img
+        $restaurants->each(function($restaurant){
+            $this->getUrl($restaurant);
+        });
+
         foreach($restaurants as $restaurant){
             $restaurant["typologies"] = $restaurant->typologies;
         }
@@ -153,6 +158,21 @@ class RestaurantController extends Controller
         }
 
         return $response;
+    }
+
+    // funzione per generare url img
+    private function getUrl($restaurant){
+        if ($restaurant->image) {
+
+            if($restaurant->seed){
+                $restaurant->image = url('img/loghi-restaurants/' . $restaurant->image);
+            }else{
+                $restaurant->image = url('storage/' . $restaurant->image);
+            }
+
+        } else {
+            $restaurant->image = url("img/LogoDeliveboo640.png");
+        }
     }
 
 }

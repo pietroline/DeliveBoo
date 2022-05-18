@@ -7,6 +7,7 @@ use App\Http\Requests\ValidationRestaurant;
 use App\Restaurant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class RestaurantController extends Controller
@@ -40,6 +41,11 @@ class RestaurantController extends Controller
     public function store(ValidationRestaurant $request)
     {
         $data = $request->all();
+        
+        // img
+        if(isset($data["img"])){
+            $data["image"] = Storage::put("restaurants_image", $data["img"]);   
+        }
         
         // creo slug univoco, nel caso in cui il nuovo è già presente nel database ne creo uno diverso, concatenandolo ad un counter
         // Prova-nuovo-restaurant 
