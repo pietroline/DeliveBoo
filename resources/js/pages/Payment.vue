@@ -163,6 +163,7 @@
             this.cart = this.$route.params.cart;
             this.total = this.$route.params.total; 
             this.restaurant_id = this.$route.params.restaurant_id; 
+
           
             // salvo i dati in valiabili localStorage, in maniera tale da mantenere il dato anche se riavviata la pagina
             if( this.cart != undefined ){
