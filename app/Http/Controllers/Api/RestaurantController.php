@@ -36,7 +36,7 @@ class RestaurantController extends Controller
 
         // genero url img
         $restaurants->each(function($restaurant){
-            $this->getUrl($restaurant);
+            $this->getUrlRestaurant($restaurant);
         });
 
         foreach($restaurants as $restaurant){
@@ -125,6 +125,16 @@ class RestaurantController extends Controller
 
         $foods = Food::where([["restaurant_id", $restaurant->id], ["visible", 1]])->get();
 
+        // genero url img
+        
+        $this->getUrlRestaurant($restaurant);
+
+        // genero url img
+        $foods->each(function($food){
+            $this->getUrlFood($food);
+        });
+
+
         // il tipo di dato del foods[iesimo]->price ritornato è string, quindi converto in double
         foreach($foods as $food){
             $food->price = floatval($food->price);
@@ -161,9 +171,9 @@ class RestaurantController extends Controller
     }
 
     // funzione per generare url img
-    private function getUrl($restaurant){
+    private function getUrlRestaurant($restaurant){
         if ($restaurant->image) {
-
+            
             if($restaurant->seed){
                 $restaurant->image = url('img/loghi-restaurants/' . $restaurant->image);
             }else{
@@ -174,5 +184,23 @@ class RestaurantController extends Controller
             $restaurant->image = url("img/LogoDeliveboo640.png");
         }
     }
+
+    // funzione per generare url img
+    private function getUrlFood($food){
+        if ($food->image) {
+           
+            if($food->seed){
+               
+                $food->image = url('img/foto-foods/' . $food->image);
+            }else{
+                $food->image = url('storage/' . $food->image);
+            }
+
+        } else {
+            $food->image = url("img/LogoDeliveboo640.png");
+        }
+    }
+
+
 
 }
