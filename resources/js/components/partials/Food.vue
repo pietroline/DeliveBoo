@@ -2,7 +2,8 @@
 
     <div class="card my-3">
 
-        <!-- <img src="..." class="card-img-top" alt="..."> -->
+        <img v-if="image" :src="require('../../../../public/img/foto-foods/' + image)" class="card-img-top" :alt="image + 'name' "> 
+        <img v-else :src="require('../../../../public/img/LogoDeliveboo640.png')" alt="img restaurant default">
 
         <div class="card-body d-flex flex-column">
             <h3 class="card-title text-center">{{name}}</h3>
@@ -33,7 +34,8 @@
             "price": Number,
             "description":String,
             "ingredients":String,
-            "restaurant_id":Number
+            "restaurant_id":Number,
+            "image": String
 
         },
 

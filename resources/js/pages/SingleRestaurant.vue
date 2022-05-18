@@ -8,7 +8,7 @@
 
         <div class="px-4 py-3 my-3 text-center">
 
-          <img class="d-block mx-auto mb-4" src="/docs/5.1/assets/brand/bootstrap-logo.svg"/>
+          <img class="d-block mx-auto mb-4" :src="require('../../../public/img/loghi-restaurants/' + restaurant.image)"/>
           <h1 class="display-5 fw-bold">{{ restaurant.name }}</h1>
           <div class="col-lg-6 mx-auto">
             <p class="lead mb-4">{{ restaurant.description }}</p>
@@ -58,20 +58,26 @@
       <div class="row">
         <div class="col-12 col-lg-8">
           <div class="row">
-            <div class="card-group col-12 col-md-6 col-lg-4" v-for="food in menuRestaurant" :key="'menuRestaurant_'+food.id">
+              <div v-if="menuRestaurant.length > 0">
+                <div class="card-group col-12 col-md-6 col-lg-4" v-for="food in menuRestaurant" :key="'menuRestaurant_'+food.id">
 
-                <!-- food.description assume valore di NULL quando non è presente una descrizione del food, per questo popolo la prop :description in maniera tale da essere sempre string -->
-                <Food 
-                  :name="food.name"
-                  :id="food.id"
-                  :price="food.price"
-                  :description="food.description ? food.description : ''" 
-                  :ingredients="food.ingredients"
-                  :restaurant_id="food.restaurant_id"
+                  <!-- food.description assume valore di NULL quando non è presente una descrizione del food, per questo popolo la prop :description in maniera tale da essere sempre string -->
+                  <Food 
+                    :name="food.name"
+                    :id="food.id"
+                    :price="food.price"
+                    :description="food.description ? food.description : ''" 
+                    :ingredients="food.ingredients"
+                    :restaurant_id="food.restaurant_id"
+                    :image="food.image"
 
-                  @addFood="addToCart"
-                />
+                    @addFood="addToCart"
+                  />
 
+                </div>
+              </div>
+              <div v-else>
+                <div>Non ci sono cibi del menu da visualizzare</div>
               </div>
           </div>
         </div>
@@ -179,6 +185,27 @@
       <h1>Non esiste nessun menu per questo ristorante</h1>
     </section>
 
+    <!-- modal per prodotto già presente nel carrello -->
+      <b-modal no-close-on-backdrop ok-only v-model="foodInCart">
+        <p class="my-4">Il prodotto inserito è già presente nel carrello</p>
+      </b-modal>
+
+    <!-- modal per carrello vuoto -->
+      <b-modal no-close-on-backdrop ok-only v-model="foodInCart">
+        <p class="my-4">Il carrello è vuoto</p>
+      </b-modal>
+
+    <!-- modal se si aggiunge un prodotto al carrello, diverso da qulli già presenti appartenenti ad un altro ristorante -->
+      <b-modal no-close-on-backdrop v-model="onlyOneRestaurant">
+        <p class="my-4">È possibile acquistare da un solo ristorante. Il carrello contiene prodotti appartenenti ad un altro ristorante. Per proseguire, svuotare prima il carrello</p>
+      
+         <template #modal-footer="{ ok, cancel }">
+            <!-- Emulate built in modal footer ok and cancel button actions -->
+            <b-button size="sm" variant="success" @click="ok()">Annulla</b-button>
+            <b-button size="sm" variant="danger" @click="deleteCart(); addToCart(loadFood); cancel()">Svuota carrello e aggiungi prodotto</b-button>
+          </template>
+      </b-modal>
+
 
   </div>
 </template>
@@ -199,7 +226,11 @@
         menuRestaurant: null,
         currentPage: 1,
         lastPage: null,
-        cart: []
+        cart: [],
+        foodInCart: false,
+        emptyCart: false,
+        onlyOneRestaurant: false,
+        loadFood: null
       };
     },
 
@@ -253,7 +284,8 @@
           // se flagFoodOtherRestaurant > 0 significa che il prodotto da inserire non appartiene 
           // allo stesso ristorante dei prodotti già presenti nel carrello, quindi avviso l'utente
           if(flagFoodOtherRestaurant > 0){
-            alert("È possibile acquistare da un solo ristorante. Il carrello contiene prodotti appartenenti ad un altro ristorante. Per proseguire, svuotare prima il carrello");
+            this.onlyOneRestaurant = true;
+            this.loadFood = item;
           }else{
             // se flagFoodInCart = 0 significa che il prodotto da inserire non è già presente nel carrello
             // posso quindi aggiungerlo, altrimenti avviso l'utente
@@ -261,7 +293,7 @@
               this.cart.push(item);
               localStorage.setItem( "cart", JSON.stringify(this.cart) );
             }else{
-              alert("Il prodotto inserito è già presente nel carrello");
+              this.foodInCart = true;
             }
           }
 
@@ -362,7 +394,7 @@
         if(this.cart.length > 0){
           this.$router.push({name:"payment", params:{cart: this.cart, total: this.getTotal()}});
         }else{
-          alert("Il carrello è vuoto");
+          this.emptyCart = true;
         }
         
       }
