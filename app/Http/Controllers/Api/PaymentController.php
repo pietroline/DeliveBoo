@@ -23,23 +23,38 @@ class PaymentController extends Controller
             // carta valida al pagamento 4242 4242 4242 4242 con cvv 354
             if($request->cardNumber == 4242424242424242){
                 if($request->cvv == 354){
-                    if($request->expirationYear >= $today->year){
+
+                    // verifico se expirationYear è successivo all'anno di today
+                    if($request->expirationYear > $today->year){
+
+                        $return = true;
+
+                    // se expirationYear è pari all'anno di today, verifichi se il mese è successivo (quindi carta ancora non scaduta)
+                    }else if($request->expirationYear = $today->year){
                         if($request->expirationMonth >= $today->month){
 
                             $return = true;
 
                         }else{
+
                             $return = false;
+                            
                         } 
+                  
                     }else{
+                        // condizione in cui expirationYear è minore del'anno di today
                         $return = false;
                     }
                   
                 }else{
+
                     $return = false;
+
                 }
             }else{
+
                 $return = false;
+
             }
         }else{
             

@@ -76,7 +76,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="surname">Surname *</label>
+                        <label for="surname">Cognome *</label>
                         <input type="text" class="form-control" id="surname" name="surname" minlength="3" v-model="surname" required>
                     </div>
 
@@ -102,8 +102,8 @@
 
                         <div class="form-group p-3">
                             <div class="row">
-                                    <input placeholder="Numero carta" type="text" class="form-control col-8" id="cardNumber" name="cardNumber" v-model="cardNumber" pattern="[0-9]{16}" required>
-                                    <input placeholder="CVV" type="text" class="form-control col-3 ml-3" id="cvv" name="cvv" v-model="cvv" pattern="[0-9]{3}" required>     
+                                <input placeholder="Numero carta" type="text" class="form-control col-8" id="cardNumber" name="cardNumber" v-model="cardNumber" pattern="[0-9]{16}" required>
+                                <input placeholder="CVV" type="text" class="form-control col-3 ml-3" id="cvv" name="cvv" v-model="cvv" pattern="[0-9]{3}" required>     
                             </div>
                         </div>
 
@@ -180,22 +180,44 @@
 
        methods: {
            sendOrder(){
+
+                let sendData = {};
+                // creo oggetto contenennte i dati dell'ordine e del pagamento
+                if(this.paymentMethod == 1){
+                //    metodo di pagamento carta
+                   sendData = {
+                        name: this.name,
+                        surname: this.surname,
+                        paymentMethod: this.paymentMethod,
+                        address: this.address,
+                        phone: this.phone,
+                        total: this.total,
+                        restaurant_id: this.restaurant_id
+                   }
+               }else{
+                //    metodo di pagamento alla consegna
+                    sendData = {
+                        name: this.name,
+                        surname: this.surname,
+                        cardNumber: this.cardNumber,
+                        cvv: this.cvv,
+                        expirationMonth: this.expirationMonth,
+                        expirationYear: this.expirationYear,
+                        paymentMethod: this.paymentMethod,
+                        address: this.address,
+                        phone: this.phone,
+                        total: this.total,
+                        restaurant_id: this.restaurant_id
+                   }
+               }
+
+
+
+
                 if(this.name && this.address && this.phone){
 
                     if(this.cart){
-                        axios.post('api/payment', {
-                                name: this.name,
-                                surname: this.surname,
-                                cardNumber: this.cardNumber,
-                                cvv: this.cvv,
-                                expirationMonth: this.expirationMonth,
-                                expirationYear: this.expirationYear,
-                                paymentMethod: this.paymentMethod,
-                                address: this.address,
-                                phone: this.phone,
-                                total: this.total,
-                                restaurant_id: this.restaurant_id
-                        })
+                        axios.post('api/payment', sendData)
                         .then(response =>{
                             // handle success
                             if(response.data.success == true){
@@ -250,6 +272,6 @@
 
 <style lang="scss" scoped>
     .ms-height{
-        height: 1000px;
+        min-height: 100vh;
     }
 </style>

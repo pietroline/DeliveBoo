@@ -1,5 +1,5 @@
 <template>
-    <section class="container-fluid">
+    <section class="container-fluid ms-height">
     <div class="row justify-content-center ">
       <div class="col-12 col-md-9 col-lg-9">
 
@@ -39,7 +39,7 @@
           
             <hr class="my-4"/>
             <div>Clicca sul bottone per tornare alla HomePage</div>
-            <router-link class="btn btn-primary my-3" :to="{name: 'home'}">Home</router-link>
+            <router-link class="btn my-3 ms_btn1" :to="{name: 'home'}">Home</router-link>
 
         </div>
 
@@ -86,21 +86,31 @@
     }
 </script>
 <style lang="scss" scoped>
+
   @import "./../../sass/_variables.scss";
 
-  section {
-    background-color: $darkOrange;
-
+   .ms-height{
+        min-height: 100vh;
+    }
 
     .ms_jumbo {
-      background-color: $lightOrange;
-      margin-top: 2rem;
+        background-color: $lightOrange;
+        margin-top: 2rem;
+        box-shadow: 0 0 1rem 0 #000;
+      
+        
+        .ms_btn1{
+            background-color: $darkOrange;
+            border: 2px solid brown;
+            color: white;
+            font-weight: bold;
 
-      a {
-        background-color: $darkOrange;
-        border-radius: 5px;
-        border: 1px solid $darkOrange;
-      }
-    }
-  }
+            &:hover{
+                border: 2px solid $darkOrange;
+                background-color: brown;
+            }
+
+        }
+}
+  
 </style>
