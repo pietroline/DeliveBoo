@@ -124,7 +124,7 @@ for (var i = 0; i < buttons.length; i++) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/pietroline/Scrivania/Personale/boolean/GitHub/progettoFinale/DeliveBoo/resources/js/functionsJS/confirmDelete.js */"./resources/js/functionsJS/confirmDelete.js");
+module.exports = __webpack_require__(/*! C:\Users\emanuela\Desktop\boolean\Progetto Finale\DeliveBoo\DeliveBoo\resources\js\functionsJS\confirmDelete.js */"./resources/js/functionsJS/confirmDelete.js");
 
 
 /***/ })

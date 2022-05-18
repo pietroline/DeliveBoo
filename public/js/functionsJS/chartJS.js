@@ -81,62 +81,65 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 6);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./resources/js/functionsJS/validationRequiredGroupCheckbox.js":
-/*!*********************************************************************!*\
-  !*** ./resources/js/functionsJS/validationRequiredGroupCheckbox.js ***!
-  \*********************************************************************/
+/***/ "./resources/js/functionsJS/chartJS.js":
+/*!*********************************************!*\
+  !*** ./resources/js/functionsJS/chartJS.js ***!
+  \*********************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-// inizio validazione group input checkbox
-// resources/views/admin/home.blade.php
-var checkboxes = document.getElementsByClassName("mJS_checkbox");
-var displayRequired = document.getElementById("mJS_displayRequired");
-var checkboxTrue = 0;
+// inizio gestione chartJS
+// resources/views/admin/charts/index.blade.php
+var moneyMonth = document.getElementsByClassName("mJS_moneyMonth");
+var money = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
-var _loop = function _loop(i) {
-  var checkbox = checkboxes[i];
-  checkbox.addEventListener("click", function (e) {
-    if (checkbox.checked) {
-      // quando viene impostato un check nelle input in esame incremento una variabile interna dello script
-      checkboxTrue++;
-    } else if (!checkbox.checked && checkboxTrue > 0) {
-      // quando viene tolto un check nelle input in esame decremento una variabile interna dello script
-      checkboxTrue--;
-    } // verifico se la variabile che tiene il conto dei check sulle input > 0 e imposto le classi adeguate
+for (var i = 0; i < moneyMonth.length; i++) {
+  money[i] = moneyMonth[i].innerHTML;
+}
 
-
-    if (checkboxTrue == 0) {
-      displayRequired.classList.remove("ms_dysplay-none");
-      displayRequired.classList.add("text-danger", "ms_dysplay-block");
-    } else {
-      displayRequired.classList.remove("text-danger", "ms_dysplay-block");
-      displayRequired.classList.add("ms_dysplay-none");
-    }
-  });
+;
+var labels = ["Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno", "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre"];
+var data = {
+  labels: labels,
+  datasets: [{
+    label: 'Statistiche ordini ricevuti',
+    backgroundColor: 'rgba(255, 140, 40, 0.2)',
+    fill: true,
+    borderColor: '#ff8c28',
+    borderWidth: 1,
+    data: money
+  }]
 };
-
-for (var i = 0; i < checkboxes.length; i++) {
-  _loop(i);
-} // fine validazione group input checkbox
+var config = {
+  type: 'line',
+  data: data,
+  options: {
+    plugins: {
+      legend: {
+        display: false
+      }
+    }
+  }
+};
+var myChart = new Chart(document.getElementById('myChart'), config); // fine gestione chartJS
 // ----------------------------------------------------------------------------------------------------------
 // ----------------------------------------------------------------------------------------------------------
 
 /***/ }),
 
-/***/ 3:
-/*!***************************************************************************!*\
-  !*** multi ./resources/js/functionsJS/validationRequiredGroupCheckbox.js ***!
-  \***************************************************************************/
+/***/ 6:
+/*!***************************************************!*\
+  !*** multi ./resources/js/functionsJS/chartJS.js ***!
+  \***************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\emanuela\Desktop\boolean\Progetto Finale\DeliveBoo\DeliveBoo\resources\js\functionsJS\validationRequiredGroupCheckbox.js */"./resources/js/functionsJS/validationRequiredGroupCheckbox.js");
+module.exports = __webpack_require__(/*! C:\Users\emanuela\Desktop\boolean\Progetto Finale\DeliveBoo\DeliveBoo\resources\js\functionsJS\chartJS.js */"./resources/js/functionsJS/chartJS.js");
 
 
 /***/ })
