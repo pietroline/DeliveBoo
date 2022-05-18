@@ -92,26 +92,28 @@
 
                     <div class="form-group">
                         <label for="paymentMethod">Metodo di pagamento</label>
-                        <select class="form-control" id="paymentMethod" name="paymentMethod">
+                        <select class="form-control" id="paymentMethod" name="paymentMethod" v-model="paymentMethod">
                             <option value="1" selected>Alla consegna</option>
-                            <option value="2">Paga con carta</option>
+                            <option value="2">Adesso con carta</option>
                         </select>
                     </div>
 
-                    <div class="form-group">
-                        <input placeholder="Numero carta" type="text" class="form-control" id="cardNumber" name="cardNumber" v-model="cardNumber" minlength="16" maxlength="16" required>
-                        <input placeholder="CVV" type="text" class="form-control" id="cvv" name="cvv" v-model="cvv" minlength="3" maxlength="3" required>
-                    </div>
+                   <section v-if="paymentMethod == 2">
 
-                   <div class="d-flex align-items-center">
-                    
-                        <input placeholder="Mese" type="number" class="form-control ms_inputSize" id="expirationMonth" name="expirationMonth" min="1" max="12" v-model="expirationMonth" required>
-                    
-                        <div class="mx-3">/</div>
+                        <div class="form-group p-3">
+                            <div class="row">
+                                    <input placeholder="Numero carta" type="text" class="form-control col-8" id="cardNumber" name="cardNumber" v-model="cardNumber" pattern="[0-9]{16}" required>
+                                    <input placeholder="CVV" type="text" class="form-control col-3 ml-3" id="cvv" name="cvv" v-model="cvv" pattern="[0-9]{3}" required>     
+                            </div>
+                        </div>
 
-                        <input placeholder="Anno" type="number" class="form-control ms_inputSize" id="expirationYear" name="expirationYear" min="1950" max="2100" v-model="expirationYear" required>
-                      
-                   </div>
+                        <div class="d-flex align-items-center">
+                            <input placeholder="Mese" type="number" class="form-control ms_inputSize" id="expirationMonth" name="expirationMonth" min="1" max="12" v-model="expirationMonth" required>
+                            <div class="mx-3">/</div>
+                            <input placeholder="Anno" type="number" class="form-control ms_inputSize" id="expirationYear" name="expirationYear" min="2000" max="2100" v-model="expirationYear" required>
+                        </div>
+
+                   </section>
     
                     <button type="submit" class="btn btn-primary my-3">Invia</button>
                 </form>
@@ -124,9 +126,9 @@
             <b-modal no-close-on-backdrop v-model="emptyCart" ok-only>Il carrello è vuoto</b-modal>
         </div>
 
-         <!-- Modal per carrello vuoto -->
+         <!-- Modal form non compialto correttamente-->
         <div class="row">
-            <b-modal no-close-on-backdrop v-model="errorsForm" ok-only>Form non compilato correttamente</b-modal>
+            <b-modal no-close-on-backdrop v-model="errorsForm" ok-only>Form non compilato correttamente. Ordine negato</b-modal>
         </div>
 
     </div>
@@ -142,11 +144,17 @@
                 total: 0,
                 restaurant_id: null,
                 name: null,
+                surname: null,
+                cardNumber: null,
+                cvv: null,
+                expirationMonth: null,
+                expirationYear: null,
+                paymentMethod: 1,
                 address: null,
                 phone: null,
                 errors: null,
                 emptyCart: false,
-                errorsForm: false
+                errorsForm: false,
             };
         },
 
@@ -177,6 +185,12 @@
                     if(this.cart){
                         axios.post('api/payment', {
                                 name: this.name,
+                                surname: this.surname,
+                                cardNumber: this.cardNumber,
+                                cvv: this.cvv,
+                                expirationMonth: this.expirationMonth,
+                                expirationYear: this.expirationYear,
+                                paymentMethod: this.paymentMethod,
                                 address: this.address,
                                 phone: this.phone,
                                 total: this.total,
@@ -211,9 +225,9 @@
                                         }
                                     ] }
                                 });
+
                             }else{
-                                // altrimenti reindirizzo alla pagine /orderNegated, vedi router.js
-                               this.$router.push({name: 'orderNegated'});
+                                this.errorsForm = true;
                             }
                         })
                         .catch(error => {
@@ -236,6 +250,6 @@
 
 <style lang="scss" scoped>
     .ms-height{
-        height: 100vh;
+        height: 1000px;
     }
 </style>
