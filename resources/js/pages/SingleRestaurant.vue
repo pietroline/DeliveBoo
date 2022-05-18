@@ -190,7 +190,7 @@
       </b-modal>
 
     <!-- modal per carrello vuoto -->
-      <b-modal no-close-on-backdrop ok-only v-model="foodInCart">
+      <b-modal no-close-on-backdrop ok-only v-model="emptyCart">
         <p class="my-4">Il carrello è vuoto</p>
       </b-modal>
 

@@ -24,16 +24,17 @@ class ValidationPayment extends FormRequest
      */
     public function rules()
     {
+
         return [
             "name" => "required | min:3",
             "address" => "required | min:5",
             "phone" => "required | string | min:6 | max:15",
             "total" => "required | numeric | min:0 | max:1000000000",
             "surname" => "required | min:3",
-            "cardNumber" => "required | numeric | digits:16",
-            "cvv" => "required | numeric | digits:3",
-            "expirationMonth" => "required | numeric | min:1 | max:12",
-            "expirationYear" => "required | numeric | min: 2000 | max: 2100",
+            "cardNumber" => "sometimes | required | numeric | digits:16",
+            "cvv" => "sometimes | required | numeric | digits:3",
+            "expirationMonth" => "sometimes | required | numeric | min:1 | max:12",
+            "expirationYear" => "sometimes | required | numeric | min: 2000 | max: 2100",
             "paymentMethod" => "required | numeric | min:1 | max:2",
         ];
     }
