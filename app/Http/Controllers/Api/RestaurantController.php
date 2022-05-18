@@ -34,6 +34,11 @@ class RestaurantController extends Controller
     {
         $restaurants = Restaurant::all();
 
+        // genero url img
+        $restaurants->each(function($restaurant){
+            $this->getUrlRestaurant($restaurant);
+        });
+
         foreach($restaurants as $restaurant){
             $restaurant["typologies"] = $restaurant->typologies;
         }
@@ -54,6 +59,11 @@ class RestaurantController extends Controller
     public function filter($filter){
 
         $allRestaurants = Restaurant::all();
+
+        // genero url img
+        $allRestaurants->each(function($restaurant){
+            $this->getUrlRestaurant($restaurant);
+        });
 
         // filter è una stringa, è necessario convertirla in array per poi ciclare i valori
         $filter = explode(",", $filter);
@@ -120,6 +130,15 @@ class RestaurantController extends Controller
 
         $foods = Food::where([["restaurant_id", $restaurant->id], ["visible", 1]])->get();
 
+        // genero url img restaurant
+        $this->getUrlRestaurant($restaurant);
+
+        // genero url img food
+        $foods->each(function($food){
+            $this->getUrlFood($food);
+        });
+
+
         // il tipo di dato del foods[iesimo]->price ritornato è string, quindi converto in double
         foreach($foods as $food){
             $food->price = floatval($food->price);
@@ -154,5 +173,38 @@ class RestaurantController extends Controller
 
         return $response;
     }
+
+    // funzione per generare url img
+    private function getUrlRestaurant($restaurant){
+        if ($restaurant->image) {
+            
+            if($restaurant->seed){
+                $restaurant->image = url('img/loghi-restaurants/' . $restaurant->image);
+            }else{
+                $restaurant->image = url('storage/' . $restaurant->image);
+            }
+
+        } else {
+            $restaurant->image = url("img/LogoDeliveboo640.png");
+        }
+    }
+
+    // funzione per generare url img
+    private function getUrlFood($food){
+        if ($food->image) {
+           
+            if($food->seed){
+               
+                $food->image = url('img/foto-foods/' . $food->image);
+            }else{
+                $food->image = url('storage/' . $food->image);
+            }
+
+        } else {
+            $food->image = url("img/LogoDeliveboo640.png");
+        }
+    }
+
+
 
 }

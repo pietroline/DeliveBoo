@@ -538,6 +538,7 @@ class FoodsTableSeeder extends Seeder
         foreach($foods as $food) {
             $newFood = new Food();
 
+            $newFood->seed = true;
             $newFood->name = $food['name'];
             $newFood->slug = Str::slug($newFood->name);
             $newFood->image = $food['path'];

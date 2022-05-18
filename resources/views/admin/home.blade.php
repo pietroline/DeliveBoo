@@ -1,3 +1,4 @@
+
 @extends('admin.layouts.base')
 
 @section('scriptJS')
@@ -52,7 +53,7 @@
                             </ul>
                         @else
 
-                            <form id="sectionForm" class="needs-validation" novalidate method="POST" action="{{route('admin.restaurants.store')}}">
+                            <form id="sectionForm" class="needs-validation" novalidate method="POST" action="{{route('admin.restaurants.store')}}" enctype="multipart/form-data">
 
                                 @csrf
                 
@@ -62,6 +63,11 @@
                                     <div class="invalid-feedback">
                                         Nome non valido
                                     </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="img">Seleziona immagine</label>
+                                    <input class="form-control" type="file" accept="image/png, image/gif, image/jpeg, image/jpg, imag/svg" name="img" id="img">
                                 </div>
 
                                 <div class="form-group">

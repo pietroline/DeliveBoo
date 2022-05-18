@@ -8,7 +8,8 @@
 
         <div class="px-4 py-3 my-3 text-center">
 
-          <img class="img-fluid mx-auto mb-4" :src="require('../../../public/img/loghi-restaurants/' + restaurant.image)"/>
+          <img class="img-fluid mx-auto mb-4" :src="restaurant.image"/>
+
           <h1 class="display-5 fw-bold">{{ restaurant.name }}</h1>
           <div class="col-lg-6 mx-auto">
             <p class="lead mb-4">{{ restaurant.description }}</p>
@@ -374,7 +375,7 @@
               this.restaurant = response.data.showRestaurant;
               this.menuRestaurant = response.data.showMenuRestaurant.data;
               this.lastPage = response.data.showMenuRestaurant.last_page;
-            } else {
+            }else {
               this.$route.push({ name: "not-found" });
             }
           })

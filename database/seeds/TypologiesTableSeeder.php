@@ -62,6 +62,7 @@ class TypologiesTableSeeder extends Seeder
         foreach($typologies as $typology){
             $newTypology = new Typology();
 
+            $newTypology->seed = true;
             $newTypology->name = $typology['name'];
             $newTypology->slug = Str::slug($typology['name']);
             $newTypology->image = $typology['path'];

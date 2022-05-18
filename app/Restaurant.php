@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Restaurant extends Model
 {
-    protected $fillable = ["name", "slug", "address", "phone", "email", "vat", "description", "user_id"];
+    protected $fillable = ["name", "slug", "address", "phone", "email", "vat", "description", "user_id", "image"];
 
     // specifico nome tabella 
     protected $table = "restaurants";

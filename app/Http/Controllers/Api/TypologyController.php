@@ -15,6 +15,12 @@ class TypologyController extends Controller
     public function index()
     {
         $typologies = Typology::all();
+
+        // genero url img food
+        $typologies->each(function($typology){
+            $this->getUrlTypology($typology);
+        });
+
        
         return response()->json(
             [
@@ -22,6 +28,15 @@ class TypologyController extends Controller
                 "success" => true
             ]
         );
+    }
+
+     // funzione per generare url img
+     private function getUrlTypology($typology){
+        if ($typology->image) {
+            if($typology->seed){
+                $typology->image = url('img/' . $typology->image);
+            }
+        } 
     }
 
     

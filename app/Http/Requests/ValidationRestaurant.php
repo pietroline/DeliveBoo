@@ -30,7 +30,9 @@ class ValidationRestaurant extends FormRequest
             "phone" => "required | string | min:6 | max:15",
             "email" => "required | email",
             "vat" => "required | digits:11 | unique:restaurants,vat",
-            "typologies" => "required"
+            "typologies" => "required",
+            'img' => 'nullable | mimes:jpeg,png,jpg,gif,svg | max:2048',
+
         ];
     }
 
@@ -48,6 +50,7 @@ class ValidationRestaurant extends FormRequest
             'email' => 'Email ristorante',
             'vat' => 'Partita IVA ristorante',
             'typologies' => 'Email ristorante',
+            'img' => 'immagine'
         ];
 
     }
