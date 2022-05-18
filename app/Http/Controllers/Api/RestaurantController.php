@@ -60,6 +60,11 @@ class RestaurantController extends Controller
 
         $allRestaurants = Restaurant::all();
 
+        // genero url img
+        $allRestaurants->each(function($restaurant){
+            $this->getUrlRestaurant($restaurant);
+        });
+
         // filter è una stringa, è necessario convertirla in array per poi ciclare i valori
         $filter = explode(",", $filter);
        

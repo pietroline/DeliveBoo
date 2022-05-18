@@ -21,7 +21,7 @@
                             <div class="form-check p-0 position-relative">
                                 
                                 <label class="form-check-label" :for="'typology_' + typology.id">
-                                    <img :src="require('../../../../public/img/' + typology.image)" class="card-typology ms_cursor_pointer"  :alt="typology.name">
+                                    <img :src="typology.image" class="card-typology ms_cursor_pointer"  :alt="typology.name">
                                 </label>
                                 <div class="ms_position-absolute">
                                     <input  type="checkbox" class="form-check-input ms_checkbox" v-model="typologySelected" :value="typology.id" :id="'typology_' + typology.id">
@@ -57,7 +57,7 @@
                     <div class="ms_height">
                         <div class="row">
                             <div class="card-group col-12 col-md-6 col-lg-3 px-5 px-md-3 px-lg-3" v-for="restaurant in restaurants" :key="'restaurant_'+restaurant.id">
-
+                                
                                 <Restaurant 
                                     :name="restaurant.name"
                                     :slug="restaurant.slug"
