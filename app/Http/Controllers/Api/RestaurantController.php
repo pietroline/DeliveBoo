@@ -125,11 +125,10 @@ class RestaurantController extends Controller
 
         $foods = Food::where([["restaurant_id", $restaurant->id], ["visible", 1]])->get();
 
-        // genero url img
-        
+        // genero url img restaurant
         $this->getUrlRestaurant($restaurant);
 
-        // genero url img
+        // genero url img food
         $foods->each(function($food){
             $this->getUrlFood($food);
         });
