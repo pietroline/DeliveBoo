@@ -76,6 +76,11 @@
                     </div>
 
                     <div class="form-group">
+                        <label for="surname">Surname *</label>
+                        <input type="text" class="form-control" id="surname" name="surname" minlength="3" v-model="surname" required>
+                    </div>
+
+                    <div class="form-group">
                         <label for="phone">Numero telefono *</label>
                         <input type="tel" pattern="[0-9]{6,15}" class="form-control" id="phone" name="phone" v-model="phone" required>
                     </div>
@@ -84,8 +89,31 @@
                         <label for="address">Indirizzo *</label>
                         <input type="text" class="form-control" id="address" name="address" minlength="5" v-model="address" required>
                     </div>
+
+                    <div class="form-group">
+                        <label for="paymentMethod">Metodo di pagamento</label>
+                        <select class="form-control" id="paymentMethod" name="paymentMethod">
+                            <option value="1" selected>Alla consegna</option>
+                            <option value="2">Paga con carta</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <input placeholder="Numero carta" type="text" class="form-control" id="cardNumber" name="cardNumber" v-model="cardNumber" minlength="16" maxlength="16" required>
+                        <input placeholder="CVV" type="text" class="form-control" id="cvv" name="cvv" v-model="cvv" minlength="3" maxlength="3" required>
+                    </div>
+
+                   <div class="d-flex align-items-center">
+                    
+                        <input placeholder="Mese" type="number" class="form-control ms_inputSize" id="expirationMonth" name="expirationMonth" min="1" max="12" v-model="expirationMonth" required>
+                    
+                        <div class="mx-3">/</div>
+
+                        <input placeholder="Anno" type="number" class="form-control ms_inputSize" id="expirationYear" name="expirationYear" min="1950" max="2100" v-model="expirationYear" required>
+                      
+                   </div>
     
-                     <button type="submit" class="btn btn-primary my-3">Invia</button>
+                    <button type="submit" class="btn btn-primary my-3">Invia</button>
                 </form>
                
             </div>
@@ -114,8 +142,12 @@
                 total: 0,
                 restaurant_id: null,
                 name: null,
+                surname: null,
                 address: null,
                 phone: null,
+                cardNumber: null,
+                expirationMonth: null,
+                expirationYear:null,
                 errors: null,
                 emptyCart: false,
                 errorsForm: false
@@ -206,6 +238,8 @@
     }
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+    .ms_inputSize{
+        width: 8rem;
+    }
 </style>
