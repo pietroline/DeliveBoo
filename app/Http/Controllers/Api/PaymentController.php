@@ -13,79 +13,7 @@ class PaymentController extends Controller
     public function paymentController(ValidationPayment $request)
     {
 
-        // simulazione metodo pagamento
-        if($request->paymentMethod == 2){
-            // metodo di pagamento adesso con carta,
-
-            // data di oggi
-            $today = Carbon::now();
-
-            // carta valida al pagamento 4242 4242 4242 4242 con cvv 354
-            if($request->cardNumber == 4242424242424242){
-                if($request->cvv == 354){
-
-                    // verifico se expirationYear è successivo all'anno di today
-                    if($request->expirationYear > $today->year){
-
-                        $return = true;
-
-                    // se expirationYear è pari all'anno di today, verifichi se il mese è successivo (quindi carta ancora non scaduta)
-                    }else if($request->expirationYear = $today->year){
-                        if($request->expirationMonth >= $today->month){
-
-                            $return = true;
-
-                        }else{
-
-                            $return = false;
-                            
-                        } 
-                  
-                    }else{
-                        // condizione in cui expirationYear è minore del'anno di today
-                        $return = false;
-                    }
-                  
-                }else{
-
-                    $return = false;
-
-                }
-            }else{
-
-                $return = false;
-
-            }
-        }else{
-            
-            $return = true;
-
-        }
-
-        if($return){
-            // metodo di pagamento alla consegna
-            $this->storePayment($request);
-
-            return response()->json(
-                [
-                    "success" => true,
-                ]
-            );
-        }else{
-            return response()->json(
-                [
-                    "success" => false,
-                ]
-            );
-        }
-
-
-       
-    }
-
-    // storePayment si occupa di salvare le informazioni dell'ordine accettato nel DB
-    private function storePayment($request){
-
+        //salvo le informazioni dell'ordine accettato nel DB
         $data = $request->all();
         $data["order_confirmed_date"] = Carbon::now();
 
@@ -93,5 +21,14 @@ class PaymentController extends Controller
         $order->fill($data);
 
         $order->save();
+
+        return response()->json(
+            [
+                "success" => true,
+            ]
+        );
+        
+
     }
+
 }

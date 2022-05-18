@@ -26,6 +26,7 @@
     "dependencies": {
         "bootstrap-icons": "^1.8.1",
         "bootstrap-vue": "^2.22.0",
+        "braintree": "^3.11.0",
         "vue-router": "^3.5.3"
     }
 }
