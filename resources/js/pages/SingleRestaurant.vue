@@ -76,9 +76,9 @@
 
               </div>
             </div>
-            <div v-else>
-              <div>Non ci sono cibi del menu da visualizzare</div>
-            </div>
+              <div v-else class="d-flex justify-content-center align-items-center ms_height rounded ms_fs5 text-center">
+                  <span>Non ci sono piatti discponibili al momento</span>
+              </div>
         </div>
 
         <!-- inizio carrello -->
@@ -433,4 +433,7 @@
     color: white;
   }
 
+  .ms_height{
+    height: 200px;
+  }
 </style>
