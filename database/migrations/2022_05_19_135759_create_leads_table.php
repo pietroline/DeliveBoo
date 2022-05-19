@@ -19,6 +19,7 @@ class CreateLeadsTable extends Migration
             $table->string("name");
             $table->string("phone");
             $table->string("address");
+            $table->text("orderInfo");
 
             $table->timestamps();
         });

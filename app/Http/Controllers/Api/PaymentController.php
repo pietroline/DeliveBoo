@@ -18,6 +18,8 @@ class PaymentController extends Controller
 
         //salvo le informazioni dell'ordine accettato nel DB
         $data = $request->all();
+        $data["orderInfo"] = json_encode($data["cart"]);
+
         $data["order_confirmed_date"] = Carbon::now();
 
         $order = new Order();
