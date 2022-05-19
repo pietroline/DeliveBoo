@@ -228,7 +228,8 @@
                             phone: this.phone,
                             total: this.total,
                             restaurant_id: this.restaurant_id,
-                            restaurant_slug: this.restaurant_slug
+                            restaurant_slug: this.restaurant_slug,
+                            cart: this.cart
                         })
                         .then(response =>{
                             // handle success

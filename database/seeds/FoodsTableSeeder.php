@@ -547,7 +547,7 @@ class FoodsTableSeeder extends Seeder
 
 
             $newFood->description = $faker->paragraph();
-            $newFood->price = $faker->numberBetween(7, 25);
+            $newFood->price = $faker->numberBetween(5, 15);
             $newFood->ingredients = $faker->words(5, true);
             $newFood->ingredients = str_replace(" ", ", ", $newFood->ingredients);
 

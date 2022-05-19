@@ -65,6 +65,59 @@
   height: 5rem;
 }
 
+.ms_dashboard {
+  background-color: #ff8c28 !important;
+  color: #fff !important;
+  font-weight: bold !important;
+}
+
+.ms_aColor {
+  color: #000;
+}
+
+.ms_aColor:hover {
+  color: #ff8c28;
+}
+
+.img_food img {
+  height: 30rem;
+  width: 30rem;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.ms_dashboard {
+  background-color: #ff8c28 !important;
+  color: #fff !important;
+  font-weight: bold !important;
+}
+
+.ms_btn1 {
+  background-color: #ff8c28 !important;
+  border: 2px solid brown !important;
+  color: white !important;
+  font-weight: bold !important;
+}
+
+.ms_btn1:hover {
+  border: 2px solid #ff8c28 !important;
+  background-color: brown !important;
+}
+
+body {
+  background-color: #f5dcb0;
+}
+
+.ms_text-orange {
+  color: #ff8c28;
+}
+
+.ms_mail-btn {
+  background-color: #ff8c28;
+  color: white;
+  font-weight: bold;
+}
+
 /*!
  * Bootstrap v4.6.1 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors

@@ -35,7 +35,8 @@ class SendMail extends Mailable
                     ->with([
                         "leadName" => $this->lead->name,
                         "leadPhone" => $this->lead->phone,
-                        "leadAddress" => $this->lead->address
+                        "leadAddress" => $this->lead->address,
+                        "leadOrderInfo" => $this->lead->orderInfo,
                     ]);
     }
 }
