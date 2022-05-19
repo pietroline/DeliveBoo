@@ -120,16 +120,18 @@
                       <td class="align-middle">{{item.total}} €</td>
                       
                       <td class="align-middle p-0">
-                        <button class="btn btn-danger" @click="deleteToCart(item.id)">X</button>
+                        <button class="btn btn-danger" @click="deleteToCart(item.id)"><strong>X</strong></button>
                       </td>
                     </tr>
                   </tbody>
                 </table>
 
-                <div class="d-flex justify-content-center align-items-center">
-                  <div class="mr-3 ms_fs3" v-if="getTotal() > 0">Totale carrello {{getTotal()}} €</div>
-                  <button class="btn btn-success mr-3" @click="goToPayment()">Paga</button>
-                  <button class="btn btn-danger" @click="deleteCart()">Svuota</button>
+                <div class="d-flex flex-column justify-content-center align-items-center">
+                  <div class="ms_fs4" v-if="getTotal() > 0">Totale carrello {{getTotal()}} €</div>
+                  <div class="mt-3">
+                    <button class="btn btn-success mr-3" @click="goToPayment()">Paga</button>
+                    <button class="btn btn-danger" @click="deleteCart()">Svuota</button>
+                  </div>
                 </div>
               </div>
               
@@ -186,7 +188,7 @@
 
     <!-- modal per prodotto già presente nel carrello -->
       <b-modal no-close-on-backdrop ok-only v-model="foodInCart">
-        <p class="my-4">Il prodotto inserito è già presente nel carrello</p>
+        <p class="my-4">Il prodotto selezionato è già presente nel carrello</p>
       </b-modal>
 
     <!-- modal per carrello vuoto -->

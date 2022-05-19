@@ -6,14 +6,14 @@
 
             <b-collapse id="nav-collapse" is-nav>
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active" v-for="itemMenu in navMenu" :key="itemMenu.routeName">
+                    <li class="nav-item active d-flex justify-content-center" v-for="itemMenu in navMenu" :key="itemMenu.routeName">
                         <router-link class="ms_color" :to="{name: itemMenu.routeName}">{{itemMenu.label}}</router-link>
                     </li>
                 </ul>
         
                 <b-navbar-nav class="ml-auto">
                     <ul class="navbar-nav">
-                        <li class="nav-item">
+                        <li class="nav-item d-flex justify-content-center pb-2 pb-lg-0">
                             <a class="ms_color" href="/admin">Area Admin</a>
                         </li>
                     </ul>

@@ -44,7 +44,7 @@ class ValidationPayment extends FormRequest
             'name' => 'Nome',
             'address' => 'Indirizzo',
             'phone' => 'Numero di telefono',
-            'total' => 'totale'
+            'total' => 'totale',
         ];
 
     }

@@ -7,6 +7,15 @@
 // regole comuni
 @import '_common';
 
+// regole admin per home
+@import 'admin/_home';
+
+// regole admin -> layouts -> base 
+@import 'admin/_layouts-base';
+
+// regole admin -> food 
+@import 'admin/_food-show';
+
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 

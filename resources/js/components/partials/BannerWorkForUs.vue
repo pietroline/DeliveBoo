@@ -10,11 +10,11 @@
 
         <b-row class="mb-3">
           <b-col>
-            <b-img class= "ms_img" :src="require('../../../../public/img/app-store.png')"  alt="logo app store"></b-img>
+            <b-link href="https://www.apple.com/it/app-store/" target="_blank"> <b-img class= "ms_img" :src="require('../../../../public/img/app-store.png')"  alt="logo app store"></b-img></b-link>
           </b-col>
 
           <b-col>
-            <b-img :src="require('../../../../public/img/play-store.png')" class="ms_img" alt="logo play store"></b-img>
+            <b-link href="https://play.google.com/store/apps?gl=IT" target="_blank"><b-img :src="require('../../../../public/img/play-store.png')" class="ms_img" alt="logo play store"></b-img></b-link>
           </b-col>
         </b-row>
       </b-col>
