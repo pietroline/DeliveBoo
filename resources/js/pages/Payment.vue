@@ -95,7 +95,7 @@
 
                     <div class="d-flex justify-content-center">
                         <button class="btn ms_btn1 my-4" type="submit" ref="submit">
-                            <span class="ms_fs4">Conferma e paga</span>
+                            <span class="ms_fs4">{{working ? "Elaborazione..." : "Conferma e paga"}}</span>
                         </button>
                     </div>
                 </form>
@@ -125,13 +125,14 @@
                 cart: [],
                 total: 0,
                 restaurant_id: null,
-                restaurant_name: null,
+                restaurant_slug: null,
                 name: null,
                 address: null,
                 phone: null,
                 errors: null,
                 emptyCart: false,
                 errorsForm: false,
+                working: false
             };
         },
 
@@ -140,7 +141,7 @@
             this.cart = this.$route.params.cart;
             this.total = this.$route.params.total; 
             this.restaurant_id = this.$route.params.restaurant_id; 
-            this.restaurant_name = this.$route.params.restaurant_name; 
+            this.restaurant_slug = this.$route.params.restaurant_slug; 
 
           
             // salvo i dati in valiabili localStorage, in maniera tale da mantenere il dato anche se riavviata la pagina
@@ -175,6 +176,9 @@
 
                             form.addEventListener("submit", (event) => {
                                 event.preventDefault();
+
+                                // cambio scritta btn da "Conferma e paga" a "Elaborazione"
+                                this.working = true;
 
                                 instance.requestPaymentMethod((err, payload) => {
 
@@ -223,13 +227,18 @@
                             address: this.address,
                             phone: this.phone,
                             total: this.total,
-                            restaurant_id: this.restaurant_id
+                            restaurant_id: this.restaurant_id,
+                            restaurant_slug: this.restaurant_slug
                         })
                         .then(response =>{
                             // handle success
                             if(response.data.success == true){
                                 // Se l'ordine va a buon fine reindirizzo alla pagina /orderConfirmed, vedi router.js
-                               this.$router.push({
+
+                                // cambio scritta btn da "Elaborazione" a "Conferma e paga"
+                                this.working = false;
+
+                                this.$router.push({
                                     name: 'orderConfirmed', 
                                     params: { arrayData: [
                                         {
