@@ -19,6 +19,8 @@
 // regole admin -> auth -> password -> login 
 @import 'admin/_auth-password-login';
 
+@import 'email/_email.scss';
+
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 

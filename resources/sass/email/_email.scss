@@ -1,0 +1,19 @@
+@import  "../variables";
+
+
+body{
+    background-color: $lightOrange;
+}
+
+
+
+
+.ms_text-orange{
+    color: $darkOrange;
+}
+
+.ms_mail-btn{
+    background-color:$darkOrange ;
+    color: white;
+    font-weight: bold;
+}
