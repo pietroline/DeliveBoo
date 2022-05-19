@@ -5,8 +5,8 @@
 
         <h1>Dettagli food</h1>
 
-        <div class="d-flex justify-content-between">
-            <div class="d-flex justify-content-between align-items-center">
+        <div class="roq d-flex justify-content-between">
+            <div class="col d-flex justify-content-between align-items-center">
             
                 <ul class="list-unstyled">
                     <li class="my-3">
@@ -48,7 +48,7 @@
     
             </div>
     
-            <div class="img_food">
+            <div class="col img_food">
                 @if ($food->image)
 
                     @if($food->seed)
