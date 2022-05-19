@@ -77,7 +77,7 @@
               </div>
             </div>
               <div v-else class="d-flex justify-content-center align-items-center ms_height rounded ms_fs5 text-center">
-                  <span>Non ci sono piatti discponibili al momento</span>
+                  <span>Non ci sono piatti disponibili al momento</span>
               </div>
         </div>
 
