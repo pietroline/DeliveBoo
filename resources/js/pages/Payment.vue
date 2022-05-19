@@ -68,16 +68,11 @@
         <div class="row">
             <div class="col">
 
-                 <form @submit.prevent="sendOrder()">
+                 <form id="payment-form">
 
                     <div class="form-group">
                         <label for="name">Nome *</label>
                         <input type="text" class="form-control" id="name" name="name" minlength="3" v-model="name" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="surname">Cognome *</label>
-                        <input type="text" class="form-control" id="surname" name="surname" minlength="3" v-model="surname" required>
                     </div>
 
                     <div class="form-group">
@@ -89,33 +84,20 @@
                         <label for="address">Indirizzo *</label>
                         <input type="text" class="form-control" id="address" name="address" minlength="5" v-model="address" required>
                     </div>
-
-                    <div class="form-group">
-                        <label for="paymentMethod">Metodo di pagamento</label>
-                        <select class="form-control" id="paymentMethod" name="paymentMethod" v-model="paymentMethod">
-                            <option value="1" selected>Alla consegna</option>
-                            <option value="2">Adesso con carta</option>
-                        </select>
-                    </div>
-
-                   <section v-if="paymentMethod == 2">
-
-                        <div class="form-group p-3">
-                            <div class="row">
-                                <input placeholder="Numero carta" type="text" class="form-control col-8" id="cardNumber" name="cardNumber" v-model="cardNumber" pattern="[0-9]{16}" required>
-                                <input placeholder="CVV" type="text" class="form-control col-3 ml-3" id="cvv" name="cvv" v-model="cvv" pattern="[0-9]{3}" required>     
-                            </div>
-                        </div>
-
-                        <div class="d-flex align-items-center">
-                            <input placeholder="Mese" type="number" class="form-control ms_inputSize" id="expirationMonth" name="expirationMonth" min="1" max="12" v-model="expirationMonth" required>
-                            <div class="mx-3">/</div>
-                            <input placeholder="Anno" type="number" class="form-control ms_inputSize" id="expirationYear" name="expirationYear" min="2000" max="2100" v-model="expirationYear" required>
-                        </div>
-
-                   </section>
     
-                    <button type="submit" class="btn btn-primary my-3">Invia</button>
+                    <section>
+                        <div class="bt-drop-in-wrapper">
+                        <div id="bt-dropin"></div>
+                        </div>
+                    </section>
+
+                    <input id="nonce" type="hidden" />
+
+                    <div class="d-flex justify-content-center">
+                        <button class="btn ms_btn1 my-4" type="submit" ref="submit">
+                            <span class="ms_fs4">Conferma e paga</span>
+                        </button>
+                    </div>
                 </form>
                
             </div>
@@ -144,12 +126,6 @@
                 total: 0,
                 restaurant_id: null,
                 name: null,
-                surname: null,
-                cardNumber: null,
-                cvv: null,
-                expirationMonth: null,
-                expirationYear: null,
-                paymentMethod: 1,
                 address: null,
                 phone: null,
                 errors: null,
@@ -177,48 +153,76 @@
             }else{
                 this.total = JSON.parse(localStorage.getItem('totalPayment'));
             }
+
+            //--- inizio Braintree ---
+                //Ajax chiama la rotta che restituisce il token di autorizzazione nella risposta
+                axios.get("/payment/checkout").then((response) => {
+                    var form = document.querySelector("#payment-form");
+
+                    //Si crea il dropin con il token
+                    braintree.dropin.create({
+
+                        authorization: response.data,
+                        selector: "#bt-dropin",
+                       
+                    },(createErr, instance) => {
+
+                        if (createErr) {
+                            console.log("Create Error", createErr);
+                        } else {
+
+                            form.addEventListener("submit", (event) => {
+                                event.preventDefault();
+
+                                instance.requestPaymentMethod((err, payload) => {
+
+                                    if (err) {
+                                        console.log("Request Payment Method Error", err);
+                                        return;
+                                    }
+
+                                    // Add the nonce to the form and submit
+                                    document.getElementById("nonce").value = payload.nonce;
+
+                                    let data = {
+                                        amount: this.total,
+                                        payment_method_nonce: payload.nonce,
+                                        name: this.name,
+                                        phone: this.phone,
+                                    };
+
+                                    axios.post("/payment/checkout", data)
+                                        .then((response) => {
+                                            // console.log("SUCCESSO /payment/checkout", response);
+                                            //Funzione che aggiunge nuovo ordine al DB
+                                            this.sendOrder();
+                                        })
+                                        .catch((error) => {
+                                            console.log("ERRORE /payment/checkout", error.data);
+                                        });
+                                });
+                            });
+                        }
+                        }
+                    );
+                });
+            //--- fine Braintree ---
+
         },
 
        methods: {
            sendOrder(){
 
-                let sendData = {};
-                // creo oggetto contenennte i dati dell'ordine e del pagamento
-                if(this.paymentMethod == 1){
-                //    metodo di pagamento carta
-                   sendData = {
-                        name: this.name,
-                        surname: this.surname,
-                        paymentMethod: this.paymentMethod,
-                        address: this.address,
-                        phone: this.phone,
-                        total: this.total,
-                        restaurant_id: this.restaurant_id
-                   }
-               }else{
-                //    metodo di pagamento alla consegna
-                    sendData = {
-                        name: this.name,
-                        surname: this.surname,
-                        cardNumber: this.cardNumber,
-                        cvv: this.cvv,
-                        expirationMonth: this.expirationMonth,
-                        expirationYear: this.expirationYear,
-                        paymentMethod: this.paymentMethod,
-                        address: this.address,
-                        phone: this.phone,
-                        total: this.total,
-                        restaurant_id: this.restaurant_id
-                   }
-               }
-
-
-
-
                 if(this.name && this.address && this.phone){
 
                     if(this.cart){
-                        axios.post('api/payment', sendData)
+                        axios.post('api/payment', {
+                            name: this.name,
+                            address: this.address,
+                            phone: this.phone,
+                            total: this.total,
+                            restaurant_id: this.restaurant_id
+                        })
                         .then(response =>{
                             // handle success
                             if(response.data.success == true){
@@ -272,7 +276,21 @@
 </script>
 
 <style lang="scss" scoped>
+
+    @import "./../../sass/_variables.scss";
+
     .ms-height{
         min-height: 100vh;
+    }
+
+    .ms_btn1{
+        background-color: $darkOrange;
+        border: 2px solid brown;
+        color: white;
+        font-weight: bold;
+        &:hover{
+            border: 2px solid $darkOrange;
+            background-color: brown;
+        }
     }
 </style>

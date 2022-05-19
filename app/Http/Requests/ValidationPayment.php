@@ -29,13 +29,7 @@ class ValidationPayment extends FormRequest
             "name" => "required | min:3",
             "address" => "required | min:5",
             "phone" => "required | string | min:6 | max:15",
-            "total" => "required | numeric | min:0 | max:1000000000",
-            "surname" => "required | min:3",
-            "cardNumber" => "sometimes | required | numeric | digits:16",
-            "cvv" => "sometimes | required | numeric | digits:3",
-            "expirationMonth" => "sometimes | required | numeric | min:1 | max:12",
-            "expirationYear" => "sometimes | required | numeric | min: 2000 | max: 2100",
-            "paymentMethod" => "required | numeric | min:1 | max:2",
+            "total" => "required | numeric | min:0 | max:1000000000"
         ];
     }
 
@@ -50,13 +44,7 @@ class ValidationPayment extends FormRequest
             'name' => 'Nome',
             'address' => 'Indirizzo',
             'phone' => 'Numero di telefono',
-            "surname" => "Cognome",
-            "cardNumber" => "Numero carta",
-            "cvv" => "cvv",
-            "expirationMonth" => "mese scadenza",
-            "expirationYear" => "anno scadenza",
-            "paymentMethod" => "medodo pagamento",
-            'total' => 'totale',
+            'total' => 'totale'
         ];
 
     }
