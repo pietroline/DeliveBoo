@@ -16,6 +16,9 @@
 // regole admin -> food 
 @import 'admin/_food-show';
 
+// regole admin -> auth -> password -> login 
+@import 'admin/_auth-password-login';
+
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
