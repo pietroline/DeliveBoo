@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
 
-                <a href="{{route('admin.foods.create')}}" class="btn btn-primary my-3">Aggiungi nuova portata</a>
+                <a href="{{route('admin.foods.create')}}" class="btn ms_btn1 my-3">Aggiungi nuova portata</a>
 
                 <table class="table">
                     <thead>

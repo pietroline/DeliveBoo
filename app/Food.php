@@ -10,7 +10,7 @@ class Food extends Model
 
     use SoftDeletes;
 
-    protected $fillable = ["name", "slug", "category_id", "price", "description", "ingredients", "visible", "restaurants_id"];
+    protected $fillable = ["name", "slug", "category_id", "price", "description", "ingredients", "visible", "restaurants_id", "image"];
 
     // specifico nome tabella
     protected $table = "foods";

@@ -7,6 +7,7 @@ use App\Food;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ValidationFood;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class FoodController extends Controller
@@ -49,6 +50,11 @@ class FoodController extends Controller
     public function store(ValidationFood $request)
     {
         $data = $request->all();
+
+        // img
+        if(isset($data["img"])){
+            $data["image"] = Storage::put("foods_image", $data["img"]);   
+        }
         
         // creo slug univoco, nel caso in cui il nuovo è già presente nel database ne creo uno diverso, concatenandolo ad un counter
         // Prova-nuovo-food 
@@ -143,6 +149,17 @@ class FoodController extends Controller
             // se il food di cui si vuole fare l'upgrate appartiene all'utente loggato
 
                 $data = $request->all();
+
+                if($food->image){
+                    Storage::delete($food->image);
+                }
+        
+                if(isset($data["img"])){
+                    $data["image"] = Storage::put("foods_image", $data["img"]); 
+        
+                }else{
+                    $data["image"] = null;
+                }
 
                 // creo slug univoco, nel caso in cui il nuovo è già presente nel database ne creo uno diverso, concatenandolo ad un couter
                 // Prova-nuovo-food 

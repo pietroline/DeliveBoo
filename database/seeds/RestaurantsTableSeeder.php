@@ -18,7 +18,7 @@ class RestaurantsTableSeeder extends Seeder
         $restaurants = [
             [
                 "name" => "alGazebo",
-                "typologies" => [10],
+                "typologies" => [6, 10],
                 "path" => "alGazebo-vegano.png"
             ],
             [

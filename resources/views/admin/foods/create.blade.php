@@ -5,7 +5,7 @@
 
             <h1>Crea nuova portata</h1>
 
-            <form class="needs-validation" novalidate method="POST" action="{{route('admin.foods.store')}}">
+            <form class="needs-validation" novalidate method="POST" action="{{route('admin.foods.store')}}" enctype="multipart/form-data">
 
                 @csrf
 
@@ -15,6 +15,11 @@
                     <div class="invalid-feedback">
                       Nome portata non valido
                     </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="img">Seleziona immagine</label>
+                  <input class="form-control" type="file" accept="image/png, image/gif, image/jpeg, image/jpg, imag/svg" name="img" id="img">
                 </div>
 
                 <div class="form-group">
@@ -33,7 +38,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="price">Prezzo *</label>
+                    <label for="price">Prezzo (in €) *</label>
                     <input type="number" class="form-control" id="price" name="price" min="0" max="1000" value="{{old("price")}}" required>
                     <div class="invalid-feedback">
                       Prezzo non valido

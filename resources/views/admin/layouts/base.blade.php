@@ -40,10 +40,10 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm p-0">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                   DeliveBoo
+                <a class="navbar-brand p-0" href="{{ url('/') }}">
+                   <img src="{{asset('img/logo-orange.png')}}" width="90px" alt="logo deliveboo">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -51,18 +51,18 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
+                    <ul class="navbar-nav ">
 
 
                         {{-- ----------------------------------------- --}}
 
-                        <li class="mx-2"><a href="{{route('admin.home')}}">Dashbord</a></li>
+                        <li class="mx-2"><a href="{{route('admin.home')}}" class="ms_aColor">Dashbord</a></li>
                         
                         {{-- **controllo-if** --}}
                         @if ($restaurant)
-                            <li class="mx-2"><a href="{{route('admin.foods.index')}}">Foods</a></li>
-                            <li class="mx-2"><a href="{{route('admin.orders')}}">Orders</a></li>
-                            <li class="mx-2"><a href="{{route('admin.charts')}}">Charts</a></li>
+                            <li class="mx-2"><a href="{{route('admin.foods.index')}}" class="ms_aColor">Piatti</a></li>
+                            <li class="mx-2"><a href="{{route('admin.orders')}}" class="ms_aColor">Ordini</a></li>
+                            <li class="mx-2"><a href="{{route('admin.charts')}}" class="ms_aColor">Statistiche</a></li>
                         @endif
                         
                         {{-- ----------------------------------------- --}}

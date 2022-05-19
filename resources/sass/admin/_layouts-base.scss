@@ -1,0 +1,9 @@
+@import  "../variables";
+
+.ms_aColor{
+    color: #000;
+
+    &:hover{
+        color: $darkOrange;
+    }
+}

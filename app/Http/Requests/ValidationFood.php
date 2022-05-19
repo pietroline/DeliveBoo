@@ -29,7 +29,8 @@ class ValidationFood extends FormRequest
             "category_id" => "required | exists:categories,id",
             "price" => "required | numeric | min:0 | max:1000",
             "ingredients" => "required | min:5",
-            "visible" => "required | boolean"
+            "visible" => "required | boolean",
+            'img' => 'nullable | mimes:jpeg,png,jpg,gif,svg | max:2048',
         ];
     }
 
@@ -46,6 +47,7 @@ class ValidationFood extends FormRequest
             'price' => 'Prezzo',
             'ingredients' => 'Ingredienti',
             'visible' => 'Disponibilità',
+            'img' => 'immagine'
         ];
 
     }

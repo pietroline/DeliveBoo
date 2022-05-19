@@ -4,17 +4,17 @@
         <div class="row">
             <div class="col">
 
-                 <h1>Ci siamo quasi stai per inviare l'ordine</h1>
+                <h1>Ci siamo quasi stai per inviare l'ordine</h1>
 
-                <h3>Ecco il riepilogo dell'ordine</h3>
+                <h3 class="my-3">Ecco il riepilogo dell'ordine</h3>
 
                 <table class="table text-center">
                     <thead>
                         <tr>
                             <th scope="col">Nome</th>
-                            <th scope="col">prezzo</th>
-                            <th scope="col">quantità</th>
-                            <th scope="col">totale</th>
+                            <th scope="col">Prezzo</th>
+                            <th scope="col">Quantità</th>
+                            <th scope="col">Totale</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -125,6 +125,7 @@
                 cart: [],
                 total: 0,
                 restaurant_id: null,
+                restaurant_name: null,
                 name: null,
                 address: null,
                 phone: null,
@@ -139,6 +140,7 @@
             this.cart = this.$route.params.cart;
             this.total = this.$route.params.total; 
             this.restaurant_id = this.$route.params.restaurant_id; 
+            this.restaurant_name = this.$route.params.restaurant_name; 
 
           
             // salvo i dati in valiabili localStorage, in maniera tale da mantenere il dato anche se riavviata la pagina

@@ -5,46 +5,63 @@
 
         <h1>Dettagli food</h1>
 
-        <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex justify-content-between">
+            <div class="d-flex justify-content-between align-items-center">
             
-            <ul class="list-unstyled">
-                <li class="my-3">
-                    <strong>Nome portata: </strong> {{$food->name}}
-                </li>
-                <li class="my-3">
-                    <strong>Slug: </strong> {{$food->slug}}
-                </li>
-                <li class="my-3">
-                    <strong>Categoria: </strong> {{isset($category) ? $category->name : "NULL"}}
-                </li>
-                <li class="my-3">
-                    <strong>Prezzo: </strong> {{$food->price}} &euro;
-                </li>
-
-                @if($food->description)
+                <ul class="list-unstyled">
                     <li class="my-3">
-                        <strong>Descrizione: </strong> {{$food->description}}
+                        <strong>Nome portata: </strong> {{$food->name}}
                     </li>
-                @endif
-
-                @if($food->ingredients)
                     <li class="my-3">
-                        <strong>Ingredienti: </strong> {{$food->ingredients}}
+                        <strong>Slug: </strong> {{$food->slug}}
                     </li>
-                @endif
-              
-                <li class="my-3">
-                    <strong>Visibilità: </strong>
-                    @if ($food->visible)
-                        <span>Cliente/Ristoratore</span>
-                    @else
-                        <span>Solo ristoratore</span>
+                    <li class="my-3">
+                        <strong>Categoria: </strong> {{isset($category) ? $category->name : "NULL"}}
+                    </li>
+                    <li class="my-3">
+                        <strong>Prezzo: </strong> {{$food->price}} &euro;
+                    </li>
+    
+                    @if($food->description)
+                        <li class="my-3">
+                            <strong>Descrizione: </strong> {{$food->description}}
+                        </li>
                     @endif
-                </li>
+    
+                    @if($food->ingredients)
+                        <li class="my-3">
+                            <strong>Ingredienti: </strong> {{$food->ingredients}}
+                        </li>
+                    @endif
+                  
+                    <li class="my-3">
+                        <strong>Visibilità: </strong>
+                        @if ($food->visible)
+                            <span>Cliente/Ristoratore</span>
+                        @else
+                            <span>Solo ristoratore</span>
+                        @endif
+                    </li>
+                
+                </ul>
             
-            </ul>
-        
+    
+            </div>
+    
+            <div class="img_food">
+                @if ($food->image)
 
+                    @if($food->seed)
+                        <img class="img-fluid" src="{{asset('img/foto-foods/' . $food->image)}}" alt="Img {{$food->name}}">
+                    @else
+                        <img class="img-fluid" src="{{asset('storage/' . $food->image)}}" alt="Img {{$food->name}}">
+                    @endif
+                   
+                @else
+                    <img class="img-fluid" src="{{asset('img/LogoDeliveboo640.png')}}" alt="Img default">
+                @endif
+            </div>
+            
         </div>
 
         <a href="{{route('admin.foods.index')}}" class="btn btn-primary">Indietro</a>
