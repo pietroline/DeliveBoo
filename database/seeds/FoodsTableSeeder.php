@@ -94,7 +94,7 @@ class FoodsTableSeeder extends Seeder
             ],
             [
                 'name' => 'Crocchè Classico',
-                'path' => 'croccheFritti-StreetFood',
+                'path' => 'croccheFritti-StreetFood.png',
                 'category_id' => '5',
                 'restaurant_id' => '11',
             ],
@@ -190,7 +190,7 @@ class FoodsTableSeeder extends Seeder
             ],
             [
                 'name' => 'Macarons',
-                'path' => 'macaron-gelateria,png',
+                'path' => 'macaron-gelateria.png',
                 'category_id' => '8',
                 'restaurant_id' => '6',
             ],

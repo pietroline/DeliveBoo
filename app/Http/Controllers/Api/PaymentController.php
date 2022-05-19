@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Lead;
+use App\Mail\SendMail;
+use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\ValidationPayment;
 use App\Order;
 use Carbon\Carbon;
@@ -21,6 +24,12 @@ class PaymentController extends Controller
         $order->fill($data);
 
         $order->save();
+
+        // email
+        $lead = new Lead();
+        $lead->fill($data);
+        $lead->save();
+        Mail::to("ordine@" . $data["restaurant_slug"] . ".it")->send(new SendMail($lead));
 
         return response()->json(
             [
