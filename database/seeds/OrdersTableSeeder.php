@@ -23,7 +23,7 @@ class OrdersTableSeeder extends Seeder
             $newFood->address = $faker->address();
             $newFood->total = $faker->numberBetween(7, 30);
             $newFood->order_confirmed_date = $faker->dateTimeBetween("-156 week", "+0 week");
-            $newFood->restaurant_id = $faker->numberBetween(1,5);
+            $newFood->restaurant_id = $faker->numberBetween(1,19);
 
             $newFood->save();
         }
